@@ -50,9 +50,9 @@ const EMPRESA = {
    ---------------------------------------------------------------------------- */
 const MENU = [
   { texto: "El Grupo",  ancla: "#grupo" },
+  { texto: "Empresas",  ancla: "#empresas" },
   { texto: "Trabajos",  ancla: "#trabajos" },
   { texto: "Clientes",  ancla: "#clientes" },
-  { texto: "Sectores",  ancla: "#sectores" },
   { texto: "Contacto",  ancla: "#contacto" },
 ];
 const BOTON_CONTACTO = "Contactanos";   // botón celeste arriba a la derecha
@@ -66,25 +66,41 @@ const BOTON_CONTACTO = "Contactanos";   // botón celeste arriba a la derecha
       - "subtitulo" es la frase descriptiva (podés dejarla vacía con "").
    ---------------------------------------------------------------------------- */
 const SECCIONES = {
+  // --- Sección "Nuestra identidad" (el bloque del grupo con imagen al costado) ---
   grupo: {
-    eyebrow: "Un grupo, dos especialidades",
-    titulo: "La sinergia que impulsa cada proyecto",
-    subtitulo: "Dos empresas complementarias que integran ingeniería, ejecución y tecnología en una sola solución.",
+    eyebrow: "Nuestra identidad",
+    titulo: "Grupo Labektron",
+    // La imagen que aparece al costado de este bloque:
+    imagen: "images/identidad.png",
+    // Párrafos de la identidad/sinergia. Cada texto entre comillas es un párrafo.
+    // Podés poner "negrita" al inicio de un párrafo con el campo "titulo".
+    parrafos: [
+      { titulo: "", texto: "GRUPO LABEKTRON es una sociedad conformada por ELEKTRON y LABELEC, dos empresas especializadas en diferentes áreas de la ingeniería para ofrecer soluciones integrales en los sectores industrial, comercial y residencial." },
+      { titulo: "ELEKTRON:", texto: "Especialista en instalaciones electromecánicas y termomecánicas, con un enfoque en eficiencia energética, automatización y cumplimiento normativo." },
+      { titulo: "LABELEC:", texto: "Especialista en Diagnostico electrónico y laboratorio de ensayos, brindando soluciones en diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial." },
+      { titulo: "", texto: "La sinergia entre ELEKTRON y LABELEC nos permite abordar proyectos de manera integral, optimizando recursos y asegurando la mejor calidad tecnica en cada solución." },
+    ],
+  },
+  // --- Encabezado de la sección donde se muestran las dos empresas ---
+  empresas: {
+    eyebrow: "Un grupo, dos especialistas",
+    titulo: "Empresas del grupo",
+    subtitulo: "Cada una experta en su campo. Hacé click para conocer todo acerca de nosotros.",
   },
   trabajos: {
     eyebrow: "Portfolio",
     titulo: "Trabajos realizados",
-    subtitulo: "Proyectos ejecutados con estándares de calidad, seguridad y eficiencia.",
+    subtitulo: "Proyectos del Grupo, ejecutados con estándares de calidad, seguridad y eficiencia.",
   },
   clientes: {
     eyebrow: "Confían en nosotros",
     titulo: "Clientes",
-    subtitulo: "Empresas que eligieron nuestras soluciones.",
+    subtitulo: "Empresas que eligieron nuestras soluciones profesionales.",
   },
   sectores: {
     eyebrow: "Dónde trabajamos",
     titulo: "Sectores de aplicación",
-    subtitulo: "Soluciones a medida para cada industria.",
+    subtitulo: "Soluciones a medida para cada rubro.",
   },
   testimonios: {
     eyebrow: "Testimonios",
@@ -94,29 +110,81 @@ const SECCIONES = {
   oficinas: {
     eyebrow: "Dónde estamos",
     titulo: "Nuestras oficinas",
-    subtitulo: "",
+    subtitulo: "Te esperamos!",
   },
   contacto: {
     titulo: "¿Tenés un proyecto en mente?",
-    subtitulo: "Escribinos y coordinemos una reunión. Te asesoramos sin compromiso.",
+    subtitulo: "Escribinos y coordinemos una reunión. Te asesoramos sin compromiso, queremos que lo lleves adelante.",
     boton: "Escribinos por WhatsApp",
+  },
+  mapa: {
+    eyebrow: "Cómo llegar",
+    titulo: "Nuestra ubicación",
+    subtitulo: "Visitanos en nuestras oficinas.",
+    // 👇 Dirección que se muestra y se busca en el mapa.
+    //    Cambiala por la real (calle, número, ciudad).
+    direccion: "10 de Octubre 985, Salta Capital, Argentina",
+    // Nivel de zoom del mapa: más alto = más cerca. Probá entre 14 y 18.
+    zoom: 16,
   },
 };
 
 
 /* ----------------------------------------------------------------------------
-   4. LAS DOS EMPRESAS DEL GRUPO (sinergia)
+   4. LAS DOS EMPRESAS DEL GRUPO
+   ============================================================================
+   Cada empresa tiene su propia página (elektron.html / labelec.html).
+   Acá se define TODO lo que aparece, tanto en la tarjeta de la home como
+   dentro de su página propia.
    ---------------------------------------------------------------------------- */
 const EMPRESAS_GRUPO = [
   {
+    // --- Identificación ---
+    id: "elektron",                       // no cambiar (enlaza con elektron.html)
     nombre: "ELEKTRON",
+    lema: "Build & Install",              // frase corta bajo el nombre
     icono: "images/elektron.png",
-    descripcion: "Ingeniería y ejecución de proyectos eléctricos de media y baja tensión, automatización industrial y tableros.",
+    pagina: "elektron.html",              // página propia
+    color: "#00c2ff",                     // color de acento de esta empresa (celeste)
+
+    // --- Texto para la TARJETA de la home ---
+    descripcion: "Especialista en instalaciones electromecánicas y termomecánicas, con enfoque en eficiencia energética, automatización y cumplimiento normativo.",
+
+    // --- Contenido de la PÁGINA PROPIA (elektron.html) ---
+    heroImagen: "images/elektron-hero.jpg",   // imagen grande de cabecera
+    intro: "En ELEKTRON diseñamos, construimos e instalamos soluciones eléctricas y electromecánicas para la industria, el comercio y grandes proyectos. Desde la ingeniería hasta la puesta en marcha, ejecutamos obras llave en mano con los más altos estándares de seguridad y calidad.",
+
+    // Lista de servicios (aparecen como tarjetas en la página propia)
+    servicios: [
+      { titulo: "Ingeniería Eléctrica", texto: "Proyectos de media y baja tensión, cálculo y diseño de instalaciones." },
+      { titulo: "Fabricación de Tableros", texto: "Diseño y armado de tableros de comando, potencia y automatización." },
+      { titulo: "Obras Llave en Mano", texto: "Ejecución integral de obras, desde el proyecto hasta la puesta en marcha." },
+      { titulo: "Automatización Industrial", texto: "PLCs, sistemas de control y optimización de procesos productivos." },
+      { titulo: "Mantenimiento Industrial", texto: "Mantenimiento preventivo y correctivo de instalaciones eléctricas." },
+      { titulo: "Eficiencia Energética", texto: "Estudios y soluciones para reducir el consumo y mejorar el rendimiento." },
+    ],
   },
   {
+    id: "labelec",
     nombre: "LABELEC",
+    lema: "Diagnose, Repair & Maintain",
     icono: "images/labelec.png",
-    descripcion: "Laboratorio de ensayos eléctricos, mantenimiento predictivo y soluciones en energías renovables.",
+    pagina: "labelec.html",
+    color: "#2dd4a7",                     // color de acento (verde)
+
+    descripcion: "Especialista en electrónica y laboratorio: diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial.",
+
+    heroImagen: "images/labelec-hero.jpg",
+    intro: "En LABELEC diagnosticamos, reparamos y mantenemos equipos electrónicos de todo tipo. Nuestro laboratorio abarca desde electrónica industrial y control de procesos hasta equipos biomédicos y electrónica de consumo, con precisión y trazabilidad en cada servicio.",
+
+    servicios: [
+      { titulo: "Reparación de Placas", texto: "Diagnóstico y reparación de placas electrónicas a nivel componente." },
+      { titulo: "Equipos Industriales", texto: "Reparación de variadores, drives, PLCs, HMIs y fuentes." },
+      { titulo: "Instrumentación y Control", texto: "Calibración y mantenimiento de instrumentos de medición y control." },
+      { titulo: "Equipos Biomédicos", texto: "Mantenimiento y reparación de equipamiento médico." },
+      { titulo: "Electrónica Automotriz", texto: "Reparación de módulos, audio y sistemas electrónicos vehiculares." },
+      { titulo: "Normalizaciones Técnicas", texto: "Puesta en norma y certificación de equipos e instalaciones." },
+    ],
   },
 ];
 
@@ -147,51 +215,74 @@ const TRABAJOS = [
 
     // --- Detalles de obra (aparecen en la galería) ---
     detalles: {
-      cliente:   "Nombre del cliente",
-      ubicacion: "Salta, Argentina",
-      fecha:     "2024",
-      duracion:  "6 meses",
-      tecnicos:  "Potencia instalada: 500 kW · 1.200 paneles",  // datos técnicos
+      cliente:   "Espartina - Finca Los Tapires",
+      ubicacion: "Las Lajitas, Salta, Argentina",
+      fecha:     "Junio 2024",
+      duracion:  "5 dias",
+      tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles *Potencia de Salida: 20 kW en 4 inversores Growatt*Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
     },
     descripcionLarga: "Descripción completa de la obra: alcance del proyecto, etapas de ejecución, desafíos resueltos y resultados obtenidos. Reemplazá este texto por los detalles reales del parque fotovoltaico.",
 
     // --- Fotos de la galería (agregá o quitá las que quieras) ---
     galeria: [
       "images/trabajos/parque-fotovoltaico.jpg",
+      "images/trabajos/parque-fotovoltaico-1.jpg",
       "images/trabajos/parque-fotovoltaico-2.jpg",
       "images/trabajos/parque-fotovoltaico-3.jpg",
+      "images/trabajos/parque-fotovoltaico-4.jpg",
+      "images/trabajos/parque-fotovoltaico-5.jpg",
+      "images/trabajos/parque-fotovoltaico-6.jpg",
+      "images/trabajos/parque-fotovoltaico-7.jpg",
+      "images/trabajos/parque-fotovoltaico-8.jpg",
+      "images/trabajos/parque-fotovoltaico-9.jpg",
+      "images/trabajos/parque-fotovoltaico-10.jpg",
+      "images/trabajos/parque-fotovoltaico-11.jpg",
+      "images/trabajos/parque-fotovoltaico-12.jpg",
     ],
   },
   {
     titulo: "Seccionadora Automática",
     imagen: "images/trabajos/seccionadora.jpg",
-    descripcion: "Instalación de seccionadora automática de media tensión.",
+    descripcion: "Instalación de seccionadora CNC.",
     detalles: {
-      cliente:   "Nombre del cliente",
+      cliente:   "Moldurera Limache - Egger House",
       ubicacion: "Salta, Argentina",
-      fecha:     "2024",
-      duracion:  "2 meses",
-      tecnicos:  "Media tensión 13,2 kV",
+      fecha:     "Julio 2024",
+      duracion:  "20 Dias",
+      tecnicos:  "Instalacion electrica, linea de aire comprimido en 1 y sistema de aspiracion de aserrin",
     },
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/seccionadora.jpg",
+      "images/trabajos/seccionadora-1.jpg",
+      "images/trabajos/seccionadora-2.jpg",
     ],
   },
   {
-    titulo: "Chiller para Soplado de Envases",
+    titulo: "Chiller 10TN para Soplado de Envases",
     imagen: "images/trabajos/chiller.jpg",
-    descripcion: "Fabricación de chiller industrial para línea de soplado.",
+    descripcion: "Fabricación de chiller industrial de 10TN para 2 líneas de soplado.",
     detalles: {
-      cliente:   "Nombre del cliente",
+      cliente:   "Agua y Soda Ideal",
       ubicacion: "Salta, Argentina",
-      fecha:     "2023",
-      duracion:  "3 meses",
-      tecnicos:  "Capacidad frigorífica: XX kcal/h",
+      fecha:     "Diciembre 2025",
+      duracion:  "2 meses",
+      tecnicos:  "Capacidad frigorífica: 10 TN = 120.000 BTU, Trifasico",
     },
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/chiller.jpg",
+      "images/trabajos/chiller-1.jpg",
+      "images/trabajos/chiller-2.jpg",
+      "images/trabajos/chiller-3.jpg",
+      "images/trabajos/chiller-4.jpg",
+      "images/trabajos/chiller-5.jpg",
+      "images/trabajos/chiller-6.jpg",
+      "images/trabajos/chiller-7.jpg",
+      "images/trabajos/chiller-8.jpg",
+      "images/trabajos/chiller-9.jpg",
+      "images/trabajos/chiller-10.jpg",
+
     ],
   },
   {
@@ -310,13 +401,21 @@ const OFICINAS = [
   {
     ciudad: "Salta",
     direccion: "Dirección de la oficina, Salta, Argentina",
-    imagen: "images/oficinas/salta.jpg",
+    // 👇 Podés poner 1, 3 o las fotos que quieras. Se muestran en un carrusel.
+    imagenes: [
+      "images/oficinas/salta.jpg",
+      "images/oficinas/salta-2.jpg",
+      "images/oficinas/salta-3.jpg",
+    ],
   },
   // 👇 Copiá este bloque para agregar otra oficina:
   // {
   //   ciudad: "Ciudad",
   //   direccion: "Dirección completa",
-  //   imagen: "images/oficinas/archivo.jpg",
+  //   imagenes: [
+  //     "images/oficinas/foto-1.jpg",
+  //     "images/oficinas/foto-2.jpg",
+  //   ],
   // },
 ];
 

@@ -145,17 +145,53 @@
   .hero p { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--texto-suave); max-width: 560px; margin-bottom: 40px; }
   .hero__acciones { display: flex; gap: 16px; flex-wrap: wrap; }
 
-  /* ===================== GRUPO (dos empresas) ===================== */
-  .grupo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-  .grupo-card {
-    background: var(--tarjeta); border: 1px solid var(--borde);
-    border-radius: var(--radio); padding: 40px;
-    transition: transform .3s, border-color .3s;
+  /* ===================== NUESTRA IDENTIDAD ===================== */
+  .identidad { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .identidad__linea { width: 72px; height: 4px; border-radius: 4px; background: var(--acento); margin: 4px 0 28px; }
+  .identidad__texto .titulo-seccion { margin-bottom: 8px; }
+  .identidad__texto p { color: var(--texto-suave); margin-bottom: 20px; font-size: 1.02rem; line-height: 1.75; }
+  .identidad__texto p:last-child { margin-bottom: 0; }
+  .identidad__texto p b { color: var(--texto); font-weight: 700; }
+  /* Marco con esquinas tipo "corchete" alrededor de la imagen */
+  .identidad__marco {
+    position: relative; border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--borde);
   }
-  .grupo-card:hover { transform: translateY(-4px); border-color: var(--acento); }
-  .grupo-card img { height: 56px; width: auto; margin-bottom: 24px; }
-  .grupo-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.04em; }
-  .grupo-card p { color: var(--texto-suave); }
+  .identidad__marco::before, .identidad__marco::after {
+    content: ''; position: absolute; width: 42px; height: 42px; z-index: 2; pointer-events: none;
+  }
+  .identidad__marco::before { top: 14px; right: 14px; border-top: 2px solid var(--acento); border-right: 2px solid var(--acento); border-radius: 0 8px 0 0; }
+  .identidad__marco::after  { bottom: 14px; left: 14px; border-bottom: 2px solid var(--acento); border-left: 2px solid var(--acento); border-radius: 0 0 0 8px; }
+  .identidad__marco img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; display: block; }
+
+  /* ===================== NUESTRAS EMPRESAS (tarjetas) ===================== */
+  .empresas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .empresa-card {
+    position: relative; display: block;
+    background: var(--tarjeta); border: 1px solid var(--borde);
+    border-radius: var(--radio); padding: 42px 40px 36px; overflow: hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  /* Barra de color arriba de cada tarjeta (usa el color de la empresa) */
+  .empresa-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--empresa-color, var(--acento));
+  }
+  .empresa-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--empresa-color, var(--acento));
+    box-shadow: 0 20px 50px -24px var(--empresa-color, var(--acento));
+  }
+  .empresa-card img { height: 58px; width: auto; margin-bottom: 22px; }
+  .empresa-card h3 { font-size: 1.6rem; font-weight: 800; letter-spacing: 0.04em; margin-bottom: 4px; }
+  .empresa-card .empresa-lema { color: var(--empresa-color, var(--acento)); font-family: var(--display); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px; }
+  .empresa-card p { color: var(--texto-suave); margin-bottom: 24px; }
+  .empresa-card .empresa-vermas {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--empresa-color, var(--acento)); font-family: var(--display); font-weight: 600; font-size: 0.95rem;
+  }
+  .empresa-card .empresa-vermas svg { width: 18px; height: 18px; fill: currentColor; transition: transform .3s; }
+  .empresa-card:hover .empresa-vermas svg { transform: translateX(5px); }
 
   /* ===================== TRABAJOS ===================== */
   .grid-cards {
@@ -309,8 +345,25 @@
     background: var(--tarjeta); border: 1px solid var(--borde);
     border-radius: var(--radio); overflow: hidden;
   }
-  .oficina__img { aspect-ratio: 16/10; overflow: hidden; background: var(--fondo-alt); }
+  .oficina__img { aspect-ratio: 16/10; overflow: hidden; background: var(--fondo-alt); position: relative; }
   .oficina__img img { width: 100%; height: 100%; object-fit: cover; }
+  /* Carrusel de fotos dentro de la tarjeta de oficina */
+  .of-pista { display: flex; height: 100%; transition: transform .4s ease; }
+  .of-slide { min-width: 100%; height: 100%; }
+  .of-flecha {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .25s, background .2s;
+  }
+  .oficina:hover .of-flecha { opacity: 1; }
+  .of-flecha:hover { background: var(--acento); color: #041016; }
+  .of-flecha--izq { left: 10px; }
+  .of-flecha--der { right: 10px; }
+  .of-puntos { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; gap: 6px; justify-content: center; z-index: 2; }
+  .of-punto { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background .2s, transform .2s; }
+  .of-punto.activo { background: var(--acento); transform: scale(1.3); }
   .oficina__body { padding: 24px; }
   .oficina__body h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
   .oficina__body p { color: var(--texto-suave); }
@@ -326,6 +379,25 @@
   }
   .cta h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 20px; }
   .cta p { color: var(--texto-suave); max-width: 520px; margin: 0 auto 40px; font-size: 1.1rem; }
+
+  /* ===================== MAPA / UBICACIÓN ===================== */
+  .mapa-marco {
+    position: relative; border: 1px solid var(--borde); border-radius: var(--radio);
+    overflow: hidden; background: var(--tarjeta);
+    box-shadow: 0 20px 60px -30px rgba(0,0,0,0.8);
+  }
+  .mapa-marco iframe {
+    display: block; width: 100%; height: 440px; border: 0;
+    /* Integra el mapa (claro) con el tema oscuro sin que desentone */
+    filter: grayscale(0.3) contrast(1.05) brightness(0.92);
+  }
+  /* Cinta inferior con la dirección y botón para abrir en Google Maps */
+  .mapa-pie {
+    display: flex; flex-wrap: wrap; gap: 14px 20px; align-items: center; justify-content: space-between;
+    padding: 20px 26px; border-top: 1px solid var(--borde); background: var(--fondo-alt);
+  }
+  .mapa-pie__dir { display: flex; align-items: center; gap: 12px; color: var(--texto); font-size: 0.98rem; }
+  .mapa-pie__dir svg { width: 20px; height: 20px; fill: none; stroke: var(--acento); stroke-width: 2; flex-shrink: 0; }
 
   /* ===================== FOOTER ===================== */
   .site-footer {
@@ -390,7 +462,9 @@
 
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 860px) {
-    .grupo-grid { grid-template-columns: 1fr; }
+    .identidad { grid-template-columns: 1fr; gap: 36px; }
+    .identidad__media { order: -1; }
+    .empresas-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-marca { grid-column: 1 / -1; }
     .nav__links {
@@ -443,13 +517,32 @@
   </div>
 </section>
 
-<!-- ===================== EL GRUPO ===================== -->
+<!-- ===================== NUESTRA IDENTIDAD ===================== -->
 <section class="seccion" id="grupo">
   <div class="contenedor">
-    <span class="eyebrow" data-eyebrow="grupo"></span>
-    <h2 class="titulo-seccion" data-titulo="grupo"></h2>
-    <p class="subtitulo-seccion" data-subtitulo="grupo"></p>
-    <div class="grupo-grid" id="grupo-grid"></div>
+    <div class="identidad">
+      <div class="identidad__texto">
+        <span class="eyebrow" data-eyebrow="grupo"></span>
+        <h2 class="titulo-seccion" data-titulo="grupo"></h2>
+        <div class="identidad__linea"></div>
+        <div id="identidad-parrafos"></div>
+      </div>
+      <div class="identidad__media">
+        <div class="identidad__marco">
+          <img id="identidad-img" src="" alt="Grupo Labektron" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NUESTRAS EMPRESAS ===================== -->
+<section class="seccion seccion--alt" id="empresas">
+  <div class="contenedor">
+    <span class="eyebrow" data-eyebrow="empresas"></span>
+    <h2 class="titulo-seccion" data-titulo="empresas"></h2>
+    <p class="subtitulo-seccion" data-subtitulo="empresas"></p>
+    <div class="empresas-grid" id="grupo-grid"></div>
   </div>
 </section>
 
@@ -511,6 +604,26 @@
     <h2 id="cta-titulo"></h2>
     <p id="cta-subtitulo"></p>
     <a id="cta-wa" class="btn" href="#" target="_blank" rel="noopener"></a>
+  </div>
+</section>
+
+<!-- ===================== MAPA / UBICACIÓN ===================== -->
+<section class="seccion seccion--alt" id="ubicacion">
+  <div class="contenedor">
+    <span class="eyebrow" data-eyebrow="mapa"></span>
+    <h2 class="titulo-seccion" data-titulo="mapa"></h2>
+    <p class="subtitulo-seccion" data-subtitulo="mapa"></p>
+    <div class="mapa-marco">
+      <iframe id="mapa-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación en Google Maps"></iframe>
+      <div class="mapa-pie">
+        <div class="mapa-pie__dir">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-5.7 7-11a7 7 0 10-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span id="mapa-direccion"></span>
+        </div>
+        <a id="mapa-boton" class="btn" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -621,19 +734,44 @@ const waLink = 'https://wa.me/' + EMPRESA.whatsapp + '?text=' + encodeURICompone
 document.getElementById('cta-wa').href = waLink;
 document.getElementById('wa-flotante').href = waLink;
 
+// --- Mapa / ubicación ---
+(function() {
+  const m = SECCIONES.mapa;
+  if (!m || !m.direccion) return;
+  const dir = encodeURIComponent(m.direccion);
+  // Mapa embebido (no necesita clave de API)
+  document.getElementById('mapa-iframe').src =
+    `https://maps.google.com/maps?q=${dir}&z=${m.zoom || 16}&output=embed`;
+  // Texto de la dirección y botón "Abrir en Google Maps"
+  set('mapa-direccion', m.direccion);
+  document.getElementById('mapa-boton').href =
+    `https://www.google.com/maps/search/?api=1&query=${dir}`;
+})();
+
 // --- Utilidad: crea imagen con carga diferida (lazy) ---
 function img(src, alt) {
   return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async"
            onerror="this.style.opacity=.25;this.alt='Falta: '+this.src">`;
 }
 
-// --- El Grupo ---
+// --- Nuestra identidad (párrafos + imagen) ---
+document.getElementById('identidad-img').src = SECCIONES.grupo.imagen;
+document.getElementById('identidad-parrafos').innerHTML = SECCIONES.grupo.parrafos.map(p => {
+  const negrita = p.titulo ? `<b>${p.titulo}</b> ` : '';
+  return `<p>${negrita}${p.texto}</p>`;
+}).join('');
+
+// --- Nuestras empresas (tarjetas que llevan a su página propia) ---
 document.getElementById('grupo-grid').innerHTML = EMPRESAS_GRUPO.map(e => `
-  <div class="grupo-card reveal">
+  <a class="empresa-card reveal" href="${e.pagina}" style="--empresa-color:${e.color}">
     ${img(e.icono, e.nombre)}
     <h3>${e.nombre}</h3>
+    <div class="empresa-lema">${e.lema || ''}</div>
     <p>${e.descripcion}</p>
-  </div>`).join('');
+    <span class="empresa-vermas">Conocer más
+      <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2l-4.6-4.6z"/></svg>
+    </span>
+  </a>`).join('');
 
 // --- Trabajos ---
 // Una tarjeta es "clickeable" (abre galería) si tiene galeria o descripcionLarga.
@@ -686,15 +824,55 @@ document.getElementById('testimonios-grid').innerHTML = TESTIMONIOS.map(t => `
     <div class="testimonio__cargo">${t.cargo}</div>
   </div>`).join('');
 
-// --- Oficinas ---
-document.getElementById('oficinas-grid').innerHTML = OFICINAS.map(o => `
+// --- Oficinas (con carrusel de fotos) ---
+document.getElementById('oficinas-grid').innerHTML = OFICINAS.map((o, idx) => {
+  // Acepta "imagenes" (lista) o "imagen" (una sola, formato viejo)
+  const fotos = o.imagenes && o.imagenes.length ? o.imagenes : (o.imagen ? [o.imagen] : []);
+  const varias = fotos.length > 1;
+  const controles = varias ? `
+      <button class="of-flecha of-flecha--izq" data-of="${idx}" data-dir="-1" aria-label="Anterior">‹</button>
+      <button class="of-flecha of-flecha--der" data-of="${idx}" data-dir="1" aria-label="Siguiente">›</button>
+      <div class="of-puntos">
+        ${fotos.map((_, i) => `<span class="of-punto ${i===0?'activo':''}" data-of="${idx}" data-i="${i}"></span>`).join('')}
+      </div>` : '';
+  return `
   <div class="oficina reveal">
-    <div class="oficina__img">${img(o.imagen, o.ciudad)}</div>
+    <div class="oficina__img">
+      <div class="of-pista" data-pista="${idx}">
+        ${fotos.map(f => `<div class="of-slide">${img(f, o.ciudad)}</div>`).join('')}
+      </div>
+      ${controles}
+    </div>
     <div class="oficina__body">
       <h3>${o.ciudad}</h3>
       <p>${o.direccion}</p>
     </div>
-  </div>`).join('');
+  </div>`;
+}).join('');
+
+// Lógica de los carruseles de oficina
+(function() {
+  const pos = {};   // guarda la foto actual de cada oficina
+  function mover(idx, nuevo) {
+    const pista = document.querySelector(`[data-pista="${idx}"]`);
+    if (!pista) return;
+    const total = pista.children.length;
+    pos[idx] = (nuevo + total) % total;
+    pista.style.transform = `translateX(-${pos[idx] * 100}%)`;
+    document.querySelectorAll(`.of-punto[data-of="${idx}"]`).forEach((p, i) =>
+      p.classList.toggle('activo', i === pos[idx]));
+  }
+  document.getElementById('oficinas-grid').addEventListener('click', e => {
+    const flecha = e.target.closest('.of-flecha');
+    if (flecha) {
+      const idx = flecha.dataset.of;
+      mover(idx, (pos[idx] || 0) + parseInt(flecha.dataset.dir));
+      return;
+    }
+    const punto = e.target.closest('.of-punto');
+    if (punto) mover(punto.dataset.of, parseInt(punto.dataset.i));
+  });
+})();
 
 // --- Footer ---
 (function() {

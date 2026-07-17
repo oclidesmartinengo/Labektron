@@ -1,0 +1,91 @@
+/* ============================================================================
+   ESTILOS DE LAS PÁGINAS DE EMPRESA (elektron.html y labelec.html)
+   Mismo diseño base que la home. El color de acento cambia según la empresa
+   (se define con la variable --acento vía JS).
+   ============================================================================ */
+:root {
+  --fondo:        #0a0e17;
+  --fondo-alt:    #111726;
+  --tarjeta:      #161d2e;
+  --borde:        #232c40;
+  --texto:        #e8ecf4;
+  --texto-suave:  #94a1b8;
+  --acento:       #00c2ff;   /* lo sobrescribe cada empresa por JS */
+  --display: 'Sora', sans-serif;
+  --body: 'Inter', sans-serif;
+  --radio: 14px;
+  --ancho: 1200px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--fondo); color: var(--texto); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.contenedor { width: 92%; max-width: var(--ancho); margin: 0 auto; }
+.seccion { padding: 96px 0; }
+
+.eyebrow { display: inline-block; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 16px; }
+.titulo-seccion { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.subtitulo-seccion { color: var(--texto-suave); max-width: 620px; margin-bottom: 56px; font-size: 1.05rem; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--acento); color: #041016; font-weight: 600; font-family: var(--display); padding: 12px 22px; border-radius: 999px; font-size: 0.92rem; transition: transform .2s, box-shadow .2s; box-shadow: 0 6px 24px -8px var(--acento); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px var(--acento); }
+.btn--ghost { background: transparent; color: var(--texto); border: 1px solid var(--borde); box-shadow: none; }
+.btn--ghost:hover { border-color: var(--acento); color: var(--acento); }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,23,0.72); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+header.scrolled { border-bottom-color: var(--borde); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.nav__logo img { height: 38px; width: auto; }
+.nav__links { display: flex; gap: 34px; }
+.nav__links a { font-size: 0.92rem; color: var(--texto-suave); font-weight: 500; transition: color .2s; }
+.nav__links a:hover { color: var(--texto); }
+
+/* HERO de empresa */
+.empresa-hero { position: relative; padding: 150px 0 90px; overflow: hidden; border-bottom: 1px solid var(--borde); }
+.empresa-hero__glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--acento) 22%, transparent), transparent 45%); }
+.empresa-hero__contenido { position: relative; z-index: 1; max-width: 720px; }
+.volver { display: inline-block; color: var(--texto-suave); font-size: 0.9rem; margin-bottom: 28px; transition: color .2s; }
+.volver:hover { color: var(--acento); }
+.empresa-hero__logo { height: 68px; width: auto; margin-bottom: 22px; }
+.empresa-hero__lema { display: block; color: var(--acento); font-family: var(--display); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 22px; }
+.empresa-hero__intro { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--texto-suave); margin-bottom: 36px; line-height: 1.7; }
+.empresa-hero__acciones { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* SERVICIOS */
+.servicios-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.servicio { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 32px 30px; transition: transform .3s, border-color .3s; }
+.servicio:hover { transform: translateY(-4px); border-color: var(--acento); }
+.servicio__num { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: var(--acento); margin-bottom: 16px; }
+.servicio h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.servicio p { color: var(--texto-suave); font-size: 0.96rem; }
+
+/* CTA */
+.cta { text-align: center; background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--acento) 16%, transparent), transparent 60%), var(--fondo-alt); border-top: 1px solid var(--borde); padding: 100px 0; }
+.cta h2 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 18px; }
+.cta p { color: var(--texto-suave); max-width: 520px; margin: 0 auto 36px; font-size: 1.08rem; }
+
+/* FOOTER */
+.empresa-footer { border-top: 1px solid var(--borde); padding: 40px 0; }
+.empresa-footer .contenedor { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; color: var(--texto-suave); font-size: 0.9rem; }
+.empresa-footer img { height: 30px; width: auto; }
+.empresa-footer a { color: var(--texto-suave); transition: color .2s; }
+.empresa-footer a:hover { color: var(--acento); }
+
+/* WhatsApp flotante */
+.wa-flotante { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px -6px rgba(37,211,102,0.6); transition: transform .2s; }
+.wa-flotante:hover { transform: scale(1.08); }
+.wa-flotante svg { width: 30px; height: 30px; fill: #fff; }
+
+/* Animación de entrada */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 720px) {
+  .nav__links { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none; opacity: 1; transform: none; }
+}
