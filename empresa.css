@@ -4,13 +4,15 @@
    (se define con la variable --acento vía JS).
    ============================================================================ */
 :root {
-  --fondo:        #0a0e17;
-  --fondo-alt:    #111726;
-  --tarjeta:      #161d2e;
-  --borde:        #232c40;
-  --texto:        #e8ecf4;
-  --texto-suave:  #94a1b8;
-  --acento:       #00c2ff;   /* lo sobrescribe cada empresa por JS */
+  /* ===== PALETA — azul pizarra claro, moderno e inmersivo ===== */
+  --fondo:        #1a2437;   /* fondo principal (azul pizarra) */
+  --fondo-alt:    #212d44;   /* fondo de secciones alternas */
+  --tarjeta:      #2a3752;   /* fondo de tarjetas */
+  --borde:        #3a4a6b;   /* líneas y bordes */
+  --texto:        #f2f5fa;   /* texto principal */
+  --texto-suave:  #b4c0d6;   /* texto secundario */
+  --acento:       #00c2ff;   /* celeste eléctrico (Elektron) */
+  --acento-2:     #ff8a3d;   /* naranja (Labelec) */
   --display: 'Sora', sans-serif;
   --body: 'Inter', sans-serif;
   --radio: 14px;
@@ -37,8 +39,8 @@ img { max-width: 100%; display: block; }
 /* HEADER */
 header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,23,0.72); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
 header.scrolled { border-bottom-color: var(--borde); }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-.nav__logo img { height: 38px; width: auto; }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 92px; }
+.nav__logo img { height: 58px; width: auto; }
 .nav__links { display: flex; gap: 34px; }
 .nav__links a { font-size: 0.92rem; color: var(--texto-suave); font-weight: 500; transition: color .2s; }
 .nav__links a:hover { color: var(--texto); }
@@ -49,7 +51,12 @@ header.scrolled { border-bottom-color: var(--borde); }
 .empresa-hero__contenido { position: relative; z-index: 1; max-width: 720px; }
 .volver { display: inline-block; color: var(--texto-suave); font-size: 0.9rem; margin-bottom: 28px; transition: color .2s; }
 .volver:hover { color: var(--acento); }
-.empresa-hero__logo { height: 68px; width: auto; margin-bottom: 22px; }
+.empresa-hero__logo {
+  height: 64px; width: auto; margin-bottom: 22px;
+  /* Recuadro claro para que los logos oscuros resalten */
+  background: #f4f6fb; border-radius: 12px; padding: 12px 20px;
+  box-sizing: content-box; object-fit: contain;
+}
 .empresa-hero__lema { display: block; color: var(--acento); font-family: var(--display); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 22px; }
 .empresa-hero__intro { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--texto-suave); margin-bottom: 36px; line-height: 1.7; }
 .empresa-hero__acciones { display: flex; gap: 16px; flex-wrap: wrap; }

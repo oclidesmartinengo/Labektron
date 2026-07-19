@@ -1,0 +1,243 @@
+/* ============================================================================
+   ESTILOS DE LAS PÁGINAS DE EMPRESA (elektron.html y labelec.html)
+   Mismo diseño base que la home. El color de acento cambia según la empresa
+   (se define con la variable --acento vía JS).
+   ============================================================================ */
+:root {
+  /* ===== PALETA — azul pizarra claro, moderno e inmersivo ===== */
+  --fondo:        #1a2437;   /* fondo principal (azul pizarra) */
+  --fondo-alt:    #212d44;   /* fondo de secciones alternas */
+  --tarjeta:      #2a3752;   /* fondo de tarjetas */
+  --borde:        #3a4a6b;   /* líneas y bordes */
+  --texto:        #f2f5fa;   /* texto principal */
+  --texto-suave:  #b4c0d6;   /* texto secundario */
+  --acento:       #00c2ff;   /* celeste eléctrico (Elektron) */
+  --acento-2:     #ff8a3d;   /* naranja (Labelec) */
+  --display: 'Sora', sans-serif;
+  --body: 'Inter', sans-serif;
+  --radio: 14px;
+  --ancho: 1200px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--fondo); color: var(--texto); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.contenedor { width: 92%; max-width: var(--ancho); margin: 0 auto; }
+.seccion { padding: 96px 0; }
+
+.eyebrow { display: inline-block; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 16px; }
+.titulo-seccion { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.subtitulo-seccion { color: var(--texto-suave); max-width: 620px; margin-bottom: 56px; font-size: 1.05rem; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--acento); color: #041016; font-weight: 600; font-family: var(--display); padding: 12px 22px; border-radius: 999px; font-size: 0.92rem; transition: transform .2s, box-shadow .2s; box-shadow: 0 6px 24px -8px var(--acento); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px var(--acento); }
+.btn--ghost { background: transparent; color: var(--texto); border: 1px solid var(--borde); box-shadow: none; }
+.btn--ghost:hover { border-color: var(--acento); color: var(--acento); }
+
+/* HEADER */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,14,23,0.72); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+header.scrolled { border-bottom-color: var(--borde); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 92px; }
+.nav__logo img { height: 58px; width: auto; }
+.nav__links { display: flex; gap: 34px; }
+.nav__links a { font-size: 0.92rem; color: var(--texto-suave); font-weight: 500; transition: color .2s; }
+.nav__links a:hover { color: var(--texto); }
+
+/* HERO de empresa */
+.empresa-hero { position: relative; padding: 150px 0 90px; overflow: hidden; border-bottom: 1px solid var(--borde); }
+.empresa-hero__glow { position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--acento) 22%, transparent), transparent 45%); }
+.empresa-hero__contenido { position: relative; z-index: 1; max-width: 720px; }
+.volver { display: inline-block; color: var(--texto-suave); font-size: 0.9rem; margin-bottom: 28px; transition: color .2s; }
+.volver:hover { color: var(--acento); }
+.empresa-hero__logo {
+  height: 64px; width: auto; margin-bottom: 22px;
+  /* Recuadro claro para que los logos oscuros resalten */
+  background: #f4f6fb; border-radius: 12px; padding: 12px 20px;
+  box-sizing: content-box; object-fit: contain;
+}
+.empresa-hero__lema { display: block; color: var(--acento); font-family: var(--display); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 22px; }
+.empresa-hero__intro { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--texto-suave); margin-bottom: 36px; line-height: 1.7; }
+.empresa-hero__acciones { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* SERVICIOS */
+.servicios-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.servicio { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 32px 30px; transition: transform .3s, border-color .3s; }
+.servicio:hover { transform: translateY(-4px); border-color: var(--acento); }
+.servicio__num { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: var(--acento); margin-bottom: 16px; }
+.servicio h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.servicio p { color: var(--texto-suave); font-size: 0.96rem; }
+
+/* CTA */
+.cta { text-align: center; background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--acento) 16%, transparent), transparent 60%), var(--fondo-alt); border-top: 1px solid var(--borde); padding: 100px 0; }
+.cta h2 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 18px; }
+.cta p { color: var(--texto-suave); max-width: 520px; margin: 0 auto 36px; font-size: 1.08rem; }
+
+/* FOOTER */
+.empresa-footer { border-top: 1px solid var(--borde); padding: 40px 0; }
+.empresa-footer .contenedor { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; color: var(--texto-suave); font-size: 0.9rem; }
+.empresa-footer img { height: 30px; width: auto; }
+.empresa-footer a { color: var(--texto-suave); transition: color .2s; }
+.empresa-footer a:hover { color: var(--acento); }
+
+/* WhatsApp flotante */
+.wa-flotante { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px -6px rgba(37,211,102,0.6); transition: transform .2s; }
+.wa-flotante:hover { transform: scale(1.08); }
+.wa-flotante svg { width: 30px; height: 30px; fill: #fff; }
+
+/* Animación de entrada */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 720px) {
+  .nav__links { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none; opacity: 1; transform: none; }
+}
+
+
+/* ===== Tarjetas de proyecto y modal de galería ===== */
+  /* ===================== TRABAJOS ===================== */
+  .grid-cards {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .card {
+    background: var(--tarjeta); border: 1px solid var(--borde);
+    border-radius: var(--radio); overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--acento); }
+  .card__img { aspect-ratio: 4/3; overflow: hidden; background: var(--fondo-alt); }
+  .card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .card:hover .card__img img { transform: scale(1.06); }
+  .card__body { padding: 22px 24px 26px; }
+  .card__body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+  .card__body p { color: var(--texto-suave); font-size: 0.95rem; }
+  /* Tarjeta clickeable (tiene galería) */
+  .card--clic { cursor: pointer; }
+  .card__vermas {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px; color: var(--acento); font-size: 0.88rem;
+    font-family: var(--display); font-weight: 600;
+  }
+  .card__vermas svg { width: 16px; height: 16px; fill: currentColor; transition: transform .3s; }
+  .card--clic:hover .card__vermas svg { transform: translateX(4px); }
+
+  /* ===================== MODAL DE GALERÍA (proyecto) ===================== */
+  .modal {
+    position: fixed; inset: 0; z-index: 200;
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(4,7,13,0.82); backdrop-filter: blur(6px);
+  }
+  .modal.abierto { display: flex; }
+  .modal__caja {
+    background: var(--fondo-alt); border: 1px solid var(--borde);
+    border-radius: 18px; width: 100%; max-width: 960px;
+    max-height: 90vh; overflow-y: auto;
+    position: relative;
+    animation: modalEntra .35s ease;
+  }
+  @keyframes modalEntra { from { opacity: 0; transform: translateY(20px) scale(.98); } to { opacity: 1; transform: none; } }
+  .modal__cerrar {
+    position: absolute; top: 16px; right: 16px; z-index: 3;
+    width: 42px; height: 42px; border-radius: 50%; border: 0;
+    background: rgba(0,0,0,0.5); color: #fff; font-size: 1.5rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: background .2s;
+  }
+  .modal__cerrar:hover { background: var(--acento); color: #041016; }
+
+  /* Carrusel dentro del modal */
+  .galeria { position: relative; background: #05070c; border-radius: 18px 18px 0 0; overflow: hidden; }
+  .galeria__viewport { aspect-ratio: 16/10; }
+  .galeria__pista { display: flex; height: 100%; transition: transform .4s ease; }
+  .galeria__slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  /* "contain" muestra la foto ENTERA (no recorta). Ideal para fotos verticales. */
+  .galeria__slide img { width: 100%; height: 100%; object-fit: contain; }
+  .galeria__flecha {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 1.5rem;
+    display: flex; align-items: center; justify-content: center; transition: background .2s;
+  }
+  .galeria__flecha:hover { background: var(--acento); color: #041016; }
+  .galeria__flecha--izq { left: 14px; }
+  .galeria__flecha--der { right: 14px; }
+  .galeria__puntos { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; gap: 8px; justify-content: center; z-index: 2; }
+  .galeria__punto { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.45); cursor: pointer; transition: background .2s, transform .2s; }
+  .galeria__punto.activo { background: var(--acento); transform: scale(1.25); }
+
+  /* Contenido de texto del modal */
+  .modal__cuerpo { padding: 32px 36px 40px; }
+  .modal__cuerpo h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 20px; }
+  .modal__detalles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px 24px; margin-bottom: 28px;
+    padding-bottom: 28px; border-bottom: 1px solid var(--borde);
+  }
+  .modal__dato .etq { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 4px; }
+  .modal__dato .val { color: var(--texto); font-size: 1rem; }
+  .modal__cuerpo > p { color: var(--texto-suave); font-size: 1.02rem; line-height: 1.75; }
+
+
+  /* ===================== MODAL DE GALERÍA (proyecto) ===================== */
+  .modal {
+    position: fixed; inset: 0; z-index: 200;
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(4,7,13,0.82); backdrop-filter: blur(6px);
+  }
+  .modal.abierto { display: flex; }
+  .modal__caja {
+    background: var(--fondo-alt); border: 1px solid var(--borde);
+    border-radius: 18px; width: 100%; max-width: 960px;
+    max-height: 90vh; overflow-y: auto;
+    position: relative;
+    animation: modalEntra .35s ease;
+  }
+  @keyframes modalEntra { from { opacity: 0; transform: translateY(20px) scale(.98); } to { opacity: 1; transform: none; } }
+  .modal__cerrar {
+    position: absolute; top: 16px; right: 16px; z-index: 3;
+    width: 42px; height: 42px; border-radius: 50%; border: 0;
+    background: rgba(0,0,0,0.5); color: #fff; font-size: 1.5rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: background .2s;
+  }
+  .modal__cerrar:hover { background: var(--acento); color: #041016; }
+
+  /* Carrusel dentro del modal */
+  .galeria { position: relative; background: #05070c; border-radius: 18px 18px 0 0; overflow: hidden; }
+  .galeria__viewport { aspect-ratio: 16/10; }
+  .galeria__pista { display: flex; height: 100%; transition: transform .4s ease; }
+  .galeria__slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  /* "contain" muestra la foto ENTERA (no recorta). Ideal para fotos verticales. */
+  .galeria__slide img { width: 100%; height: 100%; object-fit: contain; }
+  .galeria__flecha {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 1.5rem;
+    display: flex; align-items: center; justify-content: center; transition: background .2s;
+  }
+  .galeria__flecha:hover { background: var(--acento); color: #041016; }
+  .galeria__flecha--izq { left: 14px; }
+  .galeria__flecha--der { right: 14px; }
+  .galeria__puntos { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; gap: 8px; justify-content: center; z-index: 2; }
+  .galeria__punto { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.45); cursor: pointer; transition: background .2s, transform .2s; }
+  .galeria__punto.activo { background: var(--acento); transform: scale(1.25); }
+
+  /* Contenido de texto del modal */
+  .modal__cuerpo { padding: 32px 36px 40px; }
+  .modal__cuerpo h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 20px; }
+  .modal__detalles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px 24px; margin-bottom: 28px;
+    padding-bottom: 28px; border-bottom: 1px solid var(--borde);
+  }
+  .modal__dato .etq { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 4px; }
+  .modal__dato .val { color: var(--texto); font-size: 1rem; }
+  .modal__cuerpo > p { color: var(--texto-suave); font-size: 1.02rem; line-height: 1.75; }
+
+  .trabajos-cta { display: flex; justify-content: center; margin-top: 48px; }
+

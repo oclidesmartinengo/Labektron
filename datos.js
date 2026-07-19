@@ -28,6 +28,13 @@ const EMPRESA = {
   botonHero1: "Ver trabajos",
   botonHero2: "Hablemos",
 
+  // Imagen grande del hero (lado derecho)
+  imagenHero: "images/hero.png",
+
+  // Las palabras del eslogan que se pintan con degradado celeste→naranja.
+  // Tienen que estar escritas igual que en el eslogan de arriba.
+  destacarEnEslogan: "Futuro Eficiente",
+
   // Contacto
   whatsapp: "5493875895447",           // Número con código de país, sin + ni espacios
   whatsappTexto: "Hola, quiero más información sobre los servicios de Grupo Labektron.",
@@ -40,6 +47,36 @@ const EMPRESA = {
   // Velocidad del carrusel de clientes (en segundos por vuelta completa).
   // Más alto = más lento y suave. Más bajo = más rápido. Probá con 30, 40, 60...
   velocidadCarruselClientes: 40,
+};
+
+
+/* ----------------------------------------------------------------------------
+   1.b VALORES DEL HERO (los 4 íconos debajo de los botones)
+   👉 "icono" elegí uno de: rayo, grafico, escudo, hoja, engranaje, reloj
+   ---------------------------------------------------------------------------- */
+const VALORES_HERO = [
+  { icono: "rayo",      linea1: "Innovación",  linea2: "constante" },
+  { icono: "grafico",   linea1: "Eficiencia",  linea2: "y calidad" },
+  { icono: "escudo",    linea1: "Confianza",   linea2: "y seguridad" },
+  { icono: "hoja",      linea1: "Compromiso",  linea2: "sostenible" },
+];
+
+
+/* ----------------------------------------------------------------------------
+   1.c ESTADÍSTICAS (la barra de números debajo del hero)
+   👉 Para sacar la barra entera, dejá la lista vacía así:  const ESTADISTICAS = [];
+   ---------------------------------------------------------------------------- */
+const ESTADISTICAS = [
+  { numero: "+3",  texto: "Años de experiencia" },
+  { numero: "+50", texto: "Proyectos realizados" },
+  { numero: "2",    texto: "Empresas especializadas" },
+  { numero: "1",    texto: "Misma visión de futuro" },
+];
+
+// Frase que aparece a la derecha de las estadísticas
+const FRASE_ESTADISTICAS = {
+  linea1: "Dos especialidades. Un solo propósito:",
+  linea2: "Impulsar el desarrollo con tecnología y conocimiento.",
 };
 
 
@@ -69,7 +106,7 @@ const SECCIONES = {
   // --- Sección "Nuestra identidad" (el bloque del grupo con imagen al costado) ---
   grupo: {
     eyebrow: "Nuestra identidad",
-    titulo: "Grupo Labektron",
+    titulo: "GRUPO LABEKTRON",
     // La imagen que aparece al costado de este bloque:
     imagen: "images/identidad.png",
     // Párrafos de la identidad/sinergia. Cada texto entre comillas es un párrafo.
@@ -77,44 +114,47 @@ const SECCIONES = {
     parrafos: [
       { titulo: "", texto: "GRUPO LABEKTRON es una sociedad conformada por ELEKTRON y LABELEC, dos empresas especializadas en diferentes áreas de la ingeniería para ofrecer soluciones integrales en los sectores industrial, comercial y residencial." },
       { titulo: "ELEKTRON:", texto: "Especialista en instalaciones electromecánicas y termomecánicas, con un enfoque en eficiencia energética, automatización y cumplimiento normativo." },
-      { titulo: "LABELEC:", texto: "Especialista en Diagnostico electrónico y laboratorio de ensayos, brindando soluciones en diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial." },
-      { titulo: "", texto: "La sinergia entre ELEKTRON y LABELEC nos permite abordar proyectos de manera integral, optimizando recursos y asegurando la mejor calidad tecnica en cada solución." },
+      { titulo: "LABELEC:", texto: "Especialista en electrónica y laboratorio, brindando soluciones en diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial." },
+      { titulo: "", texto: "La sinergia entre ELEKTRON y LABELEC nos permite abordar proyectos de manera integral, optimizando recursos y asegurando la mejor calidad en cada solución técnica." },
     ],
   },
   // --- Encabezado de la sección donde se muestran las dos empresas ---
   empresas: {
-    eyebrow: "Un grupo, dos especialistas",
-    titulo: "Empresas del grupo",
-    subtitulo: "Cada una experta en su campo. Hacé click para conocer todo acerca de nosotros.",
+    eyebrow: "Un grupo, dos especialidades",
+    titulo: "Nuestras empresas",
+    subtitulo: "Cada una experta en su campo. Hacé click para conocer todo lo que hace cada una.",
   },
   trabajos: {
     eyebrow: "Portfolio",
     titulo: "Trabajos realizados",
-    subtitulo: "Proyectos del Grupo, ejecutados con estándares de calidad, seguridad y eficiencia.",
+    subtitulo: "Proyectos ejecutados con estándares de calidad, seguridad y eficiencia.",
+    // Botón que lleva a la página con todos los trabajos
+    boton: "Ver todos nuestros proyectos",
+  },
+  // Encabezado de la página trabajos.html (todos los proyectos)
+  paginaTrabajos: {
+    eyebrow: "Portfolio completo",
+    titulo: "Todos nuestros proyectos",
+    subtitulo: "Un recorrido cronológico por las obras que ejecutamos.",
   },
   clientes: {
     eyebrow: "Confían en nosotros",
     titulo: "Clientes",
-    subtitulo: "Empresas que eligieron nuestras soluciones profesionales.",
+    subtitulo: "Empresas que eligieron nuestras soluciones.",
   },
   sectores: {
     eyebrow: "Dónde trabajamos",
     titulo: "Sectores de aplicación",
-    subtitulo: "Soluciones a medida para cada rubro.",
-  },
-  testimonios: {
-    eyebrow: "Testimonios",
-    titulo: "Lo que dicen nuestros clientes",
-    subtitulo: "",
+    subtitulo: "Soluciones a medida para cada industria.",
   },
   oficinas: {
     eyebrow: "Dónde estamos",
     titulo: "Nuestras oficinas",
-    subtitulo: "Te esperamos!",
+    subtitulo: "",
   },
   contacto: {
     titulo: "¿Tenés un proyecto en mente?",
-    subtitulo: "Escribinos y coordinemos una reunión. Te asesoramos sin compromiso, queremos que lo lleves adelante.",
+    subtitulo: "Escribinos y coordinemos una reunión. Te asesoramos sin compromiso.",
     boton: "Escribinos por WhatsApp",
   },
   mapa: {
@@ -170,7 +210,7 @@ const EMPRESAS_GRUPO = [
     lema: "Diagnose, Repair & Maintain",
     icono: "images/labelec.png",
     pagina: "labelec.html",
-    color: "#2dd4a7",                     // color de acento (verde)
+    color: "#ff8a3d",                     // color de acento (naranja Labelec)
 
     descripcion: "Especialista en electrónica y laboratorio: diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial.",
 
@@ -206,12 +246,21 @@ const EMPRESAS_GRUPO = [
 
    Si un trabajo NO tiene galeria ni descripcionLarga, la tarjeta simplemente
    no abre nada al hacer click (funciona igual que antes).
+
+   ⭐ DESTACADOS Y ORDEN:
+   - destacado: true   →  aparece en la página de inicio (elegí los 5 mejores).
+     Si no lo ponés (o lo ponés en false), el trabajo solo se ve en trabajos.html
+   - orden: "2024-06"  →  se usa para ordenar cronológicamente (año-mes).
+     Siempre con este formato: "AAAA-MM". Los más nuevos aparecen primero.
    ---------------------------------------------------------------------------- */
 const TRABAJOS = [
   {
     titulo: "Parque Fotovoltaico",
     imagen: "images/trabajos/parque-fotovoltaico.jpg",
     descripcion: "Diseño e instalación de parque de generación solar.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2024-06",         // para ordenar cronológicamente (AAAA-MM)
 
     // --- Detalles de obra (aparecen en la galería) ---
     detalles: {
@@ -243,52 +292,48 @@ const TRABAJOS = [
   {
     titulo: "Seccionadora Automática",
     imagen: "images/trabajos/seccionadora.jpg",
-    descripcion: "Instalación de seccionadora CNC.",
+    descripcion: "Instalación de seccionadora automática de media tensión.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2024-03",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
-      cliente:   "Moldurera Limache - Egger House",
+      cliente:   "Nombre del cliente",
       ubicacion: "Salta, Argentina",
-      fecha:     "Julio 2024",
-      duracion:  "20 Dias",
-      tecnicos:  "Instalacion electrica, linea de aire comprimido en 1 y sistema de aspiracion de aserrin",
+      fecha:     "2024",
+      duracion:  "2 meses",
+      tecnicos:  "Media tensión 13,2 kV",
     },
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/seccionadora.jpg",
-      "images/trabajos/seccionadora-1.jpg",
-      "images/trabajos/seccionadora-2.jpg",
     ],
   },
   {
-    titulo: "Chiller 10TN para Soplado de Envases",
+    titulo: "Chiller para Soplado de Envases",
     imagen: "images/trabajos/chiller.jpg",
-    descripcion: "Fabricación de chiller industrial de 10TN para 2 líneas de soplado.",
+    descripcion: "Fabricación de chiller industrial para línea de soplado.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2023-09",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
-      cliente:   "Agua y Soda Ideal",
+      cliente:   "Nombre del cliente",
       ubicacion: "Salta, Argentina",
-      fecha:     "Diciembre 2025",
-      duracion:  "2 meses",
-      tecnicos:  "Capacidad frigorífica: 10 TN = 120.000 BTU, Trifasico",
+      fecha:     "2023",
+      duracion:  "3 meses",
+      tecnicos:  "Capacidad frigorífica: XX kcal/h",
     },
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/chiller.jpg",
-      "images/trabajos/chiller-1.jpg",
-      "images/trabajos/chiller-2.jpg",
-      "images/trabajos/chiller-3.jpg",
-      "images/trabajos/chiller-4.jpg",
-      "images/trabajos/chiller-5.jpg",
-      "images/trabajos/chiller-6.jpg",
-      "images/trabajos/chiller-7.jpg",
-      "images/trabajos/chiller-8.jpg",
-      "images/trabajos/chiller-9.jpg",
-      "images/trabajos/chiller-10.jpg",
-
     ],
   },
   {
     titulo: "Transferencia Automática 600A",
     imagen: "images/trabajos/transferencia.jpg",
     descripcion: "Tablero de transferencia automática entre red y grupo electrógeno.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2023-05",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
       cliente:   "Nombre del cliente",
       ubicacion: "Salta, Argentina",
@@ -299,6 +344,45 @@ const TRABAJOS = [
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/transferencia.jpg",
+    ],
+  },
+
+  {
+    titulo: "Tablero de Comando y Potencia",
+    imagen: "images/trabajos/tablero.jpg",
+    descripcion: "Diseño y fabricación de tablero para línea de producción.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2023-02",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Nombre del cliente",
+      ubicacion: "Salta, Argentina",
+      fecha:     "Febrero 2023",
+      duracion:  "1 mes",
+      tecnicos:  "Tablero de comando y potencia, 380V",
+    },
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/tablero.jpg",
+    ],
+  },
+  {
+    titulo: "Mantenimiento Industrial",
+    imagen: "images/trabajos/mantenimiento.jpg",
+    descripcion: "Mantenimiento preventivo de instalaciones eléctricas.",
+
+    destacado: false,         // no aparece en el inicio, solo en trabajos.html
+    orden: "2022-11",
+    detalles: {
+      cliente:   "Nombre del cliente",
+      ubicacion: "Salta, Argentina",
+      fecha:     "Noviembre 2022",
+      duracion:  "Contrato anual",
+      tecnicos:  "Mantenimiento preventivo y correctivo",
+    },
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/mantenimiento.jpg",
     ],
   },
 
@@ -377,30 +461,15 @@ const SECTORES = [
 ];
 
 
-/* ----------------------------------------------------------------------------
-   8. TESTIMONIOS
-   ---------------------------------------------------------------------------- */
-const TESTIMONIOS = [
-  {
-    texto: "Excelente trabajo y profesionalismo en cada etapa del proyecto.",
-    autor: "Nombre del cliente",
-    cargo: "Empresa / Cargo",
-  },
-  {
-    texto: "Cumplieron los plazos y la calidad superó nuestras expectativas.",
-    autor: "Nombre del cliente",
-    cargo: "Empresa / Cargo",
-  },
-];
 
 
 /* ----------------------------------------------------------------------------
-   9. OFICINAS
+   8. OFICINAS
    ---------------------------------------------------------------------------- */
 const OFICINAS = [
   {
     ciudad: "Salta",
-    direccion: "Dirección de la oficina, Salta, Argentina",
+    direccion: "10 de Octubre 985, Salta, Argentina",
     // 👇 Podés poner 1, 3 o las fotos que quieras. Se muestran en un carrusel.
     imagenes: [
       "images/oficinas/salta.jpg",
@@ -421,7 +490,7 @@ const OFICINAS = [
 
 
 /* ----------------------------------------------------------------------------
-   10. PIE DE PÁGINA (FOOTER) — el bloque final de la web
+   9. PIE DE PÁGINA (FOOTER) — el bloque final de la web
    👉 Acá editás la descripción, las redes sociales, las dos columnas de
       enlaces (Elektron / Labelec) y los datos de contacto.
    ---------------------------------------------------------------------------- */
