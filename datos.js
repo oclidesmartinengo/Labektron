@@ -67,8 +67,8 @@ const VALORES_HERO = [
    👉 Para sacar la barra entera, dejá la lista vacía así:  const ESTADISTICAS = [];
    ---------------------------------------------------------------------------- */
 const ESTADISTICAS = [
-  { numero: "+3",  texto: "Años de experiencia" },
-  { numero: "+50", texto: "Proyectos realizados" },
+  { numero: "+15",  texto: "Años de experiencia" },
+  { numero: "+200", texto: "Proyectos realizados" },
   { numero: "2",    texto: "Empresas especializadas" },
   { numero: "1",    texto: "Misma visión de futuro" },
 ];
@@ -106,7 +106,7 @@ const SECCIONES = {
   // --- Sección "Nuestra identidad" (el bloque del grupo con imagen al costado) ---
   grupo: {
     eyebrow: "Nuestra identidad",
-    titulo: "GRUPO LABEKTRON",
+    titulo: "Grupo Labektron",
     // La imagen que aparece al costado de este bloque:
     imagen: "images/identidad.png",
     // Párrafos de la identidad/sinergia. Cada texto entre comillas es un párrafo.
@@ -469,7 +469,7 @@ const SECTORES = [
 const OFICINAS = [
   {
     ciudad: "Salta",
-    direccion: "10 de Octubre 985, Salta, Argentina",
+    direccion: "Dirección de la oficina, Salta, Argentina",
     // 👇 Podés poner 1, 3 o las fotos que quieras. Se muestran en un carrusel.
     imagenes: [
       "images/oficinas/salta.jpg",
