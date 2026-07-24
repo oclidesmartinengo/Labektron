@@ -67,8 +67,8 @@ const VALORES_HERO = [
    👉 Para sacar la barra entera, dejá la lista vacía así:  const ESTADISTICAS = [];
    ---------------------------------------------------------------------------- */
 const ESTADISTICAS = [
-  { numero: "+15",  texto: "Años de experiencia" },
-  { numero: "+200", texto: "Proyectos realizados" },
+  { numero: "+3",  texto: "Años de experiencia" },
+  { numero: "+50", texto: "Proyectos realizados" },
   { numero: "2",    texto: "Empresas especializadas" },
   { numero: "1",    texto: "Misma visión de futuro" },
 ];

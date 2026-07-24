@@ -137,27 +137,40 @@
   }
   /* Anillo decorativo animado */
   .hero__anillo {
-    position: absolute; z-index: 1; pointer-events: none;
-    top: 42%; right: 12%; transform: translate(50%,-50%);
-    width: 620px; max-width: 60vw; aspect-ratio: 1; border-radius: 50%;
-    border: 1px solid rgba(0,194,255,0.28);
-    box-shadow: 0 0 120px -20px rgba(0,194,255,0.30) inset;
-    animation: girar 40s linear infinite;
+    position: absolute; z-index: 2; pointer-events: none;
+    top: 42%; right: 14%; transform: translate(50%,-50%);
+    width: 620px; max-width: 62vw; aspect-ratio: 1; border-radius: 50%;
+    border: 2px solid rgba(0,194,255,0.55);
+    box-shadow: 0 0 90px -10px rgba(0,194,255,0.45) inset,
+                0 0 60px -22px rgba(0,194,255,0.55);
+    animation: girar 34s linear infinite;
   }
   .hero__anillo::after {
     content: ''; position: absolute; inset: 8%;
-    border-radius: 50%; border: 1px dashed rgba(0,194,255,0.18);
+    border-radius: 50%; border: 1px dashed rgba(0,194,255,0.38);
+  }
+  /* Punto de luz que recorre el anillo */
+  .hero__anillo::before {
+    content: ''; position: absolute; top: -6px; left: 50%;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 16px 4px var(--acento);
+    transform: translateX(-50%);
   }
   @keyframes girar { from { transform: translate(50%,-50%) rotate(0); } to { transform: translate(50%,-50%) rotate(360deg); } }
 
   /* Partículas flotantes */
   .hero__particulas { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
-  .particula { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--acento); opacity: .5; animation: flotar linear infinite; }
+  .particula {
+    position: absolute; bottom: -12px;
+    border-radius: 50%; background: var(--acento);
+    box-shadow: 0 0 10px var(--acento), 0 0 20px rgba(0,194,255,.55);
+    opacity: 0; animation: flotar linear infinite;
+  }
   @keyframes flotar {
-    0% { transform: translateY(20px); opacity: 0; }
-    12% { opacity: .6; }
-    88% { opacity: .6; }
-    100% { transform: translateY(-120px); opacity: 0; }
+    0%   { transform: translateY(0);      opacity: 0; }
+    10%  { opacity: .95; }
+    85%  { opacity: .75; }
+    100% { transform: translateY(-88vh);  opacity: 0; }
   }
 
   .hero__contenido {
@@ -217,16 +230,23 @@
   /* ===================== NUESTRA IDENTIDAD ===================== */
   .identidad-seccion { position: relative; overflow: hidden; }
   /* Foto fusionada a la derecha, difuminada hacia el fondo */
+  /* ===== IMAGEN DE LA SECCIÓN IDENTIDAD =====
+     👉 Para ajustarla, cambiá estos 3 valores:
+        - opacity     : qué tan visible es la foto (1 = full, .5 = media)
+        - width       : cuánto ocupa desde la derecha
+        - mask-image  : desde dónde empieza a difuminarse (el %) */
   .identidad-seccion__fondo {
-    position: absolute; top: 0; right: 0; bottom: 0; width: 62%; z-index: 0;
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 52%;                 /* ancho de la foto (más chico = más a la derecha) */
+    opacity: .85;               /* visibilidad de la foto */
+    z-index: 0;
     background-size: cover; background-position: center;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 55%);
-            mask-image: linear-gradient(90deg, transparent, #000 55%);
-    opacity: .5;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 42%);
+            mask-image: linear-gradient(90deg, transparent, #000 42%);
   }
   .identidad-seccion__velo {
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(90deg, var(--fondo) 20%, transparent 75%);
+    background: linear-gradient(90deg, var(--fondo) 30%, rgba(26,36,55,0.65) 48%, transparent 62%);
   }
   .identidad { position: relative; z-index: 2; max-width: 620px; }
   .identidad__linea { width: 72px; height: 4px; border-radius: 4px; background: var(--acento); margin: 4px 0 28px; }
@@ -804,8 +824,8 @@ if (EMPRESA.imagenHero) document.getElementById('hero-fondo').style.backgroundIm
   const cont = document.getElementById('hero-particulas');
   if (!cont) return;
   let html = '';
-  for (let i = 0; i < 22; i++) {
-    const x = Math.random()*100, dur = 6+Math.random()*8, del = Math.random()*8, sz = 2+Math.random()*3;
+  for (let i = 0; i < 30; i++) {
+    const x = Math.random()*100, dur = 9+Math.random()*9, del = Math.random()*10, sz = 3+Math.random()*4;
     html += `<span class="particula" style="left:${x}%;animation-duration:${dur}s;animation-delay:${del}s;width:${sz}px;height:${sz}px"></span>`;
   }
   cont.innerHTML = html;

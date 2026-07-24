@@ -110,6 +110,26 @@
     grid.innerHTML = lista.map(tarjeta).join('');
   }
 
+  // Las tarjetas se crean después de que corrió el observador del index,
+  // así que hay que registrarlas acá para que se animen (y no queden invisibles).
+  (function activarAnimacion() {
+    const pendientes = grid.querySelectorAll('.card.reveal:not(.visible)');
+    if (!pendientes.length) return;
+    if (!('IntersectionObserver' in window)) {
+      pendientes.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    pendientes.forEach(el => io.observe(el));
+    // Red de seguridad: si algo falla, a los 2s se muestran igual
+    setTimeout(() => grid.querySelectorAll('.card.reveal:not(.visible)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 1.5) el.classList.add('visible');
+    }), 2000);
+  })();
+
   // --- Modal de galería ---
   const modal = document.getElementById('modal-trabajo');
   if (!modal) return;
