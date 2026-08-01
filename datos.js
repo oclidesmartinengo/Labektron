@@ -46,7 +46,7 @@ const EMPRESA = {
 
   // Velocidad del carrusel de clientes (en segundos por vuelta completa).
   // Más alto = más lento y suave. Más bajo = más rápido. Probá con 30, 40, 60...
-  velocidadCarruselClientes: 40,
+  velocidadCarruselClientes: 45,
 };
 
 
@@ -67,8 +67,8 @@ const VALORES_HERO = [
    👉 Para sacar la barra entera, dejá la lista vacía así:  const ESTADISTICAS = [];
    ---------------------------------------------------------------------------- */
 const ESTADISTICAS = [
-  { numero: "+3",  texto: "Años de experiencia" },
-  { numero: "+50", texto: "Proyectos realizados" },
+  { numero: "+4",  texto: "Años de experiencia" },
+  { numero: "+70", texto: "Proyectos realizados" },
   { numero: "2",    texto: "Empresas especializadas" },
   { numero: "1",    texto: "Misma visión de futuro" },
 ];
@@ -332,7 +332,7 @@ const TRABAJOS = [
     imagen: "images/trabajos/transferencia.jpg",
     descripcion: "Tablero de transferencia automática entre red y grupo electrógeno.",
 
-    destacado: true,          // ⭐ aparece en el inicio
+    destacado: false,          // ⭐ aparece en el inicio
     orden: "2023-05",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
       cliente:   "Nombre del cliente",
@@ -352,7 +352,7 @@ const TRABAJOS = [
     imagen: "images/trabajos/tablero.jpg",
     descripcion: "Diseño y fabricación de tablero para línea de producción.",
 
-    destacado: true,          // ⭐ aparece en el inicio
+    destacado: false,          // ⭐ aparece en el inicio
     orden: "2023-02",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
       cliente:   "Nombre del cliente",
@@ -367,22 +367,47 @@ const TRABAJOS = [
     ],
   },
   {
-    titulo: "Mantenimiento Industrial",
-    imagen: "images/trabajos/mantenimiento.jpg",
-    descripcion: "Mantenimiento preventivo de instalaciones eléctricas.",
+    titulo: "Sistema Fotovoltaico Domiciliario",
+    imagen: "images/trabajos/maimara.jpg",
+    descripcion: "Dimensionamiento, diseño, venta y puesta en marcha de sistema fotovoltaico para autoconsumo.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2024-06",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Facundo",
+      ubicacion: "Maimara, Jujuy, Argentina",
+      fecha:     "Junio 2024",
+      duracion:  "2 dias",
+      tecnicos:  "Tablero de comando y potencia, 380V",
+    },
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/maimara.jpg",
+      "images/trabajos/maimara-1.jpg",
+      "images/trabajos/maimara-2.jpg",
+    ],
+  },
+  {
+    titulo: "Instalacion Electrica Industrial",
+    imagen: "images/trabajos/metalnoa.jpg",
+    descripcion: "Instalacion electrica completa.",
 
     destacado: false,         // no aparece en el inicio, solo en trabajos.html
-    orden: "2022-11",
+    orden: "2024-11",
     detalles: {
-      cliente:   "Nombre del cliente",
+      cliente:   "Metalnoa",
       ubicacion: "Salta, Argentina",
-      fecha:     "Noviembre 2022",
-      duracion:  "Contrato anual",
+      fecha:     "Noviembre 2024",
+      duracion:  "5 Semanas",
       tecnicos:  "Mantenimiento preventivo y correctivo",
     },
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/mantenimiento.jpg",
+      "images/trabajos/mmetalnoa-1.jpg",
+      "images/trabajos/mmetalnoa-2.jpg",
+      "images/trabajos/mmetalnoa-3.jpg",
+      "images/trabajos/mmetalnoa-4.jpg",
     ],
   },
 
@@ -436,28 +461,58 @@ const CLIENTES = [
 
 /* ----------------------------------------------------------------------------
    7. SECTORES DE APLICACIÓN
+   ============================================================================
+   Cada sector es una tarjeta con imagen de fondo. Al pasar el mouse se
+   despliega la lista de servicios.
+     - icono: elegí uno de: engranaje, rayo, mineria, agro
+     - contador: el datito de la esquina (ej: "+250", "proyectos")
+     - servicios: la lista que aparece al hacer hover
    ---------------------------------------------------------------------------- */
 const SECTORES = [
   {
     titulo: "Industria",
     imagen: "images/sectores/industria.jpg",
     descripcion: "Automatización, tableros y mantenimiento para plantas industriales.",
+    icono: "engranaje",
+    contadorNum: "+20",
+    contadorTxt: "proyectos",
+    servicios: ["Automatización PLC", "Tableros eléctricos", "Variadores de velocidad", "Instrumentación", "Mantenimiento industrial"],
   },
   {
     titulo: "Energía",
     imagen: "images/sectores/energia.jpg",
     descripcion: "Generación renovable y eficiencia energética.",
+    icono: "rayo",
+    contadorNum: "+10",
+    contadorTxt: "proyectos",
+    servicios: ["Energía solar", "Bancos de baterías", "UPS", "Inversores", "Eficiencia energética"],
   },
   {
     titulo: "Minería",
     imagen: "images/sectores/mineria.jpg",
     descripcion: "Soluciones eléctricas para operaciones mineras.",
+    icono: "mineria",
+    contadorNum: "+5",
+    contadorTxt: "proyectos",
+    servicios: ["Tableros MT/BT", "Automatización", "Mantenimiento", "Protecciones eléctricas", "Ingeniería"],
   },
   {
     titulo: "Agroindustria",
     imagen: "images/sectores/agro.jpg",
     descripcion: "Instalaciones y automatización para el sector agroindustrial.",
+    icono: "agro",
+    contadorNum: "+8",
+    contadorTxt: "proyectos",
+    servicios: ["Sistemas de riego", "Automatización", "Bombas", "Energía solar", "Tableros eléctricos"],
   },
+];
+
+// Barra de valores debajo de los sectores (los 4 íconos con texto)
+const SECTORES_VALORES = [
+  { icono: "equipo",     num: "+4 años",    txt: "de experiencia" },
+  { icono: "medalla",    num: "Calidad",     txt: "en cada proyecto" },
+  { icono: "apreton",    num: "Compromiso",  txt: "con nuestros clientes" },
+  { icono: "soporte",    num: "Servicio",    txt: "postventa" },
 ];
 
 
