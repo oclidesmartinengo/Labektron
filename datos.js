@@ -403,11 +403,11 @@ const TRABAJOS = [
     },
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
-      "images/trabajos/mantenimiento.jpg",
-      "images/trabajos/mmetalnoa-1.jpg",
-      "images/trabajos/mmetalnoa-2.jpg",
-      "images/trabajos/mmetalnoa-3.jpg",
-      "images/trabajos/mmetalnoa-4.jpg",
+      "images/trabajos/metalnoa.jpg",
+      "images/trabajos/metalnoa-1.jpg",
+      "images/trabajos/metalnoa-2.jpg",
+      "images/trabajos/metalnoa-3.jpg",
+      "images/trabajos/metalnoa-4.jpg",
     ],
   },
 
