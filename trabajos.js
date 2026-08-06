@@ -141,7 +141,6 @@
     ubicacion: "Ubicación",
     fecha: "Fecha",
     duracion: "Duración de obra",
-    tecnicos: "Datos técnicos",
   };
 
   function irA(n) {
@@ -151,6 +150,8 @@
     pista.style.transform = `translateX(-${slideActual * 100}%)`;
     galeriaCont.querySelectorAll('.galeria__punto').forEach((p, i) =>
       p.classList.toggle('activo', i === slideActual));
+    const cont = galeriaCont.querySelector('#gal-actual');
+    if (cont) cont.textContent = slideActual + 1;
   }
 
   function abrir(t) {
@@ -158,18 +159,35 @@
     document.getElementById('modal-descripcion').textContent = t.descripcionLarga || t.descripcion || '';
 
     const d = t.detalles || {};
-    document.getElementById('modal-detalles').innerHTML = Object.keys(etiquetas)
+    let detallesHTML = Object.keys(etiquetas)
       .filter(k => d[k])
       .map(k => `<div class="modal__dato"><div class="etq">${etiquetas[k]}</div><div class="val">${d[k]}</div></div>`)
       .join('');
 
+    // Datos técnicos como lista de viñetas (acepta lista nueva o texto viejo)
+    let tec = t.tecnicos;
+    if (typeof tec === 'string' && tec.trim()) {
+      tec = tec.split('*').map(s => s.trim()).filter(Boolean);
+    }
+    let tecnicosHTML = '';
+    if (Array.isArray(tec) && tec.length) {
+      tecnicosHTML =
+        '<div class="modal__tecnicos"><div class="etq">Datos técnicos</div><ul>' +
+        tec.map(x => `<li>${x}</li>`).join('') +
+        '</ul></div>';
+    }
+    document.getElementById('modal-detalles').innerHTML = detallesHTML + tecnicosHTML;
+
     const fotos = (t.galeria && t.galeria.length) ? t.galeria : [t.imagen];
     totalSlides = fotos.length;
     slideActual = 0;
+    const muchas = totalSlides > 8;
+    galeriaCont.className = 'galeria' + (muchas ? ' galeria--muchas' : '');
     const slides = fotos.map(f => `<div class="galeria__slide">${img(f, t.titulo)}</div>`).join('');
     const flechas = totalSlides > 1 ? `
       <button class="galeria__flecha galeria__flecha--izq" aria-label="Anterior">‹</button>
       <button class="galeria__flecha galeria__flecha--der" aria-label="Siguiente">›</button>
+      <div class="galeria__contador"><span id="gal-actual">1</span> / ${totalSlides}</div>
       <div class="galeria__puntos">
         ${fotos.map((_, i) => `<span class="galeria__punto ${i===0?'activo':''}" data-punto="${i}"></span>`).join('')}
       </div>` : '';

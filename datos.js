@@ -268,8 +268,12 @@ const TRABAJOS = [
       ubicacion: "Las Lajitas, Salta, Argentina",
       fecha:     "Junio 2024",
       duracion:  "5 dias",
-      tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles *Potencia de Salida: 20 kW en 4 inversores Growatt*Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
     },
+    tecnicos: [
+      "Potencia instalada: 18 kWp en 40 paneles",
+      "Potencia de salida: 20 kW en 4 inversores Growatt",
+      "Autonomía: 45 kWh en 9 baterías Growatt AXE",
+    ],
     descripcionLarga: "Descripción completa de la obra: alcance del proyecto, etapas de ejecución, desafíos resueltos y resultados obtenidos. Reemplazá este texto por los detalles reales del parque fotovoltaico.",
 
     // --- Fotos de la galería (agregá o quitá las que quieras) ---
@@ -301,8 +305,10 @@ const TRABAJOS = [
       ubicacion: "Salta, Argentina",
       fecha:     "2024",
       duracion:  "2 meses",
-      tecnicos:  "Media tensión 13,2 kV",
     },
+    tecnicos: [
+      "Media tensión 13,2 kV",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/seccionadora.jpg",
@@ -320,8 +326,10 @@ const TRABAJOS = [
       ubicacion: "Salta, Argentina",
       fecha:     "2023",
       duracion:  "3 meses",
-      tecnicos:  "Capacidad frigorífica: XX kcal/h",
     },
+    tecnicos: [
+      "Capacidad frigorífica: XX kcal/h",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/chiller.jpg",
@@ -339,8 +347,10 @@ const TRABAJOS = [
       ubicacion: "Salta, Argentina",
       fecha:     "2023",
       duracion:  "1 mes",
-      tecnicos:  "Corriente nominal: 600 A",
     },
+    tecnicos: [
+      "Corriente nominal: 600 A",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/transferencia.jpg",
@@ -359,8 +369,10 @@ const TRABAJOS = [
       ubicacion: "Salta, Argentina",
       fecha:     "Febrero 2023",
       duracion:  "1 mes",
-      tecnicos:  "Tablero de comando y potencia, 380V",
     },
+    tecnicos: [
+      "Tablero de comando y potencia, 380V",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/tablero.jpg",
@@ -378,8 +390,10 @@ const TRABAJOS = [
       ubicacion: "Maimara, Jujuy, Argentina",
       fecha:     "Junio 2024",
       duracion:  "2 dias",
-      tecnicos:  "Tablero de comando y potencia, 380V",
     },
+    tecnicos: [
+      "Tablero de comando y potencia, 380V",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/maimara.jpg",
@@ -399,8 +413,10 @@ const TRABAJOS = [
       ubicacion: "Salta, Argentina",
       fecha:     "Noviembre 2024",
       duracion:  "5 Semanas",
-      tecnicos:  "Mantenimiento preventivo y correctivo",
     },
+    tecnicos: [
+      "Mantenimiento preventivo y correctivo",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/metalnoa.jpg",
@@ -421,8 +437,11 @@ const TRABAJOS = [
   //     ubicacion: "Ciudad, Provincia",
   //     fecha:     "2025",
   //     duracion:  "X meses",
-  //     tecnicos:  "Datos técnicos relevantes",
   //   },
+  //   tecnicos: [
+  //     "Primer dato técnico",
+  //     "Segundo dato técnico",
+  //   ],
   //   descripcionLarga: "Texto largo con todos los detalles de la obra.",
   //   galeria: [
   //     "images/trabajos/foto-1.jpg",

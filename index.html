@@ -371,7 +371,7 @@
 
   /* Carrusel dentro del modal */
   .galeria { position: relative; background: #05070c; border-radius: 18px 18px 0 0; overflow: hidden; }
-  .galeria__viewport { aspect-ratio: 16/10; }
+  .galeria__viewport { aspect-ratio: 16/10; max-height: 62vh; }
   .galeria__pista { display: flex; height: 100%; transition: transform .4s ease; }
   .galeria__slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
   /* "contain" muestra la foto ENTERA (no recorta). Ideal para fotos verticales. */
@@ -385,9 +385,18 @@
   .galeria__flecha:hover { background: var(--acento); color: #041016; }
   .galeria__flecha--izq { left: 14px; }
   .galeria__flecha--der { right: 14px; }
-  .galeria__puntos { position: absolute; bottom: 14px; left: 0; right: 0; display: flex; gap: 8px; justify-content: center; z-index: 2; }
-  .galeria__punto { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.45); cursor: pointer; transition: background .2s, transform .2s; }
-  .galeria__punto.activo { background: var(--acento); transform: scale(1.25); }
+  /* Contador de fotos (ej: 3 / 12), más práctico que muchos puntitos */
+  .galeria__contador {
+    position: absolute; bottom: 14px; right: 16px; z-index: 2;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+    color: #fff; font-size: .82rem; font-family: var(--display); font-weight: 600;
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .galeria__puntos { position: absolute; bottom: 14px; left: 0; right: 90px; display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; z-index: 2; padding: 0 16px; }
+  .galeria__punto { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: background .2s, transform .2s; }
+  .galeria__punto.activo { background: var(--acento); transform: scale(1.3); }
+  /* Con muchas fotos, ocultamos los puntitos y dejamos solo el contador + flechas */
+  .galeria--muchas .galeria__puntos { display: none; }
 
   /* Contenido de texto del modal */
   .modal__cuerpo { padding: 32px 36px 40px; }
@@ -399,6 +408,18 @@
   }
   .modal__dato .etq { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 4px; }
   .modal__dato .val { color: var(--texto); font-size: 1rem; }
+  /* Datos técnicos como lista de viñetas */
+  .modal__tecnicos { grid-column: 1 / -1; margin-top: 4px; }
+  .modal__tecnicos .etq { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 10px; }
+  .modal__tecnicos ul { list-style: none; display: grid; gap: 9px; }
+  .modal__tecnicos li {
+    position: relative; padding-left: 26px; color: var(--texto); font-size: 1rem; line-height: 1.5;
+  }
+  .modal__tecnicos li::before {
+    content: ''; position: absolute; left: 4px; top: 9px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--acento); box-shadow: 0 0 8px var(--acento);
+  }
   .modal__cuerpo > p { color: var(--texto-suave); font-size: 1.02rem; line-height: 1.75; }
 
   .trabajos-cta { display: flex; justify-content: center; margin-top: 48px; }
