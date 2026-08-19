@@ -255,9 +255,9 @@ const EMPRESAS_GRUPO = [
    ---------------------------------------------------------------------------- */
 const TRABAJOS = [
   {
-    titulo: "Parque Fotovoltaico",
+    titulo: "Parque Fotovoltaico OFF-GRID",
     imagen: "images/trabajos/parque-fotovoltaico.jpg",
-    descripcion: "Diseño e instalación de parque de generación solar.",
+    descripcion: "Diseño, venta e instalación de parque de generación solar para agro.",
 
     destacado: true,          // ⭐ aparece en el inicio
     orden: "2024-06",         // para ordenar cronológicamente (AAAA-MM)
@@ -268,8 +268,19 @@ const TRABAJOS = [
       ubicacion: "Las Lajitas, Salta, Argentina",
       fecha:     "Junio 2024",
       duracion:  "5 dias",
-      tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles *Potencia de Salida: 20 kW en 4 inversores Growatt*Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
+<<<<<<< HEAD
+<<<<<<< HEAD
+      tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles de 450Wp *Potencia de Salida: 20 kW con 4 inversores Growatt SPF5000 *Configuracion de Salida: Trifasica 380V. *Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
+    tecnicos: [
+      "Potencia instalada: 18 kWp en 40 paneles",
+      "Potencia de salida: 20 kW en 4 inversores Growatt",
+      "Autonomía: 45 kWh en 9 baterías Growatt AXE",
+    ],
     descripcionLarga: "Descripción completa de la obra: alcance del proyecto, etapas de ejecución, desafíos resueltos y resultados obtenidos. Reemplazá este texto por los detalles reales del parque fotovoltaico.",
 
     // --- Fotos de la galería (agregá o quitá las que quieras) ---
@@ -290,64 +301,124 @@ const TRABAJOS = [
     ],
   },
   {
-    titulo: "Seccionadora Automática",
+    titulo: "Seccionadora CNC para Placas MDF",
     imagen: "images/trabajos/seccionadora.jpg",
-    descripcion: "Instalación de seccionadora automática de media tensión.",
+    descripcion: "Instalación y puesta en marcha de seccionadora CNC.",
 
     destacado: true,          // ⭐ aparece en el inicio
-    orden: "2024-03",         // para ordenar cronológicamente (AAAA-MM)
+    orden: "2024-07",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
+<<<<<<< HEAD
+      cliente:   "Corralon America",
+      ubicacion: "Salta Capital, Argentina",
+      fecha:     "Julio 2024",
+      duracion:  "1 mes",
+      tecnicos:  "*Dimensionamiento, diseño e instalacion electrica (conductores y protecciones). *Dimensionamiento e instalacion de sistema de Aire comprimido centralizado para todas las maquinas. *Instalacion de sistema de Aspiracion de aserrin. *Instalacion y medicion de Puesta a Tierra.",
+=======
       cliente:   "Nombre del cliente",
       ubicacion: "Salta, Argentina",
       fecha:     "2024",
       duracion:  "2 meses",
-      tecnicos:  "Media tensión 13,2 kV",
+<<<<<<< HEAD
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
+    tecnicos: [
+      "Media tensión 13,2 kV",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/seccionadora.jpg",
+      "images/trabajos/seccionadora-1.jpg",
+      "images/trabajos/seccionadora-2.jpg",
     ],
   },
   {
-    titulo: "Chiller para Soplado de Envases",
+    titulo: "Chiller para Sopladora de Envases",
     imagen: "images/trabajos/chiller.jpg",
     descripcion: "Fabricación de chiller industrial para línea de soplado.",
 
     destacado: true,          // ⭐ aparece en el inicio
-    orden: "2023-09",         // para ordenar cronológicamente (AAAA-MM)
+    orden: "2025-09",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
+<<<<<<< HEAD
+      cliente:   "Agua y Soda Ideal",
+      ubicacion: "Salta Capital, Argentina",
+      fecha:     "Septiembre 2025",
+      duracion:  "2 meses",
+      tecnicos:  "*Capacidad frigorífica: 10TR. *Intercambiador de placas DANFOSS. *Caudal de recirculacion 6000Lts/h.",
+=======
       cliente:   "Nombre del cliente",
       ubicacion: "Salta, Argentina",
       fecha:     "2023",
       duracion:  "3 meses",
-      tecnicos:  "Capacidad frigorífica: XX kcal/h",
+<<<<<<< HEAD
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
+    tecnicos: [
+      "Capacidad frigorífica: XX kcal/h",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/chiller.jpg",
+      "images/trabajos/chiller-1.jpg",
+      "images/trabajos/chiller-2.jpg",
+      "images/trabajos/chiller-3.jpg",
+      "images/trabajos/chiller-4.jpg",
+      "images/trabajos/chiller-5.jpg",
+      "images/trabajos/chiller-6.jpg",
+      "images/trabajos/chiller-7.jpg",
+      "images/trabajos/chiller-8.jpg",
+      "images/trabajos/chiller-9.jpg",
+      "images/trabajos/chiller-10.jpg",
     ],
   },
-  {
-    titulo: "Transferencia Automática 600A",
-    imagen: "images/trabajos/transferencia.jpg",
-    descripcion: "Tablero de transferencia automática entre red y grupo electrógeno.",
 
-    destacado: false,          // ⭐ aparece en el inicio
-    orden: "2023-05",         // para ordenar cronológicamente (AAAA-MM)
+  {
+    titulo: "Chiller para Carbonatación de Soda",
+    imagen: "images/trabajos/awara.jpg",
+    descripcion: "Mantenimiento de chiller industrial para línea carbonatacion de soda.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2024-12",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
+<<<<<<< HEAD
+      cliente:   "Awara",
+      ubicacion: "Salta Capital, Argentina",
+      fecha:     "Diciembre 2024",
+      duracion:  "3 meses",
+      tecnicos:  "*Capacidad frigorífica: 72TR. *Intercambio doble Refrigerante-Glicol y Glicol-Agua Carbonatada. *Sistema de Glicol de 1300 Lts. *Temperatura de trabajo -2°C.",
+=======
       cliente:   "Nombre del cliente",
       ubicacion: "Salta, Argentina",
       fecha:     "2023",
       duracion:  "1 mes",
-      tecnicos:  "Corriente nominal: 600 A",
+<<<<<<< HEAD
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
+    tecnicos: [
+      "Corriente nominal: 600 A",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
-      "images/trabajos/transferencia.jpg",
+      "images/trabajos/awara.jpg",
+      "images/trabajos/awara-1.jpg",
+      "images/trabajos/awara-2.jpg",
+      "images/trabajos/awara-3.jpg",
+      "images/trabajos/awara-4.jpg",
+      "images/trabajos/awara-5.jpg",
     ],
   },
 
   {
+<<<<<<< HEAD
+    titulo: "Sistema Fotovoltaico Domiciliario OFF-GRID",
+=======
     titulo: "Tablero de Comando y Potencia",
     imagen: "images/trabajos/tablero.jpg",
     descripcion: "Diseño y fabricación de tablero para línea de producción.",
@@ -359,8 +430,10 @@ const TRABAJOS = [
       ubicacion: "Salta, Argentina",
       fecha:     "Febrero 2023",
       duracion:  "1 mes",
-      tecnicos:  "Tablero de comando y potencia, 380V",
     },
+    tecnicos: [
+      "Tablero de comando y potencia, 380V",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/tablero.jpg",
@@ -368,8 +441,9 @@ const TRABAJOS = [
   },
   {
     titulo: "Sistema Fotovoltaico Domiciliario",
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     imagen: "images/trabajos/maimara.jpg",
-    descripcion: "Dimensionamiento, diseño, venta y puesta en marcha de sistema fotovoltaico para autoconsumo.",
+    descripcion: "Dimensionamiento, diseño, venta y puesta en marcha de sistema fotovoltaico para autoconsumo sin red electrica",
 
     destacado: true,          // ⭐ aparece en el inicio
     orden: "2024-06",         // para ordenar cronológicamente (AAAA-MM)
@@ -378,8 +452,17 @@ const TRABAJOS = [
       ubicacion: "Maimara, Jujuy, Argentina",
       fecha:     "Junio 2024",
       duracion:  "2 dias",
-      tecnicos:  "Tablero de comando y potencia, 380V",
+<<<<<<< HEAD
+<<<<<<< HEAD
+      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
+    tecnicos: [
+      "Tablero de comando y potencia, 380V",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
       "images/trabajos/maimara.jpg",
@@ -396,18 +479,27 @@ const TRABAJOS = [
     orden: "2024-11",
     detalles: {
       cliente:   "Metalnoa",
-      ubicacion: "Salta, Argentina",
+      ubicacion: "Salta Capital, Argentina",
       fecha:     "Noviembre 2024",
       duracion:  "5 Semanas",
-      tecnicos:  "Mantenimiento preventivo y correctivo",
+<<<<<<< HEAD
+<<<<<<< HEAD
+      tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
+=======
+>>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
+    tecnicos: [
+      "Mantenimiento preventivo y correctivo",
+    ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
-      "images/trabajos/mantenimiento.jpg",
-      "images/trabajos/mmetalnoa-1.jpg",
-      "images/trabajos/mmetalnoa-2.jpg",
-      "images/trabajos/mmetalnoa-3.jpg",
-      "images/trabajos/mmetalnoa-4.jpg",
+      "images/trabajos/metalnoa.jpg",
+      "images/trabajos/metalnoa-1.jpg",
+      "images/trabajos/metalnoa-2.jpg",
+      "images/trabajos/metalnoa-3.jpg",
+      "images/trabajos/metalnoa-4.jpg",
     ],
   },
 
@@ -421,8 +513,11 @@ const TRABAJOS = [
   //     ubicacion: "Ciudad, Provincia",
   //     fecha:     "2025",
   //     duracion:  "X meses",
-  //     tecnicos:  "Datos técnicos relevantes",
   //   },
+  //   tecnicos: [
+  //     "Primer dato técnico",
+  //     "Segundo dato técnico",
+  //   ],
   //   descripcionLarga: "Texto largo con todos los detalles de la obra.",
   //   galeria: [
   //     "images/trabajos/foto-1.jpg",
