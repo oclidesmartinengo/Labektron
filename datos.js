@@ -268,13 +268,7 @@ const TRABAJOS = [
       ubicacion: "Las Lajitas, Salta, Argentina",
       fecha:     "Junio 2024",
       duracion:  "5 dias",
-<<<<<<< HEAD
-<<<<<<< HEAD
       tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles de 450Wp *Potencia de Salida: 20 kW con 4 inversores Growatt SPF5000 *Configuracion de Salida: Trifasica 380V. *Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
     tecnicos: [
       "Potencia instalada: 18 kWp en 40 paneles",
@@ -308,21 +302,11 @@ const TRABAJOS = [
     destacado: true,          // ⭐ aparece en el inicio
     orden: "2024-07",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
-<<<<<<< HEAD
       cliente:   "Corralon America",
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Julio 2024",
       duracion:  "1 mes",
       tecnicos:  "*Dimensionamiento, diseño e instalacion electrica (conductores y protecciones). *Dimensionamiento e instalacion de sistema de Aire comprimido centralizado para todas las maquinas. *Instalacion de sistema de Aspiracion de aserrin. *Instalacion y medicion de Puesta a Tierra.",
-=======
-      cliente:   "Nombre del cliente",
-      ubicacion: "Salta, Argentina",
-      fecha:     "2024",
-      duracion:  "2 meses",
-<<<<<<< HEAD
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
     tecnicos: [
       "Media tensión 13,2 kV",
@@ -342,21 +326,11 @@ const TRABAJOS = [
     destacado: true,          // ⭐ aparece en el inicio
     orden: "2025-09",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
-<<<<<<< HEAD
       cliente:   "Agua y Soda Ideal",
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Septiembre 2025",
       duracion:  "2 meses",
       tecnicos:  "*Capacidad frigorífica: 10TR. *Intercambiador de placas DANFOSS. *Caudal de recirculacion 6000Lts/h.",
-=======
-      cliente:   "Nombre del cliente",
-      ubicacion: "Salta, Argentina",
-      fecha:     "2023",
-      duracion:  "3 meses",
-<<<<<<< HEAD
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
     tecnicos: [
       "Capacidad frigorífica: XX kcal/h",
@@ -385,21 +359,11 @@ const TRABAJOS = [
     destacado: true,          // ⭐ aparece en el inicio
     orden: "2024-12",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
-<<<<<<< HEAD
       cliente:   "Awara",
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Diciembre 2024",
       duracion:  "3 meses",
       tecnicos:  "*Capacidad frigorífica: 72TR. *Intercambio doble Refrigerante-Glicol y Glicol-Agua Carbonatada. *Sistema de Glicol de 1300 Lts. *Temperatura de trabajo -2°C.",
-=======
-      cliente:   "Nombre del cliente",
-      ubicacion: "Salta, Argentina",
-      fecha:     "2023",
-      duracion:  "1 mes",
-<<<<<<< HEAD
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
     tecnicos: [
       "Corriente nominal: 600 A",
@@ -416,32 +380,7 @@ const TRABAJOS = [
   },
 
   {
-<<<<<<< HEAD
     titulo: "Sistema Fotovoltaico Domiciliario OFF-GRID",
-=======
-    titulo: "Tablero de Comando y Potencia",
-    imagen: "images/trabajos/tablero.jpg",
-    descripcion: "Diseño y fabricación de tablero para línea de producción.",
-
-    destacado: false,          // ⭐ aparece en el inicio
-    orden: "2023-02",         // para ordenar cronológicamente (AAAA-MM)
-    detalles: {
-      cliente:   "Nombre del cliente",
-      ubicacion: "Salta, Argentina",
-      fecha:     "Febrero 2023",
-      duracion:  "1 mes",
-    },
-    tecnicos: [
-      "Tablero de comando y potencia, 380V",
-    ],
-    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
-    galeria: [
-      "images/trabajos/tablero.jpg",
-    ],
-  },
-  {
-    titulo: "Sistema Fotovoltaico Domiciliario",
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     imagen: "images/trabajos/maimara.jpg",
     descripcion: "Dimensionamiento, diseño, venta y puesta en marcha de sistema fotovoltaico para autoconsumo sin red electrica",
 
@@ -452,13 +391,7 @@ const TRABAJOS = [
       ubicacion: "Maimara, Jujuy, Argentina",
       fecha:     "Junio 2024",
       duracion:  "2 dias",
-<<<<<<< HEAD
-<<<<<<< HEAD
       tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
     tecnicos: [
       "Tablero de comando y potencia, 380V",
@@ -482,13 +415,7 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Noviembre 2024",
       duracion:  "5 Semanas",
-<<<<<<< HEAD
-<<<<<<< HEAD
       tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
-=======
->>>>>>> 16fe0f6c5b22756a6edd051886979b7ab6ca254d
     },
     tecnicos: [
       "Mantenimiento preventivo y correctivo",
@@ -609,7 +536,6 @@ const SECTORES_VALORES = [
   { icono: "apreton",    num: "Compromiso",  txt: "con nuestros clientes" },
   { icono: "soporte",    num: "Servicio",    txt: "postventa" },
 ];
-
 
 
 
