@@ -271,9 +271,10 @@ const TRABAJOS = [
       tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles de 450Wp *Potencia de Salida: 20 kW con 4 inversores Growatt SPF5000 *Configuracion de Salida: Trifasica 380V. *Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
     },
     tecnicos: [
-      "Potencia instalada: 18 kWp en 40 paneles",
-      "Potencia de salida: 20 kW en 4 inversores Growatt",
-      "Autonomía: 45 kWh en 9 baterías Growatt AXE",
+      "Potencia instalada: 18 kWp en 40 paneles de 450Wp",
+      "Potencia de Salida: 20 kW con 4 inversores Growatt SPF5000",
+      "Configuracion de Salida: Trifasica 380V.",
+      "Autonomia: 45kWh en 9 Baterias Growatt AXE",
     ],
     descripcionLarga: "Descripción completa de la obra: alcance del proyecto, etapas de ejecución, desafíos resueltos y resultados obtenidos. Reemplazá este texto por los detalles reales del parque fotovoltaico.",
 
@@ -309,7 +310,10 @@ const TRABAJOS = [
       tecnicos:  "*Dimensionamiento, diseño e instalacion electrica (conductores y protecciones). *Dimensionamiento e instalacion de sistema de Aire comprimido centralizado para todas las maquinas. *Instalacion de sistema de Aspiracion de aserrin. *Instalacion y medicion de Puesta a Tierra.",
     },
     tecnicos: [
-      "Media tensión 13,2 kV",
+      "Dimensionamiento, diseño e instalacion electrica (conductores y protecciones).",
+      "Dimensionamiento e instalacion de sistema de Aire comprimido centralizado para todas las maquinas.",
+      "Instalacion de sistema de Aspiracion de aserrin.",
+      "Instalacion y medicion de Puesta a Tierra.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
@@ -333,7 +337,9 @@ const TRABAJOS = [
       tecnicos:  "*Capacidad frigorífica: 10TR. *Intercambiador de placas DANFOSS. *Caudal de recirculacion 6000Lts/h.",
     },
     tecnicos: [
-      "Capacidad frigorífica: XX kcal/h",
+      "Capacidad frigorífica: 10TR.",
+      "Intercambiador de placas DANFOSS.",
+      "Caudal de recirculacion 6000Lts/h.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
@@ -366,7 +372,10 @@ const TRABAJOS = [
       tecnicos:  "*Capacidad frigorífica: 72TR. *Intercambio doble Refrigerante-Glicol y Glicol-Agua Carbonatada. *Sistema de Glicol de 1300 Lts. *Temperatura de trabajo -2°C.",
     },
     tecnicos: [
-      "Corriente nominal: 600 A",
+      "Capacidad frigorífica: 72TR.",
+      "Intercambio doble Refrigerante-Glicol y Glicol-Agua Carbonatada.",
+      "Sistema de Glicol de 1300 Lts.",
+      "Temperatura de trabajo -2°C.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
@@ -391,10 +400,13 @@ const TRABAJOS = [
       ubicacion: "Maimara, Jujuy, Argentina",
       fecha:     "Junio 2024",
       duracion:  "2 dias",
-      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
+      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp. *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
     },
     tecnicos: [
-      "Tablero de comando y potencia, 380V",
+      "Potencia instalada: 5.4 kWp en 12 paneles de 450Wp.",
+      "Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000.",
+      "Configuracion de Salida: Monofasica 220V.",
+      "Autonomia: 15kWh en 2 Baterias Pylontech.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
@@ -418,7 +430,10 @@ const TRABAJOS = [
       tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
     },
     tecnicos: [
-      "Mantenimiento preventivo y correctivo",
+      "Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva.",
+      "Montaje de bandejas de canalizacion.",
+      "Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas.",
+      "Armado de planos electricos aprobados para habilitacion municipal.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
@@ -427,6 +442,32 @@ const TRABAJOS = [
       "images/trabajos/metalnoa-2.jpg",
       "images/trabajos/metalnoa-3.jpg",
       "images/trabajos/metalnoa-4.jpg",
+    ],
+  },
+  {
+    titulo: "Sistema de Backup de energia Monofasico",
+    imagen: "images/trabajos/backup.jpg",
+    descripcion: "Diseño, acondicionamiento e instalacion",
+
+    destacado: false,         // no aparece en el inicio, solo en trabajos.html
+    orden: "2025-09",
+    detalles: {
+      cliente:   "Vissionary Fitness GYM",
+      ubicacion: "Salta Capital, Argentina",
+      fecha:     "Septiembre 2025",
+      duracion:  "1 Dia",
+      tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
+    },
+    tecnicos: [
+      "Dimensionamiento de autonomia y potencia de salida.",
+      "Venta e Instalacion de sistema.",
+      "Adecuacion electrica de circuitos prioritarios.",
+      "Potencia de Salida: 6kW",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/backup.jpg",
+      "images/trabajos/backup-1.jpg",
     ],
   },
 
