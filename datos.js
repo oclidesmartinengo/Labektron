@@ -470,6 +470,64 @@ const TRABAJOS = [
       "images/trabajos/backup-1.jpg",
     ],
   },
+  {
+    titulo: "Sistema Fotovoltaico Industrial ON-GRID",
+    imagen: "images/trabajos/tambo.jpg",
+    descripcion: "Diseño, direccion de obra y puesta en marcha de sistema fotovoltaico para reducir factura de red electrica",
+
+    destacado: false,          // ⭐ aparece en el inicio
+    orden: "2025-03",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Tambo robotizado Quijano",
+      ubicacion: "Campo Quijano, Salta, Argentina",
+      fecha:     "Marzo 2025",
+      duracion:  "2 semanas",
+      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp. *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
+    },
+    tecnicos: [
+      "Potencia instalada: 41 kWp en 72 paneles de 570Wp.",
+      "Potencia de Salida: 40 kW con 1 inversor Growatt MID40kW.",
+      "Configuracion de Salida: Trifasica 380V.",
+      "Ahorro estimado de factura: 570 USD / Mensual",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/tambo.jpg",
+      "images/trabajos/tambo-1.jpg",
+    ],
+  },
+  {
+    titulo: "Reinstalacion electrica de Planta Porotera",
+    imagen: "images/trabajos/porotera.jpg",
+    descripcion: "Desinstalacion y reinstalacion de sistema electrico completo en planta industrial",
+
+    destacado: false,          // ⭐ aparece en el inicio
+    orden: "2024-04",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Porotera",
+      ubicacion: "General Gûemes, Salta, Argentina",
+      fecha:     "Abril 2024",
+      duracion:  "4 semanas",
+      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp. *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
+    },
+    tecnicos: [
+      "Canalizacion completa por bandejas perforadas.",
+      "Reubicacion de Tableros de comando y potencia.",
+      "Recableado completo.",
+      "Realizacion de planos electricos y repotencializacion de acometida.",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/porotera.jpg",
+      "images/trabajos/porotera-1.jpg",
+      "images/trabajos/porotera-2.jpg",
+      "images/trabajos/porotera-3.jpg",
+      "images/trabajos/porotera-4.jpg",
+      "images/trabajos/porotera-5.jpg",
+      "images/trabajos/porotera-6.jpg",
+      "images/trabajos/porotera-7.jpg",
+    ],
+  },
 
   // 👇 EJEMPLO — copiá este bloque completo para agregar un trabajo nuevo:
   // {
