@@ -327,44 +327,154 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .wa svg { width: 30px; height: 30px; fill: #fff; }
 
 /* ---------- RESPONSIVE ---------- */
-@media (max-width: 960px) {
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+/* ---- Tablet ---- */
+@media (max-width: 1000px) {
   .hero__in { grid-template-columns: 1fr; gap: 36px; }
-  .hero__datos li { padding-left: 16px; }
-  .selector { grid-template-columns: 1fr; }
-  .selector__lista { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 6px; }
-  .rubro-btn { flex: 0 0 auto; padding: 12px 16px 12px 36px; }
-  .rubro-btn::before { left: 14px; }
-  .rubro-btn small { display: none; }
-  .panel { grid-template-columns: 1fr; }
-  .marcas__label { display: none; }
-  .panel__img { min-height: 200px; }
-  .ruta { grid-template-columns: repeat(4, 1fr); row-gap: 36px; }
+  .mosaicos { grid-template-columns: repeat(2, 1fr); }
+  .ficha__cols { grid-template-columns: 1fr; }
+  .ficha__col + .ficha__col { border-left: none; border-top: 1px solid var(--borde); }
+  .ficha__col--resto ul { grid-template-columns: 1fr 1fr; }
+  .ruta { grid-template-columns: repeat(4, 1fr); row-gap: 34px; }
   .ruta::before, .ruta__linea { display: none; }
   .ruta li:not(:last-child)::after { display: none; }
-  .vidrio { padding: 44px 28px 48px; border-radius: 18px; }
+  .vidrio { padding: 44px 30px 48px; border-radius: 18px; }
   .diag { grid-template-columns: 1fr; }
   .resumen { position: static; }
   .contacto { grid-template-columns: 1fr; gap: 28px; }
   .lb__caja { grid-template-columns: 1fr; }
+  .marcas__label { display: none; }
 }
+
+/* ---- Celular ---- */
 @media (max-width: 720px) {
-  .cab__nav { display: none; position: absolute; top: 84px; left: 0; right: 0; background: var(--fondo); border-bottom: 1px solid var(--borde); flex-direction: column; gap: 0; padding: 10px 4%; }
-  .cab__nav.abierto { display: flex; }
-  .cab__nav a { padding: 12px 0; border-bottom: 1px solid var(--borde); }
-  .cab__nav a:last-child { border-bottom: none; }
-  #cab-wa { display: none; }
+  /* base */
+  html, body { overflow-x: hidden; }
+  .wrap { width: 100%; padding: 0 16px; }
+  .sec { padding: 26px 0; }
+  .vidrio { padding: 32px 18px 36px; border-radius: 16px; }
+  .sec__cab { margin-bottom: 30px; }
+  .sec__cab h2 { font-size: 1.65rem; }
+  .sec__cab p { font-size: 0.95rem; }
+
+  /* cabecera */
+  .cab__in { height: 68px; gap: 12px; }
+  .cab__grupo img { height: 36px; }
   .cab__burger { display: flex; }
-  .hero { padding-top: 104px; }
-  .ruta { grid-template-columns: 1fr 1fr; }
-  .mosaicos { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .mosaico { height: 170px; }
-  .vidrio { padding: 34px 16px 38px; border-radius: 14px; }
-  .mosaico__in { padding: 12px 14px 14px; }
-  .mosaico b { font-size: 0.9rem; }
-  .hero__datos { flex-wrap: wrap; }
-  .hero__datos li { flex: 1 1 45%; border-right: none; padding-left: 0; }
-  .pcb-fondo__svg--lit { display: none; }  /* sin mouse no tiene sentido */
+  #cab-wa { display: none; }
+  .cab__nav { display: none; position: absolute; top: 68px; left: 0; right: 0; background: rgba(17,24,38,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--borde); flex-direction: column; gap: 0; padding: 6px 16px 12px; margin: 0; }
+  .cab__nav.abierto { display: flex; }
+  .cab__nav a { padding: 14px 0; border-bottom: 1px solid var(--borde); font-size: 1rem; }
+  .cab__nav a:last-child { border-bottom: none; }
+
+  /* hero */
+  .hero { padding: 88px 0 0; }
+  .hero__in { gap: 28px; padding-bottom: 28px; }
+  .hero__marca { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+  .hero__logo { height: 52px; padding: 10px 16px; }
+  .hero__lema { padding-left: 0; border-left: none; border-top: 1px solid var(--borde); padding-top: 12px; font-size: 0.75rem; }
+  .hero__titulo { font-size: 2rem; max-width: none; margin-bottom: 14px; }
+  .hero__intro { font-size: 0.98rem; line-height: 1.65; margin-bottom: 24px; }
+  .hero__acciones { gap: 10px; }
+  .hero__acciones .btn { flex: 1 1 100%; justify-content: center; padding: 14px 20px; }
+  .hero__datos { flex-wrap: wrap; gap: 0; }
+  .hero__datos li { flex: 1 1 50%; padding: 16px 0 0; border-right: none; padding-left: 0; }
+  .hero__datos b { font-size: 1.15rem; }
+  .hero__datos span { font-size: 0.8rem; }
+  /* osciloscopio compacto */
+  .osc__top { height: 32px; font-size: 0.62rem; padding: 0 12px; }
+  .osc__marco { padding: 0 10px 10px; border-radius: 12px; }
+  .osc__panel { gap: 14px; padding: 10px 2px 0; }
+  .osc__lectura span { font-size: 0.85rem; }
+  .osc__hint { display: none; }
+
+  /* rubros: la tarjeta crece con el texto, no se recorta */
+  .mosaicos { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+  .mosaico { height: auto; min-height: 150px; border-radius: 12px; }
+  .mosaico__in { position: relative; inset: auto; padding: 74px 12px 14px; gap: 6px; }
+  .mosaico b { font-size: 0.86rem; }
+  .mosaico small { font-size: 0.72rem; }
+  .mosaico::after { display: none; }
+
+  /* ficha */
+  .ficha__cab { padding: 22px 18px; }
+  .ficha__cab h3 { font-size: 1.25rem; }
+  .ficha__cab p { font-size: 0.92rem; }
+  .ficha__col { padding: 20px 18px; }
+  .ficha__col--resto ul { grid-template-columns: 1fr; }
+  .ficha__col li { font-size: 0.9rem; }
+  .marca { padding: 12px 18px; }
+  .marca img { height: 22px; }
+
+  /* proceso: línea vertical con los hexágonos a la izquierda */
+  .ruta { grid-template-columns: 1fr; row-gap: 22px; position: relative; }
+  .ruta::before { display: block; left: 27px; top: 8px; bottom: 8px; width: 2px; height: auto; }
+  .ruta__linea { display: block; left: 27px; top: 8px; width: 2px; height: 0; box-shadow: 0 0 10px rgba(255,138,61,0.7); transition: height 4.6s cubic-bezier(.4,0,.3,1); }
+  .ruta.activa .ruta__linea { width: 2px; height: calc(100% - 16px); }
+  .ruta li { display: grid; grid-template-columns: 56px 1fr; column-gap: 16px; align-items: start; }
+  .ruta__hex { width: 56px; height: 62px; margin-bottom: 0; grid-row: 1 / span 2; }
+  .ruta h3 { font-size: 0.98rem; margin: 6px 0 4px; }
+  .ruta p { font-size: 0.88rem; }
+
+  /* trabajos */
+  .galeria { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .trabajo img { aspect-ratio: 1 / 1; }
+  .trabajo__txt { padding: 10px 12px 12px; }
+  .trabajo__txt b { font-size: 0.86rem; }
+  .trabajo__txt span { font-size: 0.78rem; }
+  .filtros { gap: 6px; margin-bottom: 22px; }
+  .filtro { font-size: 0.8rem; padding: 7px 12px; }
+
+  /* diagnóstico */
+  .diag { gap: 18px; }
+  .tester { padding: 14px; border-radius: 16px; }
+  .tester__pantalla { padding: 20px 18px; min-height: 100px; }
+  .tester__q { font-size: 1.05rem; }
+  .tester__botones { grid-template-columns: 1fr; gap: 8px; }
+  .tester__botones.chicos { grid-template-columns: 1fr 1fr; }
+  .tester__op { padding: 13px 14px; font-size: 0.9rem; }
+  .tester__res h3 { font-size: 1.1rem; }
+  .resumen { padding: 20px 18px; }
+  .resumen__rango { font-size: 1.3rem; }
+
+  /* contacto y pie */
+  .contacto h2 { font-size: 1.65rem; }
+  .contacto__acciones .btn { flex: 1 1 100%; justify-content: center; }
+  .contacto__datos { grid-template-columns: 1fr; gap: 4px 0; }
+  .contacto__datos dt { margin-top: 12px; font-size: 0.8rem; }
+  .pie__in { flex-direction: column; text-align: center; gap: 12px; font-size: 0.82rem; }
+
+  /* lightbox y WhatsApp */
+  .lb { padding: 12px; }
+  .lb__visor { min-height: 220px; }
+  .lb__info { padding: 20px 18px; }
+  .wa { width: 50px; height: 50px; bottom: 16px; right: 16px; }
+  .wa svg { width: 26px; height: 26px; }
+
+  /* fondo: sin luz de mouse y más tenue para no competir con el texto */
+  .pcb-fondo__svg--lit { display: none; }
+  .pcb-fondo__svg { opacity: 0.35; }
 }
+
+/* ---- Celular chico ---- */
+@media (max-width: 400px) {
+  .wrap { padding: 0 12px; }
+  .vidrio { padding: 26px 14px 30px; }
+  .hero__titulo { font-size: 1.8rem; }
+  .sec__cab h2 { font-size: 1.5rem; }
+  .mosaico b { font-size: 0.82rem; }
+  .mosaico__in { padding: 70px 10px 12px; }
+}
+
+/* ---- Muy angosto: todo a una columna ---- */
+@media (max-width: 350px) {
+  .mosaicos, .galeria, .tester__botones.chicos { grid-template-columns: 1fr; }
+  .hero__datos li { flex: 1 1 100%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .panel, .tester__q, .tester__res { animation: none; }
   .marcas__tren { animation: none; flex-wrap: wrap; width: auto; }
