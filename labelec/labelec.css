@@ -33,10 +33,12 @@ button { font-family: inherit; color: inherit; }
 
 /* ---------- FONDO DE PLACA (vectorial, fijo, cubre la ventana) ---------- */
 .pcb-fondo { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.pcb-fondo__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.55; }
-/* luz que sigue al mouse: aclara las pistas cercanas */
-.pcb-fondo__luz { position: absolute; inset: 0; mix-blend-mode: screen; opacity: 0.9;
-  background: radial-gradient(circle 360px at var(--mx) var(--my), rgba(255,138,61,0.16), rgba(47,139,255,0.10) 45%, transparent 72%); }
+.pcb-fondo__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.5; }
+/* copia "encendida" de la misma placa, visible solo alrededor del mouse: las pistas se iluminan, no hay nada encima */
+.pcb-fondo__svg--lit { opacity: 1;
+  -webkit-mask-image: radial-gradient(circle 380px at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%);
+          mask-image: radial-gradient(circle 380px at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%); }
+.pcb-fondo__svg--lit .b { opacity: .95; } .pcb-fondo__svg--lit .g { opacity: .9; stroke: #8a9ab8; } .pcb-fondo__svg--lit .o { opacity: 1; } .pcb-fondo__svg--lit .bd { opacity: .6; }
 body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-index: 1; }
 
 /* estilos de las pistas */
@@ -60,7 +62,7 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .cometa--cuerpo { --l: 80px;  stroke: #ffb26b; stroke-width: 3.5; opacity: .9; }
 .cometa--cabeza { --l: 16px;  stroke: #fff4e0; stroke-width: 4; opacity: 1; }
 @keyframes cometa { from { stroke-dashoffset: var(--l); } to { stroke-dashoffset: calc(var(--len) * -1px); } }
-@media (prefers-reduced-motion: reduce) { .cometa, .pcb-fondo__luz { display: none; } }
+@media (prefers-reduced-motion: reduce) { .cometa, .pcb-fondo__svg--lit { display: none; } }
 
 /* ---------- BOTONES ---------- */
 .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 0.92rem; padding: 12px 22px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s; }
@@ -86,9 +88,9 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .hero__in { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; padding-bottom: 44px; }
 .hero__marca { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
 .hero__logo { height: 72px; width: auto; background: #f4f6fb; border-radius: 12px; padding: 12px 22px; box-sizing: content-box; box-shadow: 0 12px 40px -14px rgba(255,138,61,0.45); }
-.hero__lema { font-family: var(--mono); color: var(--cobre); font-size: 0.8rem; letter-spacing: 0.08em; padding-left: 18px; border-left: 1px solid var(--borde); white-space: nowrap; }
+.hero__lema { font-family: var(--mono); color: var(--cobre); font-size: 0.8rem; letter-spacing: 0.08em; padding-left: 18px; border-left: 1px solid var(--borde); white-space: pre-line; line-height: 1.5; }
 .hero__titulo { font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; margin-bottom: 18px; max-width: 14ch; }
-.hero__titulo .azul, .sec__cab .azul { color: #4da3ff; }
+.azul { color: #4da3ff; }
 .hero__intro { color: var(--suave); font-size: 1.06rem; line-height: 1.7; max-width: 50ch; margin-bottom: 30px; }
 .hero__acciones { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero__datos { list-style: none; display: flex; gap: 0; border-top: 1px solid var(--borde); }
@@ -119,8 +121,9 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 /* Cada sección vive en un panel de vidrio oscuro: el fondo de placa se ve alrededor, nunca detrás del texto */
 .sec { padding: 40px 0; }
 .sec--alt { background: none; border: none; }
-.vidrio { background: linear-gradient(180deg, rgba(21,29,44,0.86), rgba(21,29,44,0.94)); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.07); border-radius: 22px; padding: 56px 56px 60px; box-shadow: 0 40px 80px -50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05); position: relative; }
-.vidrio::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(ellipse 60% 40% at 15% 0%, rgba(77,163,255,0.08), transparent 60%), radial-gradient(ellipse 50% 40% at 90% 100%, rgba(255,138,61,0.07), transparent 60%); }
+/* Panel de vidrio: recuadro definido, sin difuminado */
+.vidrio { position: relative; background: linear-gradient(180deg, rgba(21,29,44,0.88), rgba(21,29,44,0.95)); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 56px 56px 60px; box-shadow: 0 40px 80px -50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05); }
+.vidrio::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(ellipse 55% 40% at 12% 8%, rgba(77,163,255,0.09), transparent 62%), radial-gradient(ellipse 45% 38% at 92% 96%, rgba(255,138,61,0.08), transparent 62%); }
 .vidrio > * { position: relative; }
 .sec__cab { margin-bottom: 48px; max-width: 640px; }
 .sec__cab h2 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); font-weight: 800; margin-bottom: 12px; }
@@ -139,7 +142,7 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 /* capa 3: destello que cruza la tarjeta */
 .mosaico::after { content: ""; position: absolute; top: -60%; left: -80%; width: 60%; height: 220%; z-index: 2; transform: rotate(18deg) translateX(0); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), rgba(255,178,107,0.16), transparent); opacity: 0; pointer-events: none; }
 .mosaico__in { position: absolute; inset: 0; z-index: 3; padding: 18px 20px 20px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
-.mosaico__num { font-family: var(--mono); font-size: 0.72rem; color: #cfe0ff; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px; transition: color .3s; }
+.mosaico__num { display: flex; align-items: center; gap: 8px; }
 .mosaico__num::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #4da3ff; box-shadow: 0 0 6px rgba(77,163,255,0.6); transition: background .3s, box-shadow .3s; }
 .mosaico__num::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.14); margin-left: 6px; transition: background .3s; }
 .mosaico b { font-family: var(--display); font-weight: 700; font-size: 1.05rem; line-height: 1.2; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
@@ -184,29 +187,40 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .marcas__label { flex-shrink: 0; padding: 0 22px; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--suave); border-right: 1px solid var(--borde); align-self: stretch; display: flex; align-items: center; }
 .marcas__pista { flex: 1; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .marcas__tren { display: flex; width: max-content; animation: desfile 30s linear infinite; }
-.marca { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; white-space: nowrap; color: var(--texto); }
+.marca { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; white-space: nowrap; color: var(--texto); transform-origin: center; transition: transform .25s cubic-bezier(.2,.8,.3,1), filter .25s; }
+.marca:hover { transform: scale(1.18); filter: drop-shadow(0 4px 14px rgba(255,138,61,0.35)); }
+.marca:hover b { color: var(--cobre-2); }
 .marca img { height: 28px; width: auto; max-width: 120px; object-fit: contain; }
 .marca b { font-family: var(--display); font-weight: 600; font-size: 0.95rem; }
 .marca img + b { font-size: 0.8rem; color: var(--suave); }
 @keyframes desfile { to { transform: translateX(-50%); } }
 
-/* ---------- PROCESO (ruta de señal animada) ---------- */
-.ruta { list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; position: relative; counter-reset: paso; }
-.ruta::before { content: ""; position: absolute; left: 24px; right: 24px; top: 22px; height: 2px; background: var(--borde); }
-.ruta__linea { position: absolute; left: 24px; top: 22px; height: 2px; width: 0; background: var(--cobre); box-shadow: 0 0 10px var(--cobre); transition: width 2.4s cubic-bezier(.4,0,.2,1); }
-.ruta__pulso { position: absolute; top: 18px; left: 24px; width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px 3px var(--cobre); opacity: 0; }
-.ruta.activa .ruta__linea { width: calc(100% - 48px); }
-/* --g (0 a 1) lo pone el JS según la distancia del pulso: halo continuo, sin saltos ni relleno */
-.ruta li { --g: 0; }
-.ruta li.on::before { box-shadow: 0 0 0 calc(4px + var(--g) * 5px) rgba(255,138,61, calc(0.12 + var(--g) * 0.22)), 0 0 calc(var(--g) * 36px) rgba(255,138,61, calc(var(--g) * 1)); transform: scale(calc(1.06 + var(--g) * 0.08)); transition: border-color .4s, color .4s; }
-.ruta li.on h3 { color: color-mix(in srgb, var(--texto) calc(100% - var(--g) * 100%), var(--cobre-2) calc(var(--g) * 100%)); }
-.ruta li { position: relative; padding-top: 64px; counter-increment: paso; opacity: 0.35; transition: opacity .5s; }
-.ruta li::before { content: counter(paso, decimal-leading-zero); position: absolute; top: 0; left: 0; width: 46px; height: 46px; border-radius: 50%; background: var(--fondo-alt); border: 2px solid var(--borde); color: var(--suave); font-family: var(--mono); font-weight: 600; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: border-color .4s, color .4s, box-shadow .4s, transform .4s; }
-.ruta li.on { opacity: 1; }
-.ruta li.on::before { border-color: var(--cobre); color: var(--cobre); box-shadow: 0 0 0 4px rgba(255,138,61,0.12); transform: scale(1.06); }
-.ruta li:last-child.on::before { background: var(--cobre); color: #1a1208; }
-.ruta h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 6px; }
-.ruta p { color: var(--suave); font-size: 0.86rem; }
+/* ---------- PROCESO: hexágonos conectados que se pintan de izquierda a derecha ---------- */
+.ruta { list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 18px; position: relative; }
+/* riel: pasa por el centro de los hexágonos */
+.ruta::before { content: ""; position: absolute; left: var(--r0, 30px); width: var(--rw, 0); top: 32px; height: 2px; background: rgba(77,163,255,0.28); }
+.ruta__linea { position: absolute; left: var(--r0, 30px); top: 32px; height: 2px; width: 0; background: var(--cobre); box-shadow: 0 0 12px rgba(255,138,61,0.7); transition: width 4.6s cubic-bezier(.4,0,.3,1); }
+.ruta.activa .ruta__linea { width: var(--rw, 0); }
+/* al reiniciar el ciclo la línea vuelve a cero sin animación */
+.ruta.reinicio .ruta__linea { transition: none; }
+.ruta li { position: relative; }
+/* nodito entre hexágonos */
+.ruta li:not(:last-child)::after { content: ""; position: absolute; left: calc(50% + 30px + var(--gap, 9px) - 4.5px); top: 28px; width: 9px; height: 9px; border-radius: 50%; background: var(--fondo); border: 2px solid rgba(77,163,255,0.5); transition: border-color .4s, background .4s, box-shadow .4s; }
+.ruta li.on:not(:last-child)::after { border-color: var(--cobre); background: var(--cobre); box-shadow: 0 0 8px var(--cobre); }
+.ruta li:not(.on):not(:last-child)::after { transition: border-color .8s, background .8s, box-shadow .8s; }
+
+.ruta__hex { position: relative; display: block; width: 60px; height: 66px; margin-bottom: 20px; }
+.ruta__marco, .ruta__icono { position: absolute; }
+.ruta__marco { inset: 0; width: 100%; height: 100%; fill: rgba(10,16,28,0.9); stroke: rgba(77,163,255,0.55); stroke-width: 1.6; transition: stroke .45s, filter .45s; }
+.ruta__icono { left: 50%; top: 50%; width: 26px; height: 26px; transform: translate(-50%,-50%); fill: none; stroke: #7fbaff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke .45s; }
+.ruta li.on .ruta__marco { stroke: var(--cobre); filter: drop-shadow(0 0 10px rgba(255,138,61,0.55)); }
+.ruta li:not(.on) .ruta__marco, .ruta li:not(.on) .ruta__icono, .ruta li:not(.on) h3 { transition-duration: .8s; }
+.ruta li.on .ruta__icono { stroke: var(--cobre-2); }
+.ruta h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; transition: color .45s; }
+.ruta li.on h3 { color: #fff; }
+.ruta p { color: var(--suave); font-size: 0.86rem; line-height: 1.55; }
+.ruta li:hover .ruta__marco { stroke: var(--cobre-2); filter: drop-shadow(0 0 14px rgba(255,138,61,0.8)); }
+.ruta li:hover p { color: var(--texto); }
 
 /* ---------- TRABAJOS ---------- */
 .filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
@@ -322,7 +336,9 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
   .marcas__label { display: none; }
   .panel__img { min-height: 200px; }
   .ruta { grid-template-columns: repeat(4, 1fr); row-gap: 36px; }
-  .ruta::before, .ruta__linea, .ruta__pulso { display: none; }
+  .ruta::before, .ruta__linea { display: none; }
+  .ruta li:not(:last-child)::after { display: none; }
+  .vidrio { padding: 44px 28px 48px; border-radius: 18px; }
   .diag { grid-template-columns: 1fr; }
   .resumen { position: static; }
   .contacto { grid-template-columns: 1fr; gap: 28px; }
@@ -339,12 +355,12 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
   .ruta { grid-template-columns: 1fr 1fr; }
   .mosaicos { grid-template-columns: 1fr 1fr; gap: 10px; }
   .mosaico { height: 170px; }
-  .vidrio { padding: 28px 18px 32px; border-radius: 14px; }
+  .vidrio { padding: 34px 16px 38px; border-radius: 14px; }
   .mosaico__in { padding: 12px 14px 14px; }
   .mosaico b { font-size: 0.9rem; }
   .hero__datos { flex-wrap: wrap; }
   .hero__datos li { flex: 1 1 45%; border-right: none; padding-left: 0; }
-  .pcb-fondo__luz { display: none; }  /* sin mouse no tiene sentido */
+  .pcb-fondo__svg--lit { display: none; }  /* sin mouse no tiene sentido */
 }
 @media (prefers-reduced-motion: reduce) {
   .panel, .tester__q, .tester__res { animation: none; }

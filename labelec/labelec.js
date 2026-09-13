@@ -5,6 +5,22 @@
 (function () {
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  // Iconos de línea para los pasos del proceso (24x24, trazo)
+  const ICONOS = {
+    chat: '<path d="M21 12a8 8 0 0 1-8 8H7l-4 3v-5.5A8 8 0 1 1 21 12z"/><circle cx="9" cy="12" r="1"/><circle cx="13" cy="12" r="1"/><circle cx="17" cy="12" r="1"/>',
+    lupa: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/>',
+    documento: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+    check: '<path d="M9 11.5l2.5 2.5L16 9"/><path d="M20 12a8 8 0 1 1-3.2-6.4"/>',
+    engranaje: '<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/>',
+    herramientas: '<path d="M15.5 3.5a4 4 0 0 0 5 5L21 9l-8 8-2-2 8-8zM4 20l6-6M3.5 15.5l5 5M6 14l-2.5 2.5a2 2 0 0 0 2.8 2.8L9 17"/>',
+    escudo: '<path d="M12 3l7 3v5.5c0 4.3-2.9 8.1-7 9.5-4.1-1.4-7-5.2-7-9.5V6z"/><path d="M9 12l2 2 4-4"/>',
+    caja: '<path d="M3 8l9-4 9 4v8l-9 4-9-4z"/><path d="M3 8l9 4 9-4M12 12v8"/>',
+    reloj: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    rayo: '<path d="M13 2L5 13h6l-1 9 8-11h-6z"/>',
+    llave: '<circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M17.5 17.5l2-2"/>',
+    grafico: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  };
+
   const rubroPorId = (id) => RUBROS.find(r => r.id === id);
   const reducirMovimiento = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -19,34 +35,43 @@
   }
   $('intro').textContent = LABELEC.intro;
   $('datos').innerHTML = LABELEC.datos.map(d => `<li><b>${esc(d.valor)}</b><span>${esc(d.texto)}</span></li>`).join('');
-  $('proceso-lista').innerHTML = `<span class="ruta__linea"></span><span class="ruta__pulso"></span>` +
-    LABELEC.proceso.map(p => `<li><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p></li>`).join('');
+  $('proceso-lista').innerHTML = `<span class="ruta__linea"></span>` +
+    LABELEC.proceso.map(p => `<li>
+      <span class="ruta__hex">
+        <svg viewBox="0 0 40 44" class="ruta__marco" aria-hidden="true"><polygon points="20,1 38.5,11.5 38.5,32.5 20,43 1.5,32.5 1.5,11.5"/></svg>
+        <svg viewBox="0 0 24 24" class="ruta__icono" aria-hidden="true">${ICONOS[p.icono] || ICONOS.engranaje}</svg>
+      </span>
+      <h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p></li>`).join('');
   (function proceso() {
     const ruta = $('proceso-lista'), pasos = ruta.querySelectorAll('li');
-    const pulso = ruta.querySelector('.ruta__pulso');
+    const CICLO = 5400, PASO = 620;   // duración del recorrido y separación entre pasos
     const encender = () => {
       ruta.classList.add('activa');
-      pasos.forEach((li, i) => setTimeout(() => li.classList.add('on'), reducirMovimiento ? 0 : 250 + i * (2400 / pasos.length)));
-      if (!reducirMovimiento) setTimeout(recorrer, 2600);
+      pasos.forEach((li, i) => setTimeout(() => li.classList.add('on'), reducirMovimiento ? 0 : 250 + i * PASO));
     };
-    // El pulso recorre la línea en loop y enciende cada círculo al pasar por encima
-    function recorrer() {
-      const x0 = 24, x1 = ruta.clientWidth - 34, dur = 6000, pausa = 600;
-      const centros = () => [...pasos].map(li => li.offsetLeft + 23);
-      let t0 = null;
-      const frame = (t) => {
-        if (t0 === null) t0 = t;
-        const p = (t - t0) / dur;
-        if (p >= 1) { pulso.style.opacity = 0; pasos.forEach(li => li.style.setProperty('--g', 0)); t0 = null; setTimeout(() => requestAnimationFrame(frame), pausa); return; }
-        const x = x0 + (x1 - x0) * p;
-        pulso.style.left = x + 'px';
-        pulso.style.opacity = p < 0.04 || p > 0.96 ? 0 : 1;
-        centros().forEach((c, i) => { const d = Math.abs(x - c); pasos[i].style.setProperty('--g', Math.max(0, 1 - d / 60).toFixed(3)); });
-        requestAnimationFrame(frame);
-      };
-      requestAnimationFrame(frame);
-    }
-    const obs = new IntersectionObserver(en => { if (en[0].isIntersecting) { encender(); obs.disconnect(); } }, { threshold: 0.35 });
+    const apagar = () => {
+      ruta.classList.add('reinicio');
+      ruta.classList.remove('activa');
+      pasos.forEach(li => li.classList.remove('on'));
+      // dejamos que el navegador aplique el reset antes de volver a animar
+      requestAnimationFrame(() => requestAnimationFrame(() => ruta.classList.remove('reinicio')));
+    };
+    const ciclo = () => { encender(); setTimeout(() => { apagar(); setTimeout(ciclo, 700); }, CICLO + pasos.length * 120); };
+
+    // El riel arranca y termina en el centro del primer y último hexágono
+    const medir = () => {
+      const a = pasos[0]?.querySelector('.ruta__hex'), z = pasos[pasos.length - 1]?.querySelector('.ruta__hex');
+      if (!a || !z || getComputedStyle(ruta).gridTemplateColumns.split(' ').length < 2) return;
+      const r = ruta.getBoundingClientRect(), ra = a.getBoundingClientRect(), rz = z.getBoundingClientRect();
+      if (Math.abs(ra.top - rz.top) > 4) { ruta.style.removeProperty('--r0'); ruta.style.removeProperty('--rw'); return; }
+      const x0 = ra.left - r.left + ra.width / 2;
+      ruta.style.setProperty('--r0', x0 + 'px');
+      ruta.style.setProperty('--rw', (rz.left - r.left + rz.width / 2 - x0) + 'px');
+      const gap = parseFloat(getComputedStyle(ruta).columnGap) || 18;
+      ruta.style.setProperty('--gap', gap / 2 + 'px');
+    };
+    medir(); addEventListener('resize', medir);
+    const obs = new IntersectionObserver(en => { if (en[0].isIntersecting) { medir(); reducirMovimiento ? encender() : ciclo(); obs.disconnect(); } }, { threshold: 0.35 });
     obs.observe(ruta);
   })();
   $('c-direccion').textContent = LABELEC.direccion;
@@ -147,7 +172,7 @@
         <img src="${esc(r.imagen)}" alt="" loading="lazy" decoding="async">
         <span class="velo"></span>
         <span class="mosaico__in">
-          <span class="mosaico__num">${String(i + 1).padStart(2, '0')}</span>
+          <span class="mosaico__num"></span>
           <span><b>${esc(r.nombre)}</b><br><small>${total(r)} equipos</small></span>
         </span>
       </button>`).join('');

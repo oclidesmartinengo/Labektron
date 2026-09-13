@@ -20,7 +20,7 @@
    ---------------------------------------------------------------------------- */
 const LABELEC = {
   nombre: "LABELEC",
-  lema: "Diagnose, Repair & Maintain",
+  lema: "Diagnose, Repair\n& Maintenance",   // \n = salto de línea
   titular: "Laboratorio de electrónica",
   titularAcento: "electrónica",   // la parte del titular que va en azul (tiene que estar dentro del titular)
   // Frase que aparece debajo del titular, en el hero
@@ -32,26 +32,29 @@ const LABELEC = {
   // Contacto
   whatsapp: "5493875895447",           // con código de país, sin + ni espacios
   whatsappTexto: "Hola LABELEC, quiero consultar por una reparación.",
-  email: "labelec@labektron.com",
+  email: "labelec@gmail.com",
   direccion: "10 de Octubre 985, Salta Capital",
   horario: "Lunes a viernes, 9:00 – 17:00",
 
   // Los 3 datos rápidos que aparecen al costado del hero (podés cambiar los textos)
   datos: [
     { valor: "+7000", texto: "equipos reparados" },
-    { valor: "48 h", texto: "diagnóstico promedio" },
+    { valor: "72 hs", texto: "diagnóstico promedio" },
     { valor: "3–6 meses", texto: "de garantía escrita" },
   ],
 
   // Cómo trabajamos (los pasos del proceso, en orden)
+  // 👉 "icono": elegí uno de estos nombres —
+  //    chat · lupa · documento · check · engranaje · herramientas · escudo ·
+  //    caja · reloj · rayo · llave · grafico
   proceso: [
-    { titulo: "Recepción",    texto: "Traés el equipo o lo retiramos. Le asignamos un número de orden." },
-    { titulo: "Diagnóstico",  texto: "Lo abrimos, medimos y localizamos la falla con instrumentos." },
-    { titulo: "Presupuesto",  texto: "Te decimos qué tiene, qué hay que hacer y cuánto sale. Sin compromiso." },
-    { titulo: "Aprobación",   texto: "Recién cuando vos confirmás, arrancamos. Si no, retirás el equipo sin costo extra." },
-    { titulo: "Reparación",   texto: "Reemplazamos componentes, no placas enteras. Si hace falta, las rediseñamos." },
-    { titulo: "Entrega",      texto: "Prueba de funcionamiento, informe técnico y garantía escrita." },
-    { titulo: "Período de garantía", texto: "Si en ese tiempo vuelve a fallar por lo mismo, lo revisamos sin costo." },
+    { icono: "chat",         titulo: "Recepción",    texto: "Recibimos tu equipo. Y le asignamos un número de orden." },
+    { icono: "lupa",         titulo: "Diagnóstico",  texto: "Hacemos mediciones y localizamos la falla." },
+    { icono: "documento",    titulo: "Presupuesto",  texto: "Cotizamos qué hay que hacer y cuánto cuesta." },
+    { icono: "check",        titulo: "Aprobación",   texto: "Una vez confirmado, avanzamos. Si no, podes retirár el equipo solo abonando el diagnostico." },
+    { icono: "herramientas", titulo: "Reparación",   texto: "Reemplazamos lo dañado y realizamos mantenimiento." },
+    { icono: "caja",         titulo: "Entrega",      texto: "Entrega, prueba de funcionamiento, informe técnico y garantía escrita." },
+    { icono: "escudo",       titulo: "Período de garantía", texto: "Si en ese tiempo vuelve a fallar, lo revisamos sin costo." },
   ],
 
   footerCopyright: "Todos los derechos reservados",
@@ -77,14 +80,14 @@ const RUBROS = [
     nombre: "Informática",
     corto: "Informática",
     imagen: "images/rubros/informatica.jpeg",
-    intro: "Notebooks es lo nuestro: reparación a nivel componente, no cambio de placa.",
+    intro: "Reparación a nivel componente de equipos informáticos, con especial foco en notebooks de todas las marcas.",
     especialidad: [
-      "Notebooks multimarca", "Consola PlayStation 4", "Monitores", "Impresoras fiscales y comanderas",
+      "Notebooks multimarca", "PlayStation 4", "Monitores", "Impresoras fiscales y comanderas",
     ],
     equipos: [
-      "MacBook", "Computadoras de escritorio", "Fuentes de PC", "Impresoras térmicas y etiquetadoras",
-      "Impresoras láser", "Consola PlayStation 3", "Consola PlayStation 5",
-      "Consola Xbox 360", "Consola Xbox One", "Consola Xbox Series X",
+      "MacBook", "PC de escritorio", "Fuentes de PC", "Impresoras térmicas y etiquetadoras",
+      "Impresoras láser", "PlayStation 3", "PlayStation 5",
+      "Xbox 360", "Xbox One", "Xbox Series X",
     ],
     marcas: ["Asus", "Lenovo", "Acer", "Apple", "Ricoh", "Epson", "HP", "Compaq", "Dell", "Brother"],
   },
@@ -93,11 +96,11 @@ const RUBROS = [
     nombre: "Redes y conectividad",
     corto: "Redes",
     nota: "Servicio tercerizado con técnicos asociados",
-    imagen: "images/rubros/redes.jpg",
-    intro: "Equipos de red que dejaron de responder, con diagnóstico y reparación de hardware.",
+    imagen: "images/rubros/redes.jpeg",
+    intro: "Diagnóstico y reparación de hardware de red para conectividad empresarial y enlaces de datos.",
     especialidad: [],
     equipos: [
-      "Switches con y sin PoE", "Módems", "Routers", "Enlaces punto a punto",
+      "Switch's", "Switch's PoE", "Módems", "Routers", "Enlaces punto a punto", "AP",
     ],
     marcas: ["Ubiquiti", "Mimosa", "MikroTik", "TP-Link"],
   },
@@ -105,27 +108,27 @@ const RUBROS = [
     id: "audio",
     nombre: "Audio, video e iluminación",
     corto: "Audio y video",
-    imagen: "images/rubros/audio.jpg",
-    intro: "De la tele del living al escenario: lo que suena o se ve, se repara acá.",
+    imagen: "images/rubros/audio.jpeg",
+    intro: "Servicio técnico para equipos de audio, video e iluminación, de uso hogareño y profesional.",
     especialidad: [
-      "Televisores LED", "Televisores LCD", "Estéreos de auto (con y sin pantalla)",
+      "Consolas de audio analógicas y digitales", "Autoestereos (con y sin pantalla)", "Amplificadores Clase AB", "Amplificadores Clase D",
       "Potencias de audio para auto", "Parlantes y bafles potenciados (con y sin batería)",
     ],
     equipos: [
-      "Amplificadores de audio profesionales", "Consolas de audio analógicas y digitales",
+      "Procesadores DSP", "Consolas DMX", 
       "Barras de sonido", "Equipos de música y minicomponentes", "Proyectores DLP",
       "Proyectores convencionales", "Escaladores de video", "Cabezales móviles de iluminación",
     ],
-    marcas: ["JBL", "Bose", "Samsung", "Yamaha", "Behringer", "Klipsch", "Technics", "Synq", "RCF", "Epson", "LG", "Optoma"],
+    marcas: ["JBL", "Bose", "Soundcraft","Yamaha", "Behringer", "Klipsch", "Technics", "Synq", "RCF", "Epson", "LG", "Optoma"],
   },
   {
     id: "industrial",
     nombre: "Industrial y control",
     corto: "Industrial",
-    imagen: "images/rubros/industrial.jpg",
-    intro: "Lo que detiene una línea de producción se repara, no se reemplaza.",
+    imagen: "images/rubros/industrial.jpeg",
+    intro: "Reparación electrónica de potencia y control para líneas de producción y maquinaria industrial.",
     especialidad: [
-      "Variadores de frecuencia", "Arranques suaves", "Fuentes industriales", "Drivers de motores de corriente continua",
+      "Variadores de frecuencia", "Arranques suaves", "Fuentes industriales", "Drivers de motores CC",
     ],
     equipos: [
       "PLC", "Pantallas HMI", "Drivers de servomotores", "Placas de generadores", "Controladores ComAp",
@@ -138,12 +141,12 @@ const RUBROS = [
     id: "energia",
     nombre: "Energía",
     corto: "Energía",
-    imagen: "images/rubros/energia.jpg",
-    intro: "Respaldo, estabilización e inversión: todo lo que está entre la red y tus equipos.",
+    imagen: "images/rubros/energia.jpeg",
+    intro: "Servicio tecnico sobre equipos de respaldo, estabilización y conversión de energía para instalaciones electricas.",
     especialidad: [],
     equipos: [
-      "UPS online", "Estabilizadores de tensión", "Inversores de voltaje 12 / 24 / 48 V a 220 V",
-      "Inversores solares", "Placas inverter en general",
+      "UPS Monofasica", "UPS Trifasica", "Estabilizadores de tensión", "Inversores de voltaje 12 / 24 / 48 V a 220 V",
+      "Inversores solares", "Placas inverter en general", "Inversores de Bombas solares", "Cargadores para autos eléctricos.", "Cargadores de batería industriales"
     ],
     marcas: ["APC", "Lyonn", "Eaton", "Polaris", "Growatt", "Goodwe", "Enertik", "TRV"],
   },
@@ -151,39 +154,42 @@ const RUBROS = [
     id: "movilidad",
     nombre: "Movilidad eléctrica",
     corto: "Movilidad",
-    imagen: "images/rubros/movilidad.jpg",
-    intro: "Del autoelevador del depósito al monopatín: electrónica de potencia y control.",
+    imagen: "images/rubros/movilidad.jpeg",
+    intro: "Diagnóstico y reparación de sistemas de tracción, control y carga en vehículos y equipos eléctricos.",
     especialidad: [],
     equipos: [
-      "Autoelevadores eléctricos", "Apiladores eléctricos", "Monopatines eléctricos", "Hoverboards",
+      "Autoelevadores eléctricos", "Apiladores eléctricos", "Monopatines eléctricos", "Hoverboards", "Cuatriciclos Electricos", "Scanners automotrices",
+      "Bicicletas electricas", "Carros de golf electricos",
     ],
-    marcas: ["Hangcha"],
+    marcas: ["Hangcha", "Lusqtoff", "Foston", "Autel", "Launch"],
   },
   {
     id: "instrumentacion",
     nombre: "Instrumentación y laboratorio",
     corto: "Laboratorio",
-    imagen: "images/rubros/instrumentacion.jpg",
-    intro: "Equipos que tienen que medir bien: reparación y calibración con trazabilidad.",
+    imagen: "images/rubros/instrumentacion.jpeg",
+    intro: "Reparación y calibración de instrumental de medición y equipamiento de laboratorio, con informe de resultados.",
     especialidad: [
-      "Estufas esterilizadoras", "Agitadores magnéticos", "Balanzas analíticas y de laboratorio",
+      "Estufas esterilizadoras", "Agitadores magnéticos", "Balanzas analíticas y de laboratorio", "Baños Termostaticos",
+      "Dataloggers",
     ],
     equipos: [
       "Medidores de pH y temperatura (calibración y reparación)", "Telurímetros", "Teodolitos",
-      "Antenas y receptores GNSS", "Contadoras de billetes", "Scanners automotrices",
+      "Antenas y receptores GNSS", "Bombas de vacio",
     ],
-    marcas: ["South", "Topcon", "Leica", "Faeta", "Denimed", "CEM", "Autel", "Launch"],
+    marcas: ["South", "Topcon", "Leica", "Faeta", "Denimed", "CEM"],
   },
   {
     id: "biomedica",
     nombre: "Biomédica, kinesiología y estética",
     corto: "Biomédica",
-    imagen: "images/rubros/biomedica.jpg",
-    intro: "Mantenimiento y reparación para consultorios, gimnasios y centros de estética.",
+    imagen: "images/rubros/biomedica.jpeg",
+    intro: "Mantenimiento y reparación de equipamiento para centros de salud, rehabilitación y estética.",
     especialidad: [],
     equipos: [
       "Monitores multiparamétricos", "Cintas de correr", "Bicicletas ergométricas", "Cabinas de ozono",
-      "Equipos de magnetoterapia", "Equipos de criolipólisis", "Camillas de quirófano",
+      "Equipos de magnetoterapia", "Equipos de criolipólisis", "Camillas electricas", "Sillones odontologicos",
+      "Concentradores de oxigeno"
     ],
     marcas: [],
   },
@@ -191,17 +197,17 @@ const RUBROS = [
     id: "hogar",
     nombre: "Hogar y comercial",
     corto: "Hogar",
-    imagen: "images/rubros/hogar.jpg",
-    intro: "La placa de tu aire, tu horno o tu robot aspirador tiene arreglo. Casi siempre.",
+    imagen: "images/rubros/hogar.jpeg",
+    intro: "Reparación de placas electrónicas y sistemas de control en electrodomésticos y equipamiento comercial.",
     especialidad: [
-      "Aires acondicionados (placas on/off e inverter)", "Microondas",
-      "Hornos eléctricos industriales y convectores comerciales",
+      "Aires acondicionados (placas on/off e inverter)", "Microondas", "Televisores LED", "Televisores LCD",
+      "Hornos eléctricos industriales", "Hornos convectores comerciales",
       "Anafes eléctricos vitrocerámicos e inductivos", "Aspiradoras robot",
     ],
     equipos: [
       "Climatizadores", "Placas de caldera", "Placas de heladera (inverter)", "Hornos eléctricos de hogar",
-      "Cafeteras", "Freidoras de aire", "Robots limpiapiletas", "Frigobares", "Cavas de vino",
-      "Dispensadores de vino", "Fábricas de hielo",
+      "Cafeteras Expresso", "Freidoras de aire", "Robots limpiapiletas", "Frigobares", "Cavas de vino",
+      "Dispensadores de vino", "Fábricas de hielo", "Máquinas expendedoras", "Ablandadores de agua", 
     ],
     marcas: ["Samsung", "Whirlpool", "BGH", "LG", "Carrier", "Surrey", "Xiaomi", "Turboblender", "Smeg", "Longvie", "TST", "Peisa", "Nespresso", "Dolce Gusto", "Philips", "Oster"],
   },
