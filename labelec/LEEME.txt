@@ -1,0 +1,101 @@
+LABELEC — mini-sitio propio
+============================
+
+Copiá esta carpeta "labelec" ENTERA dentro de la carpeta raíz de tu sitio
+(al lado de index.html, elektron.html, datos.js, etc.).
+
+Queda así:
+  tu-sitio/
+    index.html
+    elektron.html
+    datos.js
+    images/
+    labelec/            <- esta carpeta
+      index.html
+      labelec.css
+      labelec.js
+      datos-labelec.js  <- EL ÚNICO ARCHIVO QUE EDITÁS
+      images/
+        logo-labelec.png
+        rubros/        (una foto por rubro: industria.jpg, biomedica.jpg, domestico.jpg, audio.jpg)
+        trabajos/      (fotos de trabajos)
+
+La página queda en:  labektron.com/labelec/
+
+En la home del grupo, cambiá el enlace de la tarjeta de LABELEC:
+  en datos.js, dentro de EMPRESAS_GRUPO, en el bloque de labelec:
+     pagina: "labelec.html",      ->   pagina: "labelec/index.html",
+
+Las imágenes que están ahora son PLACEHOLDERS (cuadrículas con texto).
+Reemplazalas por fotos reales con el MISMO nombre, o cambiá los nombres
+en datos-labelec.js.
+
+
+LOGOS DE MARCAS
+===============
+Guardá cada logo en PNG con fondo transparente, con este nombre exacto:
+  ABB                  -> images/marcas/abb.png
+  APC                  -> images/marcas/apc.png
+  Acer                 -> images/marcas/acer.png
+  Apple                -> images/marcas/apple.png
+  Asus                 -> images/marcas/asus.png
+  Autel                -> images/marcas/autel.png
+  BGH                  -> images/marcas/bgh.png
+  Behringer            -> images/marcas/behringer.png
+  Bose                 -> images/marcas/bose.png
+  Brother              -> images/marcas/brother.png
+  CEM                  -> images/marcas/cem.png
+  Carrier              -> images/marcas/carrier.png
+  Compaq               -> images/marcas/compaq.png
+  Dell                 -> images/marcas/dell.png
+  Denimed              -> images/marcas/denimed.png
+  Dolce Gusto          -> images/marcas/dolce-gusto.png
+  Eaton                -> images/marcas/eaton.png
+  Enertik              -> images/marcas/enertik.png
+  Epson                -> images/marcas/epson.png
+  Faeta                -> images/marcas/faeta.png
+  Goodwe               -> images/marcas/goodwe.png
+  Growatt              -> images/marcas/growatt.png
+  HP                   -> images/marcas/hp.png
+  Hangcha              -> images/marcas/hangcha.png
+  JBL                  -> images/marcas/jbl.png
+  Klipsch              -> images/marcas/klipsch.png
+  LG                   -> images/marcas/lg.png
+  Launch               -> images/marcas/launch.png
+  Leica                -> images/marcas/leica.png
+  Lenovo               -> images/marcas/lenovo.png
+  Longvie              -> images/marcas/longvie.png
+  Lyonn                -> images/marcas/lyonn.png
+  Mean Well            -> images/marcas/mean-well.png
+  MikroTik             -> images/marcas/mikrotik.png
+  Mimosa               -> images/marcas/mimosa.png
+  Nespresso            -> images/marcas/nespresso.png
+  Optoma               -> images/marcas/optoma.png
+  Oster                -> images/marcas/oster.png
+  Peisa                -> images/marcas/peisa.png
+  Philips              -> images/marcas/philips.png
+  Phoenix Contact      -> images/marcas/phoenix-contact.png
+  Polaris              -> images/marcas/polaris.png
+  Qixing               -> images/marcas/qixing.png
+  RCF                  -> images/marcas/rcf.png
+  Ricoh                -> images/marcas/ricoh.png
+  SEW                  -> images/marcas/sew.png
+  Samsung              -> images/marcas/samsung.png
+  Schneider Electric   -> images/marcas/schneider-electric.png
+  Shanggong            -> images/marcas/shanggong.png
+  Siemens              -> images/marcas/siemens.png
+  Smeg                 -> images/marcas/smeg.png
+  South                -> images/marcas/south.png
+  Surrey               -> images/marcas/surrey.png
+  Synq                 -> images/marcas/synq.png
+  TP-Link              -> images/marcas/tp-link.png
+  TRV                  -> images/marcas/trv.png
+  TST                  -> images/marcas/tst.png
+  Technics             -> images/marcas/technics.png
+  Topcon               -> images/marcas/topcon.png
+  Turboblender         -> images/marcas/turboblender.png
+  Ubiquiti             -> images/marcas/ubiquiti.png
+  Whirlpool            -> images/marcas/whirlpool.png
+  Xiaomi               -> images/marcas/xiaomi.png
+  Yamaha               -> images/marcas/yamaha.png
+Si falta el archivo, se muestra solo el nombre escrito. Los dos que hay ahora (asus, lenovo) son de prueba.

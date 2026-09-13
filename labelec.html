@@ -9,54 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="empresa.css">
-<style>
-  /* Sección de consulta de orden */
-  .orden-caja {
-    display: grid; grid-template-columns: 1.4fr auto; gap: 40px; align-items: center;
-    background: var(--tarjeta); border: 1px solid var(--borde);
-    border-radius: 18px; padding: 44px 46px;
-    position: relative; overflow: hidden;
-  }
-  /* Resplandor sutil con el color de Labelec */
-  .orden-caja::before {
-    content: ''; position: absolute; top: -40%; right: -10%;
-    width: 380px; height: 380px; border-radius: 50%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--acento) 22%, transparent), transparent 70%);
-    pointer-events: none;
-  }
-  .orden-texto { position: relative; z-index: 1; }
-  .orden-texto .titulo-seccion { margin-bottom: 12px; }
-  .orden-texto p { color: var(--texto-suave); max-width: 520px; font-size: 1.02rem; }
-  .orden-accion { position: relative; z-index: 1; }
-
-  /* Botón de consulta (adaptado al diseño de la web) */
-  .btn-orden {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--acento); color: #1a1206;
-    font-family: var(--display); font-weight: 700; font-size: 1rem;
-    padding: 16px 32px; border: 0; border-radius: 999px; cursor: pointer;
-    box-shadow: 0 8px 28px -8px var(--acento);
-    transition: transform .2s ease, box-shadow .2s ease;
-    white-space: nowrap;
-  }
-  .btn-orden:hover { transform: translateY(-2px); box-shadow: 0 12px 34px -8px var(--acento); }
-  /* Mientras el sistema carga, el botón viene "disabled": lo mostramos igual pero sin hover */
-  .btn-orden:disabled { cursor: wait; opacity: .75; transform: none; }
-  .btn-orden:disabled:hover { transform: none; box-shadow: 0 8px 28px -8px var(--acento); }
-  .btn-orden::before {
-    content: ''; width: 18px; height: 18px; flex-shrink: 0;
-    background: currentColor;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4-4'/%3E%3C/svg%3E") center/contain no-repeat;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4-4'/%3E%3C/svg%3E") center/contain no-repeat;
-  }
-  @media (max-width: 760px) {
-    .orden-caja { grid-template-columns: 1fr; gap: 26px; padding: 34px 28px; text-align: center; }
-    .orden-texto p { margin: 0 auto; }
-  }
-</style>
 </head>
-<!-- Script del sistema de gestión (GestioO) — hace funcionar el botón "Consultar orden" -->
-<script src="https://taller.gestioo.net/gwidget/consulta_web/js/gtaller_modal.init.js?v=4.2.2.32.4&lang=spanish" type="text/javascript"></script>
 <body data-empresa="labelec">
 
 <!-- HEADER -->
@@ -69,6 +22,7 @@
       <a href="index.html">Inicio</a>
       <a href="index.html#empresas">Las empresas</a>
       <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
       <a href="index.html#contacto">Contacto</a>
     </nav>
     <a href="index.html#contacto" class="btn" id="nav-boton">Contactanos</a>
@@ -90,39 +44,38 @@
   </div>
 </section>
 
-<!-- ===================== CONSULTA DE ORDEN (widget gestión) ===================== -->
-<section class="seccion orden-seccion" id="consulta-orden">
-  <div class="contenedor">
-    <div class="orden-caja">
-      <div class="orden-texto">
-        <span class="eyebrow">Seguimiento</span>
-        <h2 class="titulo-seccion">Consultá el estado de tu orden</h2>
-        <p>Seguí en tiempo real el estado de tu reparación o servicio. Ingresá el número de orden y conocé en qué etapa está tu equipo.</p>
-      </div>
-      <div class="orden-accion">
-        <!-- ▼▼▼ BOTÓN DEL SISTEMA DE GESTIÓN ▼▼▼
-             Este es el botón TAL CUAL lo da tu sistema (con su id, onclick y
-             el atributo "disabled" que el script activa solo al cargar).
-             Solo le sumé class="btn-orden" para que combine con la web.
-             Si cambiás de sistema, reemplazá este botón por el nuevo. -->
-        <button onclick="gtaller_modal();" id="gtaller_modal" disabled data-gt-ventana="1" class="btn-orden">
-          Consultar orden
-        </button>
-        <!-- ▲▲▲ FIN DEL BOTÓN ▲▲▲ -->
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- SERVICIOS -->
-<section class="seccion seccion--alt" id="servicios">
+<section class="seccion" id="servicios">
   <div class="contenedor">
     <span class="eyebrow">Qué hacemos</span>
     <h2 class="titulo-seccion">Nuestros servicios</h2>
     <p class="subtitulo-seccion" id="serv-sub"></p>
-    <div class="servicios-grid" id="servicios-grid"></div>
+    <div id="servicios-categorias"></div>
   </div>
 </section>
+
+<!-- TRABAJOS PROPIOS -->
+<section class="seccion" id="trabajos" style="background:var(--fondo-alt)">
+  <div class="contenedor">
+    <span class="eyebrow">Portfolio</span>
+    <h2 class="titulo-seccion">Trabajos realizados</h2>
+    <p class="subtitulo-seccion">Reparaciones y servicios ejecutados en cada rubro.</p>
+    <div class="trabajos-filtro" id="trabajos-filtro"></div>
+    <div class="trabajos-empresa-grid" id="trabajos-empresa-grid"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX de detalle de un trabajo -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox__caja">
+    <button class="lightbox__cerrar" aria-label="Cerrar">✕</button>
+    <img class="lightbox__img" src="" alt="">
+    <div class="lightbox__texto">
+      <h3 class="lightbox__titulo"></h3>
+      <p class="lightbox__desc"></p>
+    </div>
+  </div>
+</div>
 
 <!-- CTA -->
 <section class="cta" id="contacto">

@@ -209,7 +209,7 @@ const EMPRESAS_GRUPO = [
     nombre: "LABELEC",
     lema: "Diagnose, Repair & Maintain",
     icono: "images/labelec.png",
-    pagina: "labelec.html",
+    pagina: "labelec/index.html",
     color: "#ff8a3d",                     // color de acento (naranja Labelec)
 
     descripcion: "Especialista en electrónica y laboratorio: diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial.",
@@ -327,7 +327,7 @@ const TRABAJOS = [
     imagen: "images/trabajos/chiller.jpg",
     descripcion: "Fabricación de chiller industrial para línea de soplado.",
 
-    destacado: true,          // ⭐ aparece en el inicio
+    destacado: false,          // ⭐ aparece en el inicio
     orden: "2025-09",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
       cliente:   "Agua y Soda Ideal",
@@ -526,6 +526,37 @@ const TRABAJOS = [
       "images/trabajos/porotera-5.jpg",
       "images/trabajos/porotera-6.jpg",
       "images/trabajos/porotera-7.jpg",
+    ],
+  },
+  {
+    titulo: "Estacionamiento Fotovoltaico Comercial ON-GRID + Backup",
+    imagen: "images/trabajos/vissionary.jpg",
+    descripcion: "Idea, Diseño, Venta, Instalacion y puesta en marcha",
+
+    destacado: true,         // no aparece en el inicio, solo en trabajos.html
+    orden: "2026-09",
+    detalles: {
+      cliente:   "Vissionary Fitness GYM",
+      ubicacion: "Salta Capital, Argentina",
+      fecha:     "Septiembre 2026",
+      duracion:  "6 Dias",
+      tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
+    },
+    tecnicos: [
+      "Planteamiento de Idea, Dimensionamiento de parque y de estructura metalica.",
+      "Dimensionamiento de autonomia y potencia de salida.",
+      "Venta e Instalacion del sistema Fotovoltaico.",
+      "Diseño de estructura, calculo estructural y fabricacion.",
+      "Planteamiento y mejora de iluminacion y reinstalacion de camaras.",
+      "Potencia Fotovoltaica: 11,6 kWp",
+      "Potencia de Salida: 10kW",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/vissionary.jpg",
+      "images/trabajos/vissionary-1.jpg",
+      "images/trabajos/vissionary-2.jpg",
+      "images/trabajos/vissionary-3.jpg",
     ],
   },
 
