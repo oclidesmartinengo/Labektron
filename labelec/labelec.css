@@ -199,7 +199,7 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .ruta { list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 18px; position: relative; }
 /* riel: pasa por el centro de los hexágonos */
 .ruta::before { content: ""; position: absolute; left: var(--r0, 30px); width: var(--rw, 0); top: 32px; height: 2px; background: rgba(77,163,255,0.28); }
-.ruta__linea { position: absolute; left: var(--r0, 30px); top: 32px; height: 2px; width: 0; background: var(--cobre); box-shadow: 0 0 12px rgba(255,138,61,0.7); transition: width 4.6s cubic-bezier(.4,0,.3,1); }
+.ruta__linea { position: absolute; left: var(--r0, 30px); top: 32px; height: 2px; width: 0; background: var(--cobre); box-shadow: 0 0 12px rgba(255,138,61,0.7); transition: width 3.5s cubic-bezier(.4,0,.3,1); }
 .ruta.activa .ruta__linea { width: var(--rw, 0); }
 /* al reiniciar el ciclo la línea vuelve a cero sin animación */
 .ruta.reinicio .ruta__linea { transition: none; }
