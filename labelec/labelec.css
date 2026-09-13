@@ -65,7 +65,9 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 @media (prefers-reduced-motion: reduce) { .cometa, .pcb-fondo__svg--lit { display: none; } }
 
 /* ---------- BOTONES ---------- */
-.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 0.92rem; padding: 12px 22px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 0.92rem; padding: 12px 22px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .2s, border-color .2s, opacity .2s; }
+/* mientras el widget de Gestioo carga, su botón viene disabled */
+.btn[disabled] { opacity: 0.45; cursor: default; transform: none; }
 .btn:hover { transform: translateY(-1px); }
 .btn--cobre { background: var(--cobre); color: #1a1208; }
 .btn--cobre:hover { background: var(--cobre-2); }
@@ -199,7 +201,7 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .ruta { list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 18px; position: relative; }
 /* riel: pasa por el centro de los hexágonos */
 .ruta::before { content: ""; position: absolute; left: var(--r0, 30px); width: var(--rw, 0); top: 32px; height: 2px; background: rgba(77,163,255,0.28); }
-.ruta__linea { position: absolute; left: var(--r0, 30px); top: 32px; height: 2px; width: 0; background: var(--cobre); box-shadow: 0 0 12px rgba(255,138,61,0.7); transition: width 3.5s cubic-bezier(.4,0,.3,1); }
+.ruta__linea { position: absolute; left: var(--r0, 30px); top: 32px; height: 2px; width: 0; background: var(--cobre); box-shadow: 0 0 12px rgba(255,138,61,0.7); transition: width 4.6s cubic-bezier(.4,0,.3,1); }
 .ruta.activa .ruta__linea { width: var(--rw, 0); }
 /* al reiniciar el ciclo la línea vuelve a cero sin animación */
 .ruta.reinicio .ruta__linea { transition: none; }
@@ -290,6 +292,7 @@ body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-inde
 .contacto { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
 .contacto h2 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); font-weight: 800; margin-bottom: 12px; }
 .contacto__txt { color: var(--suave); margin-bottom: 26px; max-width: 46ch; }
+.contacto__acciones { display: flex; gap: 14px; flex-wrap: wrap; }
 .contacto__datos { display: grid; grid-template-columns: auto 1fr; gap: 12px 24px; font-size: 0.95rem; align-content: start; }
 .contacto__datos dt { color: var(--suave); }
 .contacto__datos a:hover { color: var(--cobre); }

@@ -161,7 +161,11 @@
     <div>
       <h2>Traé el equipo o <span class="azul">escribinos</span></h2>
       <p class="contacto__txt">Si ya hiciste el diagnóstico de arriba, mandanos el resultado por WhatsApp y te respondemos en el día.</p>
-      <a href="#" class="btn btn--cobre" id="contacto-wa" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+      <div class="contacto__acciones">
+        <a href="#" class="btn btn--cobre" id="contacto-wa" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+        <!-- Widget de Gestioo: consulta de estado de orden. No cambiar id, onclick ni data-gt-ventana -->
+        <button onclick="gtaller_modal();" id="gtaller_modal" disabled data-gt-ventana="1" class="btn btn--linea">Consultar mi orden</button>
+      </div>
     </div>
     <dl class="contacto__datos">
       <dt>Dirección</dt><dd id="c-direccion"></dd>
@@ -203,6 +207,9 @@
 <a id="wa-flotante" class="wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M"/></svg>
 </a>
+
+<!-- Widget de consulta de órdenes (Gestioo) -->
+<script src="https://taller.gestioo.net/gwidget/consulta_web/js/gtaller_modal.init.js?v=4.4.2.0.3&lang=spanish" type="text/javascript"></script>
 
 <script src="datos-labelec.js"></script>
 <script src="labelec.js"></script>
