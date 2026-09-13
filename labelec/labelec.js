@@ -13,7 +13,10 @@
   $('logo-grupo-pie').src = LABELEC.logoGrupo;
   $('logo-labelec').src = LABELEC.logo;
   $('lema').textContent = LABELEC.lema;
-  $('titular').textContent = LABELEC.titular;
+  {
+    const t = esc(LABELEC.titular), ac = LABELEC.titularAcento ? esc(LABELEC.titularAcento) : '';
+    $('titular').innerHTML = ac && t.includes(ac) ? t.replace(ac, `<span class="azul">${ac}</span>`) : t;
+  }
   $('intro').textContent = LABELEC.intro;
   $('datos').innerHTML = LABELEC.datos.map(d => `<li><b>${esc(d.valor)}</b><span>${esc(d.texto)}</span></li>`).join('');
   $('proceso-lista').innerHTML = `<span class="ruta__linea"></span><span class="ruta__pulso"></span>` +
@@ -141,7 +144,8 @@
     const total = (r) => (r.especialidad?.length || 0) + (r.equipos?.length || 0);
     lista.innerHTML = RUBROS.map((r, i) => `
       <button class="mosaico ${i === 0 ? 'activo' : ''}" role="tab" data-id="${r.id}" aria-selected="${i === 0}">
-        <img src="${esc(r.imagen)}" alt="" loading="lazy">
+        <img src="${esc(r.imagen)}" alt="" loading="lazy" decoding="async">
+        <span class="velo"></span>
         <span class="mosaico__in">
           <span class="mosaico__num">${String(i + 1).padStart(2, '0')}</span>
           <span><b>${esc(r.nombre)}</b><br><small>${total(r)} equipos</small></span>

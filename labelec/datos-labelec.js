@@ -21,7 +21,8 @@
 const LABELEC = {
   nombre: "LABELEC",
   lema: "Diagnose, Repair & Maintain",
-  titular: "Laboratorio de electrónica en Salta.",
+  titular: "Laboratorio de electrónica",
+  titularAcento: "electrónica",   // la parte del titular que va en azul (tiene que estar dentro del titular)
   // Frase que aparece debajo del titular, en el hero
   intro: "Diagnosticamos y reparamos a nivel componente: desde variadores industriales y equipos biomédicos hasta el lavarropas de tu casa o la consola de tu banda. Con informe técnico y garantía escrita en cada trabajo.",
 
@@ -37,9 +38,9 @@ const LABELEC = {
 
   // Los 3 datos rápidos que aparecen al costado del hero (podés cambiar los textos)
   datos: [
-    { valor: "+800", texto: "equipos reparados" },
+    { valor: "+7000", texto: "equipos reparados" },
     { valor: "48 h", texto: "diagnóstico promedio" },
-    { valor: "6 meses", texto: "garantía escrita" },
+    { valor: "3–6 meses", texto: "de garantía escrita" },
   ],
 
   // Cómo trabajamos (los pasos del proceso, en orden)
