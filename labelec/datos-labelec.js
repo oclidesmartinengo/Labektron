@@ -95,7 +95,6 @@ const RUBROS = [
     id: "redes",
     nombre: "Redes y conectividad",
     corto: "Redes",
-    nota: "Servicio tercerizado con técnicos asociados",
     imagen: "images/rubros/redes.jpeg",
     intro: "Diagnóstico y reparación de hardware de red para conectividad empresarial y enlaces de datos.",
     especialidad: [],
