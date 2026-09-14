@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- FIX-IMAGENES-V2 : versión con nitidez de fotos corregida -->
+<!-- FIX-IMAGENES-V5 : revertido el cambio de galeria que empeoraba -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRUPO LABEKTRON | Innovación y Tecnología para un Futuro Eficiente</title>
@@ -330,14 +330,11 @@
     transition: transform .3s, border-color .3s;
   }
   .card:hover { transform: translateY(-4px); border-color: var(--acento); }
-  .card__img { aspect-ratio: 4/3; overflow: hidden; background: var(--fondo-alt); }
+  .card__img { overflow: hidden; background: var(--fondo-alt); }
   .card__img img {
-    width: 100%; height: 100%; object-fit: cover; transition: transform .5s;
-    image-rendering: -webkit-optimize-contrast;   /* nitidez en Chrome al reescalar */
-    image-rendering: auto;
-    transform: translateZ(0);                      /* reescalado por GPU, más suave */
-    backface-visibility: hidden;
-    will-change: transform;
+    width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+    transform: translateZ(0); will-change: transform; backface-visibility: hidden;
+    transition: transform .4s;
   }
   .card:hover .card__img img { transform: scale(1.06); }
   .card__body { padding: 22px 24px 26px; }
@@ -487,13 +484,13 @@
   .sector__img { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
   .sector__img img {
     width: 100%; height: 100%; object-fit: cover;
-    transition: transform 6s ease, filter .3s ease;
-    filter: brightness(.66) saturate(1.05);
+    transition: transform 6s ease;
+    /* Sin filter: evita el pixelado al escalar (el oscurecido lo hace la capa de arriba) */
   }
   /* Overlay oscuro para legibilidad */
   .sector::before {
     content: ''; position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(180deg, rgba(10,15,26,0.30) 0%, rgba(10,15,26,0.72) 55%, rgba(10,15,26,0.94) 100%);
+    background: linear-gradient(180deg, rgba(10,15,26,0.55) 0%, rgba(10,15,26,0.82) 55%, rgba(10,15,26,0.96) 100%);
     transition: background .3s ease;
   }
   /* Líneas de circuito sutiles (abajo) */
@@ -553,8 +550,8 @@
     border-color: var(--acento);
     box-shadow: 0 24px 60px -26px rgba(0,194,255,0.55), 0 0 0 1px rgba(0,194,255,0.35);
   }
-  .sector:hover .sector__img img { transform: scale(1.12); filter: brightness(.8) saturate(1.15); }
-  .sector:hover::before { background: linear-gradient(180deg, rgba(10,15,26,0.28) 0%, rgba(10,15,26,0.80) 50%, rgba(10,15,26,0.96) 100%); }
+  .sector:hover .sector__img img { transform: scale(1.12); }
+  .sector:hover::before { background: linear-gradient(180deg, rgba(10,15,26,0.42) 0%, rgba(10,15,26,0.78) 50%, rgba(10,15,26,0.96) 100%); }
   .sector:hover .sector__circuito { opacity: .5; }
 
   /* Partículas/destellos muy sutiles */
@@ -635,7 +632,7 @@
   .mapa-marco iframe {
     display: block; width: 100%; height: 440px; border: 0;
     /* Integra el mapa (claro) con el tema oscuro sin que desentone */
-    filter: grayscale(0.3) contrast(1.05) brightness(0.92);
+    /* Sin filter: mantiene la nitidez del mapa */
   }
   /* Cinta inferior con la dirección y botón para abrir en Google Maps */
   .mapa-pie {
