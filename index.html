@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- FIX-IMAGENES-V2 : versión con nitidez de fotos corregida -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRUPO LABEKTRON | Innovación y Tecnología para un Futuro Eficiente</title>
@@ -332,9 +333,11 @@
   .card__img { aspect-ratio: 4/3; overflow: hidden; background: var(--fondo-alt); }
   .card__img img {
     width: 100%; height: 100%; object-fit: cover; transition: transform .5s;
+    image-rendering: -webkit-optimize-contrast;   /* nitidez en Chrome al reescalar */
     image-rendering: auto;
-    transform: translateZ(0);        /* fuerza aceleración por GPU: reescalado más suave */
+    transform: translateZ(0);                      /* reescalado por GPU, más suave */
     backface-visibility: hidden;
+    will-change: transform;
   }
   .card:hover .card__img img { transform: scale(1.06); }
   .card__body { padding: 22px 24px 26px; }
