@@ -564,7 +564,8 @@ const TRABAJOS = [
     },
     tecnicos: [
       "Puntos de medicion: 39 Puntos entre Pararayos, tableros y Sala de maquinas.",
-      "Equipo utilizado: CEM DT-6650. *Medicion Promedio: 1,67 Ohm.",
+      "Equipo utilizado: CEM DT-6650.",
+      "Medicion Promedio: 1,67 Ohm.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
