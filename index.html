@@ -122,6 +122,23 @@
   }
   .nav__logo { display: flex; align-items: center; gap: 12px; font-family: var(--display); font-weight: 800; letter-spacing: 0.02em; }
   .nav__logo img { height: 58px; width: auto; }
+  /* Recuadro claro detrás del logo para que resalte sobre el fondo oscuro.
+     Si cargás "logoClaro" en datos.js, el recuadro no se aplica.
+     👉 Ajustes: background = color del recuadro, padding = aire alrededor */
+  img.realzar {
+    background: linear-gradient(135deg, #ffffff, #e9eef7);
+    padding: 7px 16px; border-radius: 12px;
+    box-sizing: content-box; object-fit: contain;
+    border: 1px solid rgba(0,194,255,.45);
+    box-shadow: 0 4px 18px -6px rgba(0,0,0,.55), 0 0 18px -6px rgba(0,194,255,.55);
+    transition: box-shadow .3s, transform .3s;
+  }
+  .nav__logo img.realzar { height: 42px; }
+  .nav__logo:hover img.realzar {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px -6px rgba(0,0,0,.6), 0 0 26px -4px rgba(0,194,255,.75);
+  }
+  @media (max-width: 620px) { .nav__logo img.realzar { height: 34px; padding: 6px 12px; } }
   .nav__links { display: flex; gap: 34px; }
   .nav__links a { font-size: 0.92rem; color: var(--texto-suave); font-weight: 500; transition: color .2s; }
   .nav__links a:hover { color: var(--texto); }
@@ -146,17 +163,22 @@
     border-bottom: 1px solid var(--borde);
   }
   /* Foto de fondo a pantalla completa */
+  /* ===== FOTO DEL HERO =====
+     👉 "filter" controla brillo/saturación de la foto;
+        los rgba del velo controlan cuánto se oscurece cada zona. */
   .hero__fondo {
     position: absolute; inset: 0; z-index: 0;
-    background-size: cover; background-position: center right;
+    background-size: cover; background-position: center;
+    filter: saturate(1.3) brightness(1.12) contrast(1.06);
   }
-  /* Degradado oscuro encima: sólido a la izquierda (para leer el texto),
-     transparente a la derecha (para ver la foto) */
+  /* Velo: oscurece solo detrás del texto y funde arriba/abajo,
+     dejando la foto viva a ambos lados */
   .hero__velo {
     position: absolute; inset: 0; z-index: 1;
     background:
-      linear-gradient(90deg, var(--fondo) 0%, rgba(26,36,55,0.92) 34%, rgba(26,36,55,0.55) 62%, rgba(26,36,55,0.30) 100%),
-      linear-gradient(0deg, var(--fondo) 2%, transparent 30%);
+      linear-gradient(90deg, rgba(8,14,28,0.80) 0%, rgba(8,14,28,0.58) 30%, rgba(8,14,28,0.30) 48%, rgba(8,14,28,0.12) 66%, rgba(8,14,28,0.30) 100%),
+      linear-gradient(180deg, rgba(8,14,28,0.55) 0%, transparent 22%),
+      linear-gradient(0deg, rgba(8,14,28,0.92) 0%, transparent 34%);
   }
   .hero__glow {
     position: absolute; inset: 0; z-index: 1;
@@ -208,13 +230,24 @@
   .hero h1 {
     font-size: clamp(2.2rem, 4.6vw, 3.8rem);
     font-weight: 800; letter-spacing: -0.03em; margin-bottom: 22px;
+    text-shadow: 0 2px 24px rgba(0,0,0,.45);
   }
-  .hero h1 .destaca {
+  .hero h1 .destaca--celeste { color: var(--acento); text-shadow: 0 0 28px rgba(0,194,255,.35); }
+  .hero h1 .destaca--naranja { color: var(--acento-2); text-shadow: 0 0 28px rgba(255,138,61,.35); }
+  .hero h1 .destaca--degradado {
     background: linear-gradient(100deg, var(--acento) 12%, #9fd4ee 46%, var(--acento-2) 92%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero p { font-size: clamp(1rem, 1.4vw, 1.15rem); color: var(--texto-suave); max-width: 460px; margin-bottom: 34px; }
+  .hero p { font-size: clamp(1rem, 1.4vw, 1.15rem); color: #d6deec; max-width: 500px; margin-bottom: 34px; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
   .hero__acciones { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero__acciones .btn { text-transform: uppercase; letter-spacing: .04em; font-size: .82rem; padding: 14px 24px; }
+  .hero__acciones .btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform .2s; }
+  .hero__acciones .btn:hover svg { transform: translateX(3px); }
+  .hero__acciones .btn--ghost { border-color: rgba(255,255,255,.55); background: rgba(8,14,28,.25); }
+  /* Eyebrow del hero: "GRUPO" blanco + "LABEKTRON" celeste + línea */
+  #hero-eyebrow { color: var(--texto); display: inline-flex; align-items: center; gap: 14px; }
+  #hero-eyebrow .ey-marca { color: var(--acento); margin-left: -8px; }
+  #hero-eyebrow::after { content: ''; width: 120px; height: 1px; background: linear-gradient(90deg, var(--acento), transparent); }
 
   /* --- Fila de valores --- */
   .hero__valores {
@@ -232,7 +265,7 @@
     margin-bottom: 14px; transition: border-color .3s, transform .3s;
   }
   .valor:hover .valor__ico { border-color: var(--acento); transform: translateY(-3px); }
-  .valor__ico svg { width: 20px; height: 20px; fill: none; stroke: var(--acento); stroke-width: 2; }
+  .valor__ico svg { width: 20px; height: 20px; fill: none; stroke: var(--acento); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .valor__txt {
     font-family: var(--display); font-size: .72rem; font-weight: 600;
     letter-spacing: .1em; text-transform: uppercase; color: var(--texto-suave); line-height: 1.6;
@@ -242,18 +275,23 @@
   /* --- Barra de estadísticas --- */
   .stats {
     position: relative; z-index: 2;
-    border-top: 1px solid var(--borde);
-    background: rgba(0,0,0,0.22); backdrop-filter: blur(2px);
+    border-top: 1px solid rgba(0,194,255,.18);
+    background: rgba(6,11,22,0.78); backdrop-filter: blur(6px);
   }
   .stats__cols { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center; padding: 30px 0; }
   .stats__nums { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .stat { padding: 0 24px; border-right: 1px solid var(--borde); }
+  .stat { padding: 0 22px; border-right: 1px solid var(--borde); display: flex; align-items: flex-start; gap: 14px; }
+  .stat__ico { flex: none; width: 36px; height: 36px; margin-top: 2px; }
+  .stat__ico svg { width: 100%; height: 100%; fill: none; stroke: var(--acento); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px rgba(0,194,255,.45)); transition: transform .3s; }
+  .stat:hover .stat__ico svg { transform: scale(1.1) rotate(-4deg); }
   .stat:first-child { padding-left: 0; }
   .stat:last-child { border-right: 0; padding-right: 0; }
-  .stat__n { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--acento); line-height: 1.1; }
+  .stat__n { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--texto); line-height: 1.1; }
   .stat__t { font-size: .7rem; letter-spacing: .09em; text-transform: uppercase; color: var(--texto-suave); margin-top: 5px; line-height: 1.5; }
-  .stats__frase { font-size: .95rem; color: var(--texto-suave); }
-  .stats__frase b { display: block; color: var(--acento); font-weight: 500; margin-top: 5px; }
+  .stats__frase { padding-left: 26px; border-left: 1px solid var(--borde); }
+  .stats__frase b { display: block; font-family: var(--display); font-size: 1.05rem; font-weight: 700; line-height: 1.35; color: var(--texto); }
+  .stats__frase b + b { color: var(--acento); }
+  .stats__frase p { margin: 10px 0 0; font-size: .86rem; color: var(--texto-suave); line-height: 1.55; }
 
   /* ===================== NUESTRA IDENTIDAD ===================== */
   .identidad-seccion { position: relative; overflow: hidden; }
@@ -706,7 +744,8 @@
   /* ===================== RESPONSIVE ===================== */
   @media (max-width: 980px) {
     .hero__fondo { background-position: center; }
-    .hero__velo { background: linear-gradient(0deg, var(--fondo) 8%, rgba(26,36,55,0.86) 55%, rgba(26,36,55,0.7) 100%); }
+    .hero__velo { background: linear-gradient(0deg, rgba(8,14,28,.95) 6%, rgba(8,14,28,0.72) 55%, rgba(8,14,28,0.55) 100%); }
+    .stats__frase { padding-left: 0; border-left: 0; }
     .hero__valores { max-width: 100%; }
     .stats__cols { grid-template-columns: 1fr; gap: 26px; }
   }
@@ -715,6 +754,10 @@
     .valor:nth-child(2) { border-right: 0; }
     .stats__nums { grid-template-columns: 1fr 1fr; gap: 24px 0; }
     .stat:nth-child(2) { border-right: 0; }
+    .stat { padding: 0 12px; gap: 10px; }
+    .stat:nth-child(odd), .valor:nth-child(odd) { padding-left: 0; }
+    .stat__ico { width: 28px; height: 28px; }
+    #hero-eyebrow::after { width: 50px; }
   }
   @media (max-width: 860px) {
     .identidad { grid-template-columns: 1fr; gap: 36px; }
@@ -729,9 +772,10 @@
       position: fixed; top: 92px; left: 0; right: 0;
       flex-direction: column; gap: 0;
       background: var(--fondo-alt); border-bottom: 1px solid var(--borde);
-      padding: 8px 0; transform: translateY(-120%); transition: transform .3s; z-index: 99;
+      padding: 8px 0; transform: translateY(calc(-100% - 100px)); visibility: hidden;
+      transition: transform .3s, visibility .3s; z-index: 99;
     }
-    .nav__links.abierto { transform: translateY(0); }
+    .nav__links.abierto { transform: translateY(0); visibility: visible; }
     .nav__links a { padding: 14px 24px; }
     .nav__toggle { display: block; }
     .nav .btn { display: none; }
@@ -800,7 +844,7 @@
       <p id="hero-desc"></p>
       <div class="hero__acciones">
         <a href="#trabajos" class="btn" id="hero-boton1"></a>
-        <a href="#contacto" class="btn btn--ghost" id="hero-boton2"></a>
+        <a href="#grupo" class="btn btn--ghost" id="hero-boton2"></a>
       </div>
     </div>
     <div class="hero__valores" id="hero-valores"></div>
@@ -986,15 +1030,31 @@
 function set(id, texto) { const el = document.getElementById(id); if (el) el.textContent = texto; }
 
 // --- Datos generales ---
-document.getElementById('nav-logo').src = EMPRESA.logo;
-document.getElementById('footer-logo').src = EMPRESA.logo;
-set('hero-eyebrow', EMPRESA.nombre);
-// Título: pinta con degradado las palabras indicadas en "destacarEnEslogan"
+// Logo: usa la versión clara si existe; si no, realza el logo normal
 (function() {
-  const d = EMPRESA.destacarEnEslogan;
+  const logo = EMPRESA.logoClaro || EMPRESA.logo;
+  ['nav-logo', 'footer-logo'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.src = logo;
+    if (!EMPRESA.logoClaro) el.classList.add('realzar');
+  });
+})();
+// Eyebrow: primera palabra en blanco, el resto en celeste
+(function() {
+  const [p, ...r] = EMPRESA.nombre.split(' ');
+  document.getElementById('hero-eyebrow').innerHTML = r.length ? `${p} <span class="ey-marca">${r.join(' ')}</span>` : p;
+})();
+// Título: colorea las palabras de "destacarEnEslogan"; "|" = salto de línea
+(function() {
+  let d = EMPRESA.destacarEnEslogan;
+  if (typeof d === 'string') d = [{ texto: d, color: 'degradado' }];
   let html = EMPRESA.eslogan;
-  if (d && html.includes(d)) html = html.replace(d, `<span class="destaca">${d}</span>`);
-  document.getElementById('hero-titulo').innerHTML = html;
+  (d || []).forEach(x => {
+    if (x.texto && html.includes(x.texto))
+      html = html.replace(x.texto, `<span class="destaca--${x.color || 'degradado'}">${x.texto}</span>`);
+  });
+  document.getElementById('hero-titulo').innerHTML = html.split('|').join('<br>');
 })();
 // Imagen del hero
 if (EMPRESA.imagenHero) document.getElementById('hero-fondo').style.backgroundImage = `url('${EMPRESA.imagenHero}')`;
@@ -1011,16 +1071,23 @@ if (EMPRESA.imagenHero) document.getElementById('hero-fondo').style.backgroundIm
   cont.innerHTML = html;
 })();
 
-// --- Los 4 valores del hero ---
-(function() {
-  const ICONOS = {
+// --- Íconos compartidos (valores del hero y estadísticas) ---
+const ICONOS = {
     rayo:      '<svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5z"/></svg>',
     grafico:   '<svg viewBox="0 0 24 24"><path d="M6 19V11M12 19V5M18 19v-6"/></svg>',
     escudo:    '<svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.3-3 8.3-7 9.5C8 20.3 5 16.3 5 12V6l7-3z"/></svg>',
     hoja:      '<svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-13 0 9-5 14-13 14H5v-1z"/><path d="M9 15c2-3 5-5 8-6"/></svg>',
-    engranaje: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6M18.4 18.4l-1.6-1.6M7.2 7.2L5.6 5.6"/></svg>',
+    engranaje: '<svg viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>',
     reloj:     '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-  };
+    chip:      '<svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 3v3M12 3v3M15 3v3M9 18v3M12 18v3M15 18v3M3 9h3M3 12h3M3 15h3M18 9h3M18 12h3M18 15h3"/></svg>',
+    solar:     '<svg viewBox="0 0 24 24"><path d="M4 21l2-9h12l2 9z"/><path d="M5 16.5h14M10 12l-1 9M14 12l1 9"/><circle cx="12" cy="5.5" r="2"/><path d="M12 1.5v1M8.5 5.5h-1M16.5 5.5h-1M9.4 2.9l.7.7M14.6 2.9l-.7.7"/></svg>',
+    fabrica:   '<svg viewBox="0 0 24 24"><path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/><path d="M7 17h2M11 17h2M15 17h2"/></svg>',
+    calendario:'<svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17h.01M12 17h.01"/></svg>',
+    edificio:  '<svg viewBox="0 0 24 24"><path d="M4 21V8l6-3v16M10 21V3l10 4v14M2 21h20"/><path d="M13 9h1M16 9h1M13 12h1M16 12h1M13 15h1M16 15h1M6.5 11h1M6.5 14h1"/></svg>',
+    rayoCirculo:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M13 6l-4.5 7H12l-1 5 4.5-7H12z"/></svg>',
+};
+// --- Los 4 valores del hero ---
+(function() {
   const cont = document.getElementById('hero-valores');
   if (!cont || typeof VALORES_HERO === 'undefined') return;
   cont.innerHTML = VALORES_HERO.map(v => `
@@ -1037,17 +1104,24 @@ if (EMPRESA.imagenHero) document.getElementById('hero-fondo').style.backgroundIm
   if (!ESTADISTICAS.length) { document.getElementById('stats').style.display = 'none'; return; }
   cont.innerHTML = ESTADISTICAS.map(s => `
     <div class="stat">
-      <div class="stat__n">${s.numero}</div>
-      <div class="stat__t">${s.texto}</div>
+      ${s.icono && ICONOS[s.icono] ? `<div class="stat__ico">${ICONOS[s.icono]}</div>` : ''}
+      <div>
+        <div class="stat__n">${s.numero}</div>
+        <div class="stat__t">${s.texto}</div>
+      </div>
     </div>`).join('');
   if (typeof FRASE_ESTADISTICAS !== 'undefined') {
+    const f = FRASE_ESTADISTICAS;
     document.getElementById('stats-frase').innerHTML =
-      FRASE_ESTADISTICAS.linea1 + '<b>' + FRASE_ESTADISTICAS.linea2 + '</b>';
+      `<b>${f.linea1 || ''}</b><b>${f.linea2 || ''}</b>` + (f.linea3 ? `<p>${f.linea3}</p>` : '');
   }
 })();
 set('hero-desc', EMPRESA.descripcionHero);
-set('hero-boton1', EMPRESA.botonHero1);
-set('hero-boton2', EMPRESA.botonHero2);
+(function() {
+  const flecha = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  document.getElementById('hero-boton1').innerHTML = EMPRESA.botonHero1 + flecha;
+  document.getElementById('hero-boton2').innerHTML = EMPRESA.botonHero2 + flecha;
+})();
 set('nav-boton', BOTON_CONTACTO);
 set('footer-copy', EMPRESA.footerCopyright);
 set('footer-nombre', EMPRESA.nombre);

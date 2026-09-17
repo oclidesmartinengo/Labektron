@@ -20,20 +20,28 @@
    ---------------------------------------------------------------------------- */
 const EMPRESA = {
   nombre: "GRUPO LABEKTRON",
-  eslogan: "Innovación y Tecnología para un Futuro Eficiente",
-  descripcionHero: "Soluciones integrales en ingeniería eléctrica, electrónica y energía fotovoltaica.",
+  // El símbolo | marca dónde se corta la línea del título
+  eslogan: "Ingeniería que conecta|energía y tecnología.",
+  descripcionHero: "Soluciones integrales en ingeniería eléctrica, electrónica, electromecánica y energía fotovoltaica.",
   logo: "images/logo.png",
+  // (Opcional) Versión del logo con letras claras para fondo oscuro.
+  // Si la exportás (ej. "images/logo-blanco.png"), ponela acá y se usa en menú y footer.
+  logoClaro: "",
 
   // Botones del inicio (hero)
-  botonHero1: "Ver trabajos",
-  botonHero2: "Hablemos",
+  botonHero1: "Ver proyectos",
+  botonHero2: "Conocé el grupo",
 
   // Imagen grande del hero (lado derecho)
   imagenHero: "images/hero.png",
 
-  // Las palabras del eslogan que se pintan con degradado celeste→naranja.
+  // Palabras del eslogan que se pintan de color.
   // Tienen que estar escritas igual que en el eslogan de arriba.
-  destacarEnEslogan: "Futuro Eficiente",
+  // color: "celeste", "naranja" o "degradado"
+  destacarEnEslogan: [
+    { texto: "energía",    color: "celeste" },
+    { texto: "tecnología", color: "naranja" },
+  ],
 
   // Contacto
   whatsapp: "5493875895447",           // Número con código de país, sin + ni espacios
@@ -52,31 +60,35 @@ const EMPRESA = {
 
 /* ----------------------------------------------------------------------------
    1.b VALORES DEL HERO (los 4 íconos debajo de los botones)
-   👉 "icono" elegí uno de: rayo, grafico, escudo, hoja, engranaje, reloj
+   👉 "icono" elegí uno de: rayo, grafico, escudo, hoja, engranaje, reloj,
+      chip, solar, fabrica, calendario, edificio, rayoCirculo
    ---------------------------------------------------------------------------- */
 const VALORES_HERO = [
-  { icono: "rayo",      linea1: "Innovación",  linea2: "constante" },
-  { icono: "grafico",   linea1: "Eficiencia",  linea2: "y calidad" },
-  { icono: "escudo",    linea1: "Confianza",   linea2: "y seguridad" },
-  { icono: "hoja",      linea1: "Compromiso",  linea2: "sostenible" },
+  { icono: "engranaje", linea1: "Ingeniería",  linea2: "electromecánica" },
+  { icono: "chip",      linea1: "Electrónica", linea2: "especializada" },
+  { icono: "solar",     linea1: "Energía",     linea2: "fotovoltaica" },
+  { icono: "fabrica",   linea1: "Soluciones",  linea2: "industriales" },
 ];
 
 
 /* ----------------------------------------------------------------------------
    1.c ESTADÍSTICAS (la barra de números debajo del hero)
    👉 Para sacar la barra entera, dejá la lista vacía así:  const ESTADISTICAS = [];
+   👉 "icono": mismos nombres que en VALORES_HERO
    ---------------------------------------------------------------------------- */
 const ESTADISTICAS = [
-  { numero: "+4",  texto: "Años de experiencia" },
-  { numero: "+70", texto: "Proyectos realizados" },
-  { numero: "2",    texto: "Empresas especializadas" },
-  { numero: "1",    texto: "Misma visión de futuro" },
+  { icono: "calendario",  numero: "+4",  texto: "Años de experiencia" },
+  { icono: "engranaje",   numero: "+70", texto: "Proyectos realizados" },
+  { icono: "edificio",    numero: "2",   texto: "Empresas especializadas" },
+  { icono: "rayoCirculo", numero: "3",   texto: "Áreas de ingeniería" },
 ];
 
-// Frase que aparece a la derecha de las estadísticas
+// Frase a la derecha de las estadísticas
+// linea1 = blanco · linea2 = celeste · linea3 = texto chico (puede quedar en "")
 const FRASE_ESTADISTICAS = {
-  linea1: "Dos especialidades. Un solo propósito:",
-  linea2: "Impulsar el desarrollo con tecnología y conocimiento.",
+  linea1: "Dos especialidades.",
+  linea2: "Un solo propósito.",
+  linea3: "Desarrollar soluciones tecnológicas para una industria más eficiente, segura y sostenible.",
 };
 
 
