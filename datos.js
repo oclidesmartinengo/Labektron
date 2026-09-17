@@ -268,7 +268,6 @@ const TRABAJOS = [
       ubicacion: "Las Lajitas, Salta, Argentina",
       fecha:     "Junio 2024",
       duracion:  "5 dias",
-      tecnicos:  "*Potencia instalada: 18 kWp en 40 paneles de 450Wp *Potencia de Salida: 20 kW con 4 inversores Growatt SPF5000 *Configuracion de Salida: Trifasica 380V. *Autonomia: 45kWh en 9 Baterias Growatt AXE",  // datos técnicos
     },
     tecnicos: [
       "Potencia instalada: 18 kWp en 40 paneles de 450Wp",
@@ -307,8 +306,7 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Julio 2024",
       duracion:  "1 mes",
-      tecnicos:  "*Dimensionamiento, diseño e instalacion electrica (conductores y protecciones). *Dimensionamiento e instalacion de sistema de Aire comprimido centralizado para todas las maquinas. *Instalacion de sistema de Aspiracion de aserrin. *Instalacion y medicion de Puesta a Tierra.",
-    },
+    },  
     tecnicos: [
       "Dimensionamiento, diseño e instalacion electrica (conductores y protecciones).",
       "Dimensionamiento e instalacion de sistema de Aire comprimido centralizado para todas las maquinas.",
@@ -334,7 +332,6 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Septiembre 2025",
       duracion:  "2 meses",
-      tecnicos:  "*Capacidad frigorífica: 10TR. *Intercambiador de placas DANFOSS. *Caudal de recirculacion 6000Lts/h.",
     },
     tecnicos: [
       "Capacidad frigorífica: 10TR.",
@@ -369,7 +366,6 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Diciembre 2024",
       duracion:  "3 meses",
-      tecnicos:  "*Capacidad frigorífica: 72TR. *Intercambio doble Refrigerante-Glicol y Glicol-Agua Carbonatada. *Sistema de Glicol de 1300 Lts. *Temperatura de trabajo -2°C.",
     },
     tecnicos: [
       "Capacidad frigorífica: 72TR.",
@@ -400,7 +396,6 @@ const TRABAJOS = [
       ubicacion: "Maimara, Jujuy, Argentina",
       fecha:     "Junio 2024",
       duracion:  "2 dias",
-      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp. *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
     },
     tecnicos: [
       "Potencia instalada: 5.4 kWp en 12 paneles de 450Wp.",
@@ -427,7 +422,6 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Noviembre 2024",
       duracion:  "5 Semanas",
-      tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
     },
     tecnicos: [
       "Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva.",
@@ -456,7 +450,6 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Septiembre 2025",
       duracion:  "1 Dia",
-      tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
     },
     tecnicos: [
       "Dimensionamiento de autonomia y potencia de salida.",
@@ -482,7 +475,6 @@ const TRABAJOS = [
       ubicacion: "Campo Quijano, Salta, Argentina",
       fecha:     "Marzo 2025",
       duracion:  "2 semanas",
-      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp. *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
     },
     tecnicos: [
       "Potencia instalada: 41 kWp en 72 paneles de 570Wp.",
@@ -508,7 +500,6 @@ const TRABAJOS = [
       ubicacion: "General Gûemes, Salta, Argentina",
       fecha:     "Abril 2024",
       duracion:  "4 semanas",
-      tecnicos:  "*Potencia instalada: 5.4 kWp en 12 paneles de 450Wp. *Potencia de Salida: 5 kW con 1 inversor Growatt SPF5000. *Configuracion de Salida: Monofasica 220V. *Autonomia: 15kWh en 2 Baterias Pylontech",  // datos técnicos
     },
     tecnicos: [
       "Canalizacion completa por bandejas perforadas.",
@@ -540,7 +531,6 @@ const TRABAJOS = [
       ubicacion: "Salta Capital, Argentina",
       fecha:     "Septiembre 2026",
       duracion:  "6 Dias",
-      tecnicos:  "*Dimensionamiento, diseño de planos electricos y ejecucion de instalacion electrica nueva. *Montaje de bandejas de canalizacion. *Armado de tableros con protecciones y conexiones de salida con fichas industriales Monofasicas y Trifasicas. *Armado de planos electricos aprobados para habilitacion municipal.",
     },
     tecnicos: [
       "Planteamiento de Idea, Dimensionamiento de parque y de estructura metalica.",
@@ -571,13 +561,10 @@ const TRABAJOS = [
       ubicacion: "San Antonio de los Cobres, Salta, Argentina",
       fecha:     "Agosto 2025",
       duracion:  "2 dias",
-      tecnicos:  "*Puntos de medicion: 39 Puntos entre Pararayos, tableros y Sala de maquinas. *Equipo utilizado: CEM DT-6650. *Medicion Promedio: 1,67 Ohm.",  // datos técnicos
     },
     tecnicos: [
-      "Canalizacion completa por bandejas perforadas.",
-      "Reubicacion de Tableros de comando y potencia.",
-      "Recableado completo.",
-      "Realizacion de planos electricos y repotencializacion de acometida.",
+      "Puntos de medicion: 39 Puntos entre Pararayos, tableros y Sala de maquinas.",
+      "Equipo utilizado: CEM DT-6650. *Medicion Promedio: 1,67 Ohm.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
     galeria: [
