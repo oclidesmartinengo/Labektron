@@ -159,16 +159,22 @@ const SECCIONES = {
     titulo: "Sectores de aplicación",
     subtitulo: "Soluciones a medida para cada industria.",
   },
+  // Esta sección muestra las oficinas Y el mapa, uno a cada lado de una
+  // línea divisoria. "tituloFotos" y "tituloMapa" son los títulos de cada lado.
   oficinas: {
     eyebrow: "Dónde estamos",
-    titulo: "Nuestras oficinas",
-    subtitulo: "",
+    titulo: "Vení a conocernos",
+    subtitulo: "Estamos en Salta Capital. Pasá por el taller o escribinos y coordinamos una visita.",
+    tituloFotos: "Nuestras instalaciones",
+    tituloMapa: "Cómo llegar",
   },
   contacto: {
     titulo: "¿Tenés un proyecto en mente?",
     subtitulo: "Escribinos y coordinemos una reunión. Te asesoramos sin compromiso.",
     boton: "Escribinos por WhatsApp",
   },
+  // El mapa se muestra dentro de la sección "oficinas".
+  // eyebrow/titulo/subtitulo ya no se usan; sí la dirección y el zoom.
   mapa: {
     eyebrow: "Cómo llegar",
     titulo: "Nuestra ubicación",
@@ -189,7 +195,31 @@ const SECCIONES = {
    Acá se define TODO lo que aparece, tanto en la tarjeta de la home como
    dentro de su página propia.
    ---------------------------------------------------------------------------- */
+/*  👉 El ORDEN de esta lista es el orden en que salen las tarjetas en la home.
+    Hoy: LABELEC a la izquierda, ELEKTRON a la derecha.  */
 const EMPRESAS_GRUPO = [
+  {
+    id: "labelec",
+    nombre: "LABELEC",
+    lema: "Diagnose, Repair & Maintain",
+    icono: "images/labelec.png",
+    pagina: "labelec/index.html",
+    color: "#ff8a3d",                     // color de acento (naranja Labelec)
+
+    descripcion: "Especialista en electrónica y laboratorio: diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial.",
+
+    heroImagen: "images/labelec-hero.jpg",
+    intro: "En LABELEC diagnosticamos, reparamos y mantenemos equipos electrónicos de todo tipo. Nuestro laboratorio abarca desde electrónica industrial y control de procesos hasta equipos biomédicos y electrónica de consumo, con precisión y trazabilidad en cada servicio.",
+
+    servicios: [
+      { titulo: "Reparación de Placas", texto: "Diagnóstico y reparación de placas electrónicas a nivel componente." },
+      { titulo: "Equipos Industriales", texto: "Reparación de variadores, drives, PLCs, HMIs y fuentes." },
+      { titulo: "Instrumentación y Control", texto: "Calibración y mantenimiento de instrumentos de medición y control." },
+      { titulo: "Equipos Biomédicos", texto: "Mantenimiento y reparación de equipamiento médico." },
+      { titulo: "Electrónica Automotriz", texto: "Reparación de módulos, audio y sistemas electrónicos vehiculares." },
+      { titulo: "Normalizaciones Técnicas", texto: "Puesta en norma y certificación de equipos e instalaciones." },
+    ],
+  },
   {
     // --- Identificación ---
     id: "elektron",                       // no cambiar (enlaza con elektron.html)
@@ -214,28 +244,6 @@ const EMPRESAS_GRUPO = [
       { titulo: "Automatización Industrial", texto: "PLCs, sistemas de control y optimización de procesos productivos." },
       { titulo: "Mantenimiento Industrial", texto: "Mantenimiento preventivo y correctivo de instalaciones eléctricas." },
       { titulo: "Eficiencia Energética", texto: "Estudios y soluciones para reducir el consumo y mejorar el rendimiento." },
-    ],
-  },
-  {
-    id: "labelec",
-    nombre: "LABELEC",
-    lema: "Diagnose, Repair & Maintain",
-    icono: "images/labelec.png",
-    pagina: "labelec/index.html",
-    color: "#ff8a3d",                     // color de acento (naranja Labelec)
-
-    descripcion: "Especialista en electrónica y laboratorio: diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial.",
-
-    heroImagen: "images/labelec-hero.jpg",
-    intro: "En LABELEC diagnosticamos, reparamos y mantenemos equipos electrónicos de todo tipo. Nuestro laboratorio abarca desde electrónica industrial y control de procesos hasta equipos biomédicos y electrónica de consumo, con precisión y trazabilidad en cada servicio.",
-
-    servicios: [
-      { titulo: "Reparación de Placas", texto: "Diagnóstico y reparación de placas electrónicas a nivel componente." },
-      { titulo: "Equipos Industriales", texto: "Reparación de variadores, drives, PLCs, HMIs y fuentes." },
-      { titulo: "Instrumentación y Control", texto: "Calibración y mantenimiento de instrumentos de medición y control." },
-      { titulo: "Equipos Biomédicos", texto: "Mantenimiento y reparación de equipamiento médico." },
-      { titulo: "Electrónica Automotriz", texto: "Reparación de módulos, audio y sistemas electrónicos vehiculares." },
-      { titulo: "Normalizaciones Técnicas", texto: "Puesta en norma y certificación de equipos e instalaciones." },
     ],
   },
 ];
@@ -703,8 +711,11 @@ const SECTORES_VALORES = [
    ---------------------------------------------------------------------------- */
 const OFICINAS = [
   {
-    ciudad: "Salta",
-    direccion: "Dirección de la oficina, Salta, Argentina",
+    ciudad: "Salta Capital",
+    // "descripcion" es la línea que se ve debajo del nombre (si la borrás, se
+    // muestra la dirección). La dirección exacta ya aparece al pie del mapa.
+    descripcion: "Taller de electrónica, laboratorio y oficina comercial.",
+    direccion: "10 de Octubre 985, Salta Capital, Argentina",
     // 👇 Podés poner 1, 3 o las fotos que quieras. Se muestran en un carrusel.
     imagenes: [
       "images/oficinas/salta.jpg",
