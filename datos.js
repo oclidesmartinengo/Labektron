@@ -559,6 +559,35 @@ const TRABAJOS = [
       "images/trabajos/vissionary-3.jpg",
     ],
   },
+  {
+    titulo: "Medicion de Puesta a Tierra - POSCO Argentina  ",
+    imagen: "images/trabajos/posco.jpg",
+    descripcion: "Medicion de PAT segun SRT900/15 en Pararayos y Tableros Electricos de Campamento y planta Industrial",
+
+    destacado: false,          // ⭐ aparece en el inicio
+    orden: "2025-08",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "POSCO Argentina",
+      ubicacion: "San Antonio de los Cobres, Salta, Argentina",
+      fecha:     "Agosto 2025",
+      duracion:  "2 dias",
+      tecnicos:  "*Puntos de medicion: 39 Puntos entre Pararayos, tableros y Sala de maquinas. *Equipo utilizado: CEM DT-6650. *Medicion Promedio: 1,67 Ohm.",  // datos técnicos
+    },
+    tecnicos: [
+      "Canalizacion completa por bandejas perforadas.",
+      "Reubicacion de Tableros de comando y potencia.",
+      "Recableado completo.",
+      "Realizacion de planos electricos y repotencializacion de acometida.",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+    galeria: [
+      "images/trabajos/posco.jpg",
+      "images/trabajos/posco-1.jpg",
+      "images/trabajos/posco-2.jpg",
+      "images/trabajos/posco-3.jpg",
+      "images/trabajos/posco-4.jpg",
+    ],
+  },
 
   // 👇 EJEMPLO — copiá este bloque completo para agregar un trabajo nuevo:
   // {
