@@ -122,11 +122,10 @@ const SECCIONES = {
     // La imagen que aparece al costado de este bloque:
     imagen: "images/identidad.png",
     // Párrafos de la identidad/sinergia. Cada texto entre comillas es un párrafo.
-    // Podés poner "negrita" al inicio de un párrafo con el campo "titulo".
+    // El primero sale más grande (bajada). Lo que hace cada empresa NO va acá:
+    // sale de las tarjetas de LABELEC y ELEKTRON, más abajo en la misma sección.
     parrafos: [
       { titulo: "", texto: "GRUPO LABEKTRON es una sociedad conformada por ELEKTRON y LABELEC, dos empresas especializadas en diferentes áreas de la ingeniería para ofrecer soluciones integrales en los sectores industrial, comercial y residencial." },
-      { titulo: "ELEKTRON:", texto: "Especialista en instalaciones electromecánicas y termomecánicas, con un enfoque en eficiencia energética, automatización y cumplimiento normativo." },
-      { titulo: "LABELEC:", texto: "Especialista en electrónica y laboratorio, brindando soluciones en diseño, mantenimiento y reparación de sistemas electrónicos, instrumentación y control industrial." },
       { titulo: "", texto: "La sinergia entre ELEKTRON y LABELEC nos permite abordar proyectos de manera integral, optimizando recursos y asegurando la mejor calidad en cada solución técnica." },
     ],
   },
