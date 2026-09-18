@@ -37,7 +37,8 @@
 <!-- Tipografías -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Sora = títulos · Inter = texto · Saira = tipografía tipo logo (marca) -->
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Saira:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   /* =========================================================================
@@ -54,6 +55,9 @@
     --acento:       #00c2ff;   /* celeste eléctrico (Elektron) */
     --acento-2:     #ff8a3d;   /* naranja (Labelec) */
     --display: 'Sora', sans-serif;
+    /* Tipografía tipo logo. Alternativas parecidas: 'Exo 2', 'Michroma', 'Orbitron'.
+       Si la cambiás, acordate de cambiarla también en el <link> de arriba. */
+    --marca: 'Saira', 'Sora', sans-serif;
     --body: 'Inter', sans-serif;
     --radio: 14px;
     --ancho: 1200px;
@@ -316,32 +320,76 @@
   .stats__frase p { margin: 10px 0 0; font-size: .86rem; color: var(--texto-suave); line-height: 1.55; }
 
   /* ===================== NUESTRA IDENTIDAD ===================== */
-  .identidad-seccion { position: relative; overflow: hidden; }
-  /* Foto fusionada a la derecha, difuminada hacia el fondo */
-  /* ===== IMAGEN DE LA SECCIÓN IDENTIDAD =====
-     👉 Para ajustarla, cambiá estos 3 valores:
-        - opacity     : qué tan visible es la foto (1 = full, .5 = media)
-        - width       : cuánto ocupa desde la derecha
-        - mask-image  : desde dónde empieza a difuminarse (el %) */
-  .identidad-seccion__fondo {
-    position: absolute; top: 0; right: 0; bottom: 0;
-    width: 52%;                 /* ancho de la foto (más chico = más a la derecha) */
-    opacity: .85;               /* visibilidad de la foto */
-    z-index: 0;
-    background-size: cover; background-position: center;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 42%);
-            mask-image: linear-gradient(90deg, transparent, #000 42%);
+  /* ===================== NUESTRA IDENTIDAD ===================== */
+  .identidad-seccion {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(75% 65% at 12% 0%, rgba(0,194,255,0.18), transparent 60%),
+      radial-gradient(65% 60% at 95% 95%, rgba(255,138,61,0.14), transparent 60%),
+      linear-gradient(155deg, #16294a 0%, #1e3c70 52%, #16294a 100%);
+    border-top: 1px solid rgba(0,194,255,0.22);
+    border-bottom: 1px solid rgba(0,194,255,0.22);
   }
-  .identidad-seccion__velo {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(90deg, var(--fondo) 30%, rgba(26,36,55,0.65) 48%, transparent 62%);
+  /* Trama fina de circuito, apenas visible */
+  .identidad-seccion__trama {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
+    background-image:
+      linear-gradient(rgba(0,194,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,194,255,0.07) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(75% 75% at 50% 40%, #000, transparent 85%);
+            mask-image: radial-gradient(75% 75% at 50% 40%, #000, transparent 85%);
   }
-  .identidad { position: relative; z-index: 2; max-width: 620px; }
-  .identidad__linea { width: 72px; height: 4px; border-radius: 4px; background: var(--acento); margin: 4px 0 28px; }
-  .identidad__texto .titulo-seccion { margin-bottom: 8px; }
-  .identidad__texto p { color: var(--texto-suave); margin-bottom: 20px; font-size: 1.02rem; line-height: 1.75; }
-  .identidad__texto p:last-child { margin-bottom: 0; }
-  .identidad__texto p b { color: var(--texto); font-weight: 700; }
+  .identidad {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center;
+  }
+  /* Título con la tipografía del logo: "GRUPO" chico arriba, la marca grande */
+  .marca { font-family: var(--marca); line-height: 1; }
+  .marca__pre {
+    display: block; font-size: clamp(.8rem, 1.2vw, .95rem); font-weight: 600;
+    letter-spacing: .5em; text-indent: .5em; text-transform: uppercase; color: var(--texto-suave); margin-bottom: 10px;
+  }
+  .marca__nombre {
+    display: block; font-size: clamp(2.2rem, 4.6vw, 3.4rem); font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--texto);
+    text-shadow: 0 0 34px rgba(0,194,255,0.28);
+  }
+  .identidad__linea {
+    width: 96px; height: 4px; border-radius: 4px; margin: 20px 0 28px;
+    background: linear-gradient(90deg, var(--acento), var(--acento-2));
+    box-shadow: 0 0 18px -2px var(--acento);
+  }
+  .identidad__lead { color: var(--texto); font-size: 1.1rem; line-height: 1.7; margin-bottom: 26px; }
+  .identidad__texto p { color: var(--texto-suave); font-size: 1rem; line-height: 1.75; margin-bottom: 0; }
+  /* Las dos empresas, como fichas */
+  .identidad__fichas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 26px; }
+  .ficha {
+    background: rgba(8,18,38,0.45); border: 1px solid var(--borde);
+    border-left: 3px solid var(--acento); border-radius: 12px; padding: 18px 20px;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .ficha:nth-child(2) { border-left-color: var(--acento-2); }
+  .ficha:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -26px var(--acento); }
+  .ficha:nth-child(2):hover { box-shadow: 0 16px 40px -26px var(--acento-2); }
+  .ficha__nombre {
+    font-family: var(--marca); font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    font-size: .92rem; color: var(--acento); margin-bottom: 8px;
+  }
+  .ficha:nth-child(2) .ficha__nombre { color: var(--acento-2); }
+  .ficha p { font-size: .93rem; line-height: 1.6; }
+  /* Foto en marco, sin difuminados hacia el texto */
+  .identidad__media { position: relative; }
+  .identidad__foto {
+    aspect-ratio: 4/3; border-radius: 18px; border: 1px solid var(--borde);
+    background-size: cover; background-position: center; background-color: #0b1526;
+    box-shadow: 0 30px 70px -34px rgba(0,0,0,0.9), 0 0 42px -22px var(--acento);
+  }
+  /* Marco celeste desplazado, detalle de diseño */
+  .identidad__marco {
+    position: absolute; inset: 18px -18px -18px 18px; z-index: -1;
+    border: 1px solid rgba(0,194,255,0.45); border-radius: 18px; pointer-events: none;
+  }
 
   /* ===================== NUESTRAS EMPRESAS (tarjetas) ===================== */
   .empresas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
@@ -768,8 +816,10 @@
     .ubicacion-grid::after { display: none; }
     .mapa-marco iframe { min-height: 300px; }
   }
-  .mapa-pie__dir { display: flex; align-items: center; gap: 12px; color: var(--texto); font-size: 0.98rem; }
-  .mapa-pie__dir svg { width: 20px; height: 20px; fill: none; stroke: var(--acento); stroke-width: 2; flex-shrink: 0; }
+  .mapa-pie__datos { display: grid; gap: 8px; }
+  .mapa-pie__dato { display: flex; align-items: center; gap: 10px; color: var(--texto); font-size: 0.95rem; }
+  .mapa-pie__dato svg { width: 19px; height: 19px; flex: none; fill: none; stroke: var(--acento); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  #mapa-horario-fila { color: var(--texto-suave); }
 
   /* ===================== FOOTER ===================== */
   .site-footer {
@@ -851,8 +901,10 @@
     #hero-eyebrow::after { width: 50px; }
   }
   @media (max-width: 860px) {
-    .identidad { grid-template-columns: 1fr; gap: 36px; }
+    .identidad { grid-template-columns: 1fr; gap: 40px; }
     .identidad__media { order: -1; }
+    .identidad__marco { display: none; }
+    .identidad__fichas { grid-template-columns: 1fr; }
     .empresas-grid { grid-template-columns: 1fr; }
     .sectores-grid { grid-template-columns: 1fr 1fr; }
     .sectores-valores { grid-template-columns: 1fr 1fr; }
@@ -963,15 +1015,18 @@
 
 <!-- ===================== NUESTRA IDENTIDAD ===================== -->
 <section class="seccion identidad-seccion" id="grupo">
-  <div class="identidad-seccion__fondo" id="identidad-fondo"></div>
-  <div class="identidad-seccion__velo"></div>
+  <div class="identidad-seccion__trama"></div>
   <div class="contenedor">
     <div class="identidad">
       <div class="identidad__texto">
         <span class="eyebrow" data-eyebrow="grupo"></span>
-        <h2 class="titulo-seccion" data-titulo="grupo"></h2>
+        <h2 class="marca" id="identidad-titulo"></h2>
         <div class="identidad__linea"></div>
         <div id="identidad-parrafos"></div>
+      </div>
+      <div class="identidad__media">
+        <div class="identidad__foto" id="identidad-fondo"></div>
+        <div class="identidad__marco"></div>
       </div>
     </div>
   </div>
@@ -1026,6 +1081,14 @@
   </div>
 </section>
 
+<section class="cta" id="contacto">
+  <div class="contenedor">
+    <h2 id="cta-titulo"></h2>
+    <p id="cta-subtitulo"></p>
+    <a id="cta-wa" class="btn" href="#" target="_blank" rel="noopener"></a>
+  </div>
+</section>
+
 <!-- ============ OFICINAS + UBICACIÓN (una sola sección) ============ -->
 <section class="seccion seccion--alt" id="oficinas">
   <div class="contenedor">
@@ -1049,9 +1112,15 @@
         <iframe id="mapa-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 title="Ubicación en Google Maps"></iframe>
         <div class="mapa-pie">
-          <div class="mapa-pie__dir">
-            <svg viewBox="0 0 24 24"><path d="M12 21s7-5.7 7-11a7 7 0 10-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <span id="mapa-direccion"></span>
+          <div class="mapa-pie__datos">
+            <div class="mapa-pie__dato">
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-5.7 7-11a7 7 0 10-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <span id="mapa-direccion"></span>
+            </div>
+            <div class="mapa-pie__dato" id="mapa-horario-fila">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
+              <span id="mapa-horario"></span>
+            </div>
           </div>
           <a id="mapa-boton" class="btn" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a>
         </div>
@@ -1062,14 +1131,6 @@
 </section>
 
 <!-- ===================== CONTACTO / CTA ===================== -->
-<section class="cta" id="contacto">
-  <div class="contenedor">
-    <h2 id="cta-titulo"></h2>
-    <p id="cta-subtitulo"></p>
-    <a id="cta-wa" class="btn" href="#" target="_blank" rel="noopener"></a>
-  </div>
-</section>
-
 <!-- ===================== FOOTER ===================== -->
 <footer class="site-footer">
   <div class="contenedor">
@@ -1279,6 +1340,9 @@ document.getElementById('wa-flotante').href = waLink;
     `https://maps.google.com/maps?q=${dir}&z=${m.zoom || 16}&output=embed`;
   // Texto de la dirección y botón "Abrir en Google Maps"
   set('mapa-direccion', m.direccion);
+  const fh = document.getElementById('mapa-horario-fila');
+  if (m.horario) document.getElementById('mapa-horario').textContent = m.horario;
+  else fh.style.display = 'none';
   document.getElementById('mapa-boton').href =
     `https://www.google.com/maps/search/?api=1&query=${dir}`;
 })();
@@ -1289,12 +1353,30 @@ function img(src, alt) {
            onerror="this.style.opacity=.25;this.alt='Falta: '+this.src">`;
 }
 
-// --- Nuestra identidad (párrafos + imagen) ---
-if (SECCIONES.grupo.imagen) document.getElementById('identidad-fondo').style.backgroundImage = `url('${SECCIONES.grupo.imagen}')`;
-document.getElementById('identidad-parrafos').innerHTML = SECCIONES.grupo.parrafos.map(p => {
-  const negrita = p.titulo ? `<b>${p.titulo}</b> ` : '';
-  return `<p>${negrita}${p.texto}</p>`;
-}).join('');
+// --- Nuestra identidad (título tipo logo + párrafos + fichas + foto) ---
+(function() {
+  const g = SECCIONES.grupo;
+  if (g.imagen) document.getElementById('identidad-fondo').style.backgroundImage = `url('${g.imagen}')`;
+
+  // Título: la primera palabra va chica arriba, el resto grande (como el logo)
+  const partes = (g.titulo || '').trim().split(' ');
+  const pre = partes.length > 1 ? partes.shift() : '';
+  document.getElementById('identidad-titulo').innerHTML =
+    (pre ? `<span class="marca__pre">${pre}</span>` : '') +
+    `<span class="marca__nombre">${partes.join(' ')}</span>`;
+
+  // Los párrafos CON "titulo" salen como fichas (una por empresa);
+  // los que no tienen título salen como texto corrido.
+  const ps = g.parrafos || [];
+  const fichas = ps.filter(p => p.titulo);
+  const textos = ps.filter(p => !p.titulo);
+  let html = textos[0] ? `<p class="identidad__lead">${textos[0].texto}</p>` : '';
+  if (fichas.length) html += '<div class="identidad__fichas">' + fichas.map(f =>
+      `<div class="ficha"><div class="ficha__nombre">${f.titulo.replace(/:$/, '')}</div><p>${f.texto}</p></div>`
+    ).join('') + '</div>';
+  html += textos.slice(1).map(t => `<p>${t.texto}</p>`).join('');
+  document.getElementById('identidad-parrafos').innerHTML = html;
+})();
 
 // --- Nuestras empresas (tarjetas que llevan a su página propia) ---
 document.getElementById('grupo-grid').innerHTML = EMPRESAS_GRUPO.map(e => `

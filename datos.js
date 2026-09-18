@@ -182,6 +182,8 @@ const SECCIONES = {
     // 👇 Dirección que se muestra y se busca en el mapa.
     //    Cambiala por la real (calle, número, ciudad).
     direccion: "10 de Octubre 985, Salta Capital, Argentina",
+    // Horario que se muestra al pie del mapa (dejalo en "" para ocultarlo)
+    horario: "Lunes a viernes de 9 a 17 h, corrido",
     // Nivel de zoom del mapa: más alto = más cerca. Probá entre 14 y 18.
     zoom: 16,
   },
