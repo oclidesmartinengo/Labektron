@@ -213,80 +213,13 @@ const RUBROS = [
 ];
 
 
+
+
 /* ----------------------------------------------------------------------------
    3. TRABAJOS REALIZADOS (fotos)
-   👉 "rubro" tiene que ser uno de los id de arriba:
-      "industria" | "biomedica" | "domestico" | "audio"
-   👉 "fotos": la primera es la portada. Guardalas en labelec/images/trabajos/
-   👉 "orden": AAAA-MM, los más nuevos aparecen primero.
+   👉 Se mudaron a su propio archivo:  trabajos-labelec.js
+      Las fotos se arman solas desde las carpetas de labelec/images/trabajos/
    ---------------------------------------------------------------------------- */
-const TRABAJOS_LABELEC = [
-  {
-    titulo: "Variador de frecuencia 22 kW",
-    rubro: "industrial",
-    orden: "2024-05",
-    equipo: "Variador trifásico",
-    falla: "Módulo IGBT en corto",
-    solucion: "Reemplazo del módulo de potencia, driver y capacitores de bus. Prueba con motor a carga.",
-    fotos: ["images/trabajos/variador-1.jpg", "images/trabajos/variador-2.jpg"],
-  },
-  {
-    titulo: "Monitor multiparamétrico",
-    rubro: "biomedica",
-    orden: "2024-02",
-    equipo: "Monitor de signos vitales",
-    falla: "Sin lectura de SpO2 y NIBP",
-    solucion: "Reparación del módulo de oximetría, reemplazo de bomba neumática y calibración con simulador.",
-    fotos: ["images/trabajos/monitor-1.jpg"],
-  },
-  {
-    titulo: "Smart TV 55\" sin imagen",
-    rubro: "hogar",
-    orden: "2023-12",
-    equipo: "Smart TV LED",
-    falla: "Enciende pero sin imagen",
-    solucion: "Reparación de la fuente de backlight y reemplazo de tiras LED.",
-    fotos: ["images/trabajos/tv-1.jpg", "images/trabajos/tv-2.jpg"],
-  },
-  {
-    titulo: "Consola 24 canales",
-    rubro: "audio",
-    orden: "2023-10",
-    equipo: "Consola analógica",
-    falla: "Canales con ruido y faders sucios",
-    solucion: "Reemplazo de 24 faders, limpieza completa y recap de la fuente.",
-    fotos: ["images/trabajos/consola-1.jpg"],
-  },
-  {
-    titulo: "Placa de lavarropas",
-    rubro: "hogar",
-    orden: "2023-08",
-    equipo: "Lavarropas automático",
-    falla: "No centrifuga",
-    solucion: "Reemplazo de triac de motor y relé de la placa de control.",
-    fotos: ["images/trabajos/lavarropas-1.jpg"],
-  },
-  {
-    titulo: "Potencia 2 × 1200 W",
-    rubro: "audio",
-    orden: "2023-06",
-    equipo: "Amplificador de potencia",
-    falla: "Protección permanente",
-    solucion: "Reemplazo de transistores de salida en un canal y ajuste de bias.",
-    fotos: ["images/trabajos/potencia-1.jpg"],
-  },
-
-  // 👇 Copiá este bloque para sumar un trabajo:
-  // {
-  //   titulo: "Nombre corto",
-  //   rubro: "industrial",
-  //   orden: "2025-01",
-  //   equipo: "Qué equipo era",
-  //   falla: "Qué tenía",
-  //   solucion: "Qué se hizo",
-  //   fotos: ["images/trabajos/foto-1.jpg", "images/trabajos/foto-2.jpg"],
-  // },
-];
 
 
 /* ----------------------------------------------------------------------------

@@ -224,7 +224,22 @@
   /* ---------- Trabajos + lightbox ---------- */
   (function trabajos() {
     const grid = $('trabajos-grid'), filtros = $('trabajos-filtro');
-    const todos = [...TRABAJOS_LABELEC].sort((a, b) => (b.orden || '').localeCompare(a.orden || ''));
+
+    // Las fotos salen solas de labelec/images/trabajos/<carpeta>/ (ver fotos.js,
+    // que genera actualizar-fotos.py). Si un trabajo tiene "fotos" a mano, manda eso.
+    const catalogo = (typeof FOTOS !== 'undefined') ? FOTOS : {};
+    const fotosDe = (t) => (Array.isArray(t.fotos) && t.fotos.length)
+      ? t.fotos
+      : (catalogo[t.carpeta] || []);
+
+    const todos = TRABAJOS_LABELEC
+      .map(t => ({ ...t, fotos: fotosDe(t) }))
+      .filter(t => {
+        if (t.fotos.length) return true;
+        console.warn(`[labelec] "${t.titulo}": no encontré fotos para la carpeta "${t.carpeta}"`);
+        return false;
+      })
+      .sort((a, b) => (b.orden || '').localeCompare(a.orden || ''));
     let lista = todos, actual = 0, foto = 0;
 
     const conteo = (id) => todos.filter(t => t.rubro === id).length;

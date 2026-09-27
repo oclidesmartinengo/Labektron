@@ -14,11 +14,27 @@ Queda así:
       index.html
       labelec.css
       labelec.js
-      datos-labelec.js  <- EL ÚNICO ARCHIVO QUE EDITÁS
+      datos-labelec.js     <- rubros, marcas y cotizador
+      trabajos-labelec.js  <- LOS TRABAJOS DE LA GALERIA
+      fotos.js             <- AUTOMATICO, no editar
       images/
         logo-labelec.png
         rubros/        (una foto por rubro: industria.jpg, biomedica.jpg, domestico.jpg, audio.jpg)
-        trabajos/      (fotos de trabajos)
+        trabajos/      (una CARPETA por trabajo, con las fotos adentro)
+
+
+AGREGAR UN TRABAJO A LA GALERIA
+===============================
+1) Crea la carpeta con las fotos (todas las que quieras, con el nombre que
+   tengan; para elegir la tapa llamala "portada.jpg"):
+       originales/labelec/trabajos/NOMBRE-DEL-TRABAJO/
+   (esa carpeta "originales" esta en la raiz del sitio, no dentro de labelec)
+
+2) En trabajos-labelec.js copia el bloque de ejemplo del final y completa.
+   En "carpeta" va el nombre EXACTO de la carpeta del paso 1.
+
+3) Doble clic en ACTUALIZAR.bat (esta en la raiz del sitio).
+   Optimiza las fotos y arma solo el listado. No hay que contar fotos.
 
 La página queda en:  labektron.com/labelec/
 

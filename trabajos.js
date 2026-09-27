@@ -18,9 +18,25 @@
   // Ordena del más nuevo al más viejo (usa el campo "orden": "AAAA-MM")
   const porFecha = (a, b) => String(b.orden || '').localeCompare(String(a.orden || ''));
 
-  // Lista a mostrar. Guardamos el índice original para abrir el modal correcto.
-  const lista = TRABAJOS
-    .map((t, i) => ({ ...t, _i: i }))
+  // --- Fotos: salen solas de la carpeta indicada en "carpeta" ---------------
+  // fotos.js lo genera actualizar-fotos.py leyendo images/trabajos/<carpeta>/
+  // Si un trabajo todavía tiene "galeria" o "imagen" escritos a mano, se respetan.
+  const catalogo = (typeof FOTOS !== 'undefined') ? FOTOS : {};
+  function fotosDe(t) {
+    if (Array.isArray(t.galeria) && t.galeria.length) return t.galeria;
+    const c = catalogo[t.carpeta];
+    if (Array.isArray(c) && c.length) return c;
+    return t.imagen ? [t.imagen] : [];
+  }
+
+  // Lista normalizada. Guardamos el índice original para abrir el modal correcto.
+  const TODOS = TRABAJOS.map((t, i) => {
+    const fotos = fotosDe(t);
+    if (!fotos.length) console.warn(`[trabajos] "${t.titulo}": no encontré fotos para la carpeta "${t.carpeta}"`);
+    return { ...t, _i: i, galeria: fotos, imagen: t.imagen || fotos[0] || '' };
+  });
+
+  const lista = TODOS
     .filter(t => modo === 'destacados' ? t.destacado : true)
     .sort(porFecha);
 
@@ -33,9 +49,12 @@
       <span class="card__vermas">Ver proyecto
         <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2l-4.6-4.6z"/></svg>
       </span>` : '';
+    const portada = t.imagen
+      ? img(t.imagen, t.titulo)
+      : `<div class="card__sinfoto">Sin fotos todavía</div>`;
     return `
     <div class="card ${sinReveal ? '' : 'reveal'} ${clic ? 'card--clic' : ''}" ${clic ? `data-trabajo="${t._i}"` : ''}>
-      <div class="card__img">${img(t.imagen, t.titulo)}</div>
+      <div class="card__img">${portada}</div>
       <div class="card__body">
         <h3>${t.titulo}</h3>
         <p>${t.descripcion}</p>
@@ -178,9 +197,16 @@
     }
     document.getElementById('modal-detalles').innerHTML = detallesHTML + tecnicosHTML;
 
-    const fotos = (t.galeria && t.galeria.length) ? t.galeria : [t.imagen];
+    const fotos = (t.galeria && t.galeria.length) ? t.galeria : (t.imagen ? [t.imagen] : []);
     totalSlides = fotos.length;
     slideActual = 0;
+    if (!totalSlides) {                       // trabajo cargado sin fotos todavía
+      galeriaCont.className = 'galeria galeria--vacia';
+      galeriaCont.innerHTML = '';
+      modal.classList.add('abierto');
+      document.body.style.overflow = 'hidden';
+      return;
+    }
     const muchas = totalSlides > 8;
     galeriaCont.className = 'galeria' + (muchas ? ' galeria--muchas' : '');
     const slides = fotos.map(f => `<div class="galeria__slide">${img(f, t.titulo)}</div>`).join('');
@@ -213,7 +239,7 @@
 
   grid.addEventListener('click', e => {
     const card = e.target.closest('[data-trabajo]');
-    if (card) abrir(TRABAJOS[parseInt(card.dataset.trabajo)]);
+    if (card) abrir(TODOS[parseInt(card.dataset.trabajo)]);
   });
 
   document.getElementById('modal-cerrar').onclick = cerrar;
