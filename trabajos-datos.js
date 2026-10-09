@@ -231,7 +231,7 @@ const TRABAJOS = [
   },
   {
     titulo: "Estacionamiento Fotovoltaico Comercial ON-GRID + Backup",
-    carpeta: "vissionary",
+    carpeta: "vissionary-solar",
     descripcion: "Idea, Diseño, Venta, Instalacion y puesta en marcha",
 
     destacado: true,         // no aparece en el inicio, solo en trabajos.html
@@ -250,6 +250,29 @@ const TRABAJOS = [
       "Planteamiento y mejora de iluminacion y reinstalacion de camaras.",
       "Potencia Fotovoltaica: 11,6 kWp",
       "Potencia de Salida: 10kW",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  {
+    titulo: "Sistema Fotovoltaico Residencial ON-GRID",
+    carpeta: "fleming-solar",
+    descripcion: "Dimensionamiento, Venta, Instalacion y puesta en marcha",
+
+    destacado: false,         // no aparece en el inicio, solo en trabajos.html
+    orden: "2026-10",
+    detalles: {
+      cliente:   "Particular",
+      ubicacion: "San Lorenzo, Salta, Argentina",
+      fecha:     "Octubre 2026",
+      duracion:  "2 Dias",
+    },
+    tecnicos: [
+      "Dimensionamiento de parque e instalacion electrica.",
+      "Venta e Instalacion del sistema Fotovoltaico.",
+      "Canalizacion y cableado AC y DC.",
+      "Organizacion de tablero acometida y tablero de inyeccion.",
+      "Potencia Fotovoltaica: 6,6 kWp",
+      "Potencia de Salida: 5kW",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
   },
