@@ -276,7 +276,6 @@ const TRABAJOS = [
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
   },
-  C
   {
     titulo: "Medicion de Puesta a Tierra - POSCO Argentina  ",
     carpeta: "posco-pat2026",

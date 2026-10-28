@@ -166,7 +166,7 @@ const RUBROS = [
     id: "instrumentacion",
     nombre: "Instrumentación y laboratorio",
     corto: "Laboratorio",
-    imagen: "images/rubros/instrumentacion.jpeg",
+    imagen: "images/rubros/instrumentacion.jpg",
     intro: "Reparación y calibración de instrumental de medición y equipamiento de laboratorio, con informe de resultados.",
     especialidad: [
       "Estufas esterilizadoras", "Agitadores magnéticos", "Balanzas analíticas y de laboratorio", "Baños Termostaticos",
