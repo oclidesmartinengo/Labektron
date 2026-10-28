@@ -37,8 +37,8 @@
 
 const TRABAJOS = [
   {
-    titulo: "Parque Fotovoltaico OFF-GRID",
-    carpeta: "parque-fotovoltaico",
+    titulo: "Sistema Solar Growatt OFF-GRID",
+    carpeta: "espartina-solar",
     descripcion: "Diseño, venta e instalación de parque de generación solar para agro.",
 
     destacado: true,          // ⭐ aparece en el inicio
@@ -126,7 +126,7 @@ const TRABAJOS = [
 
   {
     titulo: "Sistema Fotovoltaico Domiciliario OFF-GRID",
-    carpeta: "maimara",
+    carpeta: "maimara-solar",
     descripcion: "Dimensionamiento, diseño, venta y puesta en marcha de sistema fotovoltaico para autoconsumo sin red electrica",
 
     destacado: true,          // ⭐ aparece en el inicio
@@ -168,7 +168,7 @@ const TRABAJOS = [
   },
   {
     titulo: "Sistema de Backup de energia Monofasico",
-    carpeta: "backup",
+    carpeta: "vissionary-backup",
     descripcion: "Diseño, acondicionamiento e instalacion",
 
     destacado: false,         // no aparece en el inicio, solo en trabajos.html
@@ -189,7 +189,7 @@ const TRABAJOS = [
   },
   {
     titulo: "Sistema Fotovoltaico Industrial ON-GRID",
-    carpeta: "tambo",
+    carpeta: "tambo-quijano",
     descripcion: "Diseño, direccion de obra y puesta en marcha de sistema fotovoltaico para reducir factura de red electrica",
 
     destacado: false,          // ⭐ aparece en el inicio
@@ -276,26 +276,150 @@ const TRABAJOS = [
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
   },
+  C
   {
     titulo: "Medicion de Puesta a Tierra - POSCO Argentina  ",
-    carpeta: "posco",
+    carpeta: "posco-pat2026",
     descripcion: "Medicion de PAT segun SRT900/15 en Pararayos y Tableros Electricos de Campamento y planta Industrial",
 
     destacado: false,          // ⭐ aparece en el inicio
-    orden: "2025-08",         // para ordenar cronológicamente (AAAA-MM)
+    orden: "2026-09",         // para ordenar cronológicamente (AAAA-MM)
     detalles: {
       cliente:   "POSCO Argentina",
       ubicacion: "San Antonio de los Cobres, Salta, Argentina",
-      fecha:     "Agosto 2025",
-      duracion:  "2 dias",
+      fecha:     "Septiembre 2026",
+      duracion:  "3 dias",
     },
     tecnicos: [
-      "Puntos de medicion: 39 Puntos entre Pararayos, tableros y Sala de maquinas.",
+      "Puntos de medicion: 32 Puntos entre Pararayos, tableros y Sala de maquinas.",
       "Equipo utilizado: CEM DT-6650.",
-      "Medicion Promedio: 1,67 Ohm.",
+      "Medicion Promedio: 1,83 Ohm.",
     ],
     descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
   },
+  {
+    titulo: "Reparacion Autoelevador Hangcha Electrico",
+    carpeta: "cocel-autoelevador",
+    descripcion: "Diagnostico y Reparacion de modulo de potencia de Traccion CURTIS y Bateria de Litio",
+
+    destacado: false,          // ⭐ aparece en el inicio
+    orden: "2026-08",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "COCEL S.A",
+      ubicacion: "Camino a la Isla, Salta, Argentina",
+      fecha:     "Agosto 2026",
+      duracion:  "18 dias",
+    },
+    tecnicos: [
+      "Autoelevador 100% Electrico.",
+      "Bateria de Litio de 80V y 32,5 kWh.",
+      "Celdas de Litio marca CATL.",
+      "Modulos de Traccion CURTIS.",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  {
+    titulo: "Reparacion Autolavado ISTOBAL - M'START",
+    carpeta: "dycar-autolavado",
+    descripcion: "Solucion de autolavado con problemas de comunicacion en PLC y problemas de sensado en finales de carrera inductivos.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2026-09",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "DYCAR Salta",
+      ubicacion: "Av. Paraguay, Salta, Argentina",
+      fecha:     "Septiembre 2026",
+      duracion:  "1 dia",
+    },
+    tecnicos: [
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  {
+    titulo: "Poste Solar con Camara y Starlink",
+    carpeta: "geomix-monitoreo",
+    descripcion: "Solucion de monitoreo para cantera de aridos con autoconsumo solar.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2026-10",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Geomix",
+      ubicacion: "Campo Quijano, Salta, Argentina",
+      fecha:     "Octubre 2026",
+      duracion:  "2 dias",
+    },
+    tecnicos: [
+      "Sistema fotovoltaico de 450 Wp.",
+      "Bateria de Gel 12V 100Ah.",
+      "Cargador MPPT de 40A EPEVER",
+      "Internet mediante Starlink Mini X.",
+      "Camara Dahua Fija + Domo PTZ",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  {
+    titulo: "Solucion Troqueladora Guangya",
+    carpeta: "morenoyvenier-troqueladora",
+    descripcion: "Solucion definitiva a problemas de accionamiento de ciclo automatico por final de carrera.",
+
+    destacado: false,          // ⭐ aparece en el inicio
+    orden: "2026-08",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Moreno y Venier",
+      ubicacion: "Parque Industrial, Salta, Argentina",
+      fecha:     "Agosto 2026",
+      duracion:  "2 dias",
+    },
+    tecnicos: [
+      "Sensor de posicion reemplazado de Final de carrera mecanico, por sensor Inductivo.",
+      "Modificacion de circuito electrico para utilizacion de sensor inductivo ya incorporado en la maquina para contador de troquelado.",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  {
+    titulo: "Armado de tablero Electrico",
+    carpeta: "riotinto-tablero",
+    descripcion: "Venta y Armado de tablero electrico principal y seccional para control de luces de campo.",
+
+    destacado: false,          // ⭐ aparece en el inicio
+    orden: "2026-10",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Rio Tinto",
+      ubicacion: "Proyecto Sales de Jujuy, Jujuy, Argentina",
+      fecha:     "Octubre 2026",
+      duracion:  "5 dias",
+    },
+    tecnicos: [
+      "Tablero de Iluminacion de 200A.",
+      "Proteccion y maniobra de 14 circuitos seccionales.",
+      "Utilizacion de Materiales 100% libre de Halogenos",
+      "Construido a medida bajo altisimos estandares de Rio Tinto.",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  {
+    titulo: "Reemplazo de Tablero Principal de Gimnasio",
+    carpeta: "vissionary-tablero",
+    descripcion: "Diseño, venta y Montaje de tablero principal para Gimnasio, incluyendo adecuacion electrica y sistema de Backup e Inyeccion solar para reduccion de consumo.",
+
+    destacado: true,          // ⭐ aparece en el inicio
+    orden: "2026-09",         // para ordenar cronológicamente (AAAA-MM)
+    detalles: {
+      cliente:   "Vissionary Fitness",
+      ubicacion: "Santa Ana, Salta, Argentina",
+      fecha:     "Septiembre 2026",
+      duracion:  "2 dias",
+    },
+    tecnicos: [
+      "Adecuacion de tablero electrico anteriormente subdimensionado.",
+      "Adecuacion de instalacion electrica y reinstalacion y emprolijado de sistema Fotovoltaico.",
+      "Implementacion de Sistema de backup de energia Trifasico y separacion de cargas esenciales.",
+      "Balanceo de Fases.",
+    ],
+    descripcionLarga: "Descripción completa de la obra. Reemplazá este texto por los detalles reales del proyecto.",
+  },
+  
+
 
   // 👇 EJEMPLO — copiá este bloque completo para agregar un trabajo nuevo:
   // {
