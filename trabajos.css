@@ -204,7 +204,9 @@ img.realzar {
   }
   /* Tira de miniaturas */
   .galeria__minis {
-    display: flex; gap: 8px; overflow-x: auto; padding: 10px 14px;
+    position: relative;   /* para que offsetLeft de cada mini sea relativo a la tira */
+    display: flex; gap: 8px; overflow-x: auto; overflow-y: hidden; padding: 10px 14px;
+    overscroll-behavior-x: contain;   /* el scroll de la tira no se propaga hacia arriba */
     background: #05070c; border-top: 1px solid var(--borde);
     scrollbar-width: thin; scrollbar-color: var(--borde) transparent;
   }

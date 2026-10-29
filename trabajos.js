@@ -167,12 +167,19 @@
     if (!pista) return;
     slideActual = (n + totalSlides) % totalSlides;
     pista.style.transform = `translateX(-${slideActual * 100}%)`;
-    // Miniatura activa (y la dejamos a la vista si la tira esta scrolleada)
-    galeriaCont.querySelectorAll('.galeria__mini').forEach((m, i) => {
-      const activa = i === slideActual;
-      m.classList.toggle('activo', activa);
-      if (activa) m.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    });
+    // Miniatura activa. OJO: no usar scrollIntoView, porque ademas de mover la
+    // tira scrollea los contenedores de arriba y corre las flechas de lugar.
+    const tira = galeriaCont.querySelector('.galeria__minis');
+    galeriaCont.querySelectorAll('.galeria__mini').forEach((m, i) =>
+      m.classList.toggle('activo', i === slideActual));
+    if (tira) {
+      const activa = tira.children[slideActual];
+      if (activa) tira.scrollTo({
+        left: activa.offsetLeft - (tira.clientWidth - activa.offsetWidth) / 2,
+        behavior: 'smooth',
+      });
+    }
+    galeriaCont.scrollLeft = 0;   // por las dudas, la galeria nunca se corre
     const cont = galeriaCont.querySelector('#gal-actual');
     if (cont) cont.textContent = slideActual + 1;
   }
@@ -255,12 +262,20 @@
     if (card) abrir(TODOS[parseInt(card.dataset.trabajo)]);
   });
 
+  // Red de seguridad: si algo intenta scrollear la galeria en horizontal
+  // (scrollIntoView, teclas, foco), la devolvemos a cero.
+  galeriaCont.addEventListener('scroll', () => {
+    if (galeriaCont.scrollLeft) galeriaCont.scrollLeft = 0;
+    if (galeriaCont.scrollTop) galeriaCont.scrollTop = 0;
+  });
+
   document.getElementById('modal-cerrar').onclick = cerrar;
   modal.addEventListener('click', e => { if (e.target === modal) cerrar(); });
   addEventListener('keydown', e => {
     if (!modal.classList.contains('abierto')) return;
     if (e.key === 'Escape') cerrar();
-    if (e.key === 'ArrowLeft' && totalSlides > 1) irA(slideActual - 1);
-    if (e.key === 'ArrowRight' && totalSlides > 1) irA(slideActual + 1);
+    // preventDefault: si no, el navegador ademas scrollea en horizontal
+    if (e.key === 'ArrowLeft' && totalSlides > 1) { e.preventDefault(); irA(slideActual - 1); }
+    if (e.key === 'ArrowRight' && totalSlides > 1) { e.preventDefault(); irA(slideActual + 1); }
   });
 })();

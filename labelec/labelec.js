@@ -298,8 +298,8 @@
     addEventListener('keydown', e => {
       if (!lb.classList.contains('abierto')) return;
       if (e.key === 'Escape') cerrar();
-      if (e.key === 'ArrowLeft') $('lb-prev').click();
-      if (e.key === 'ArrowRight') $('lb-next').click();
+      if (e.key === 'ArrowLeft') { e.preventDefault(); $('lb-prev').click(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); $('lb-next').click(); }
     });
   })();
 
