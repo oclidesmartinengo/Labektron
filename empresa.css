@@ -41,6 +41,24 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: r
 header.scrolled { border-bottom-color: var(--borde); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 92px; }
 .nav__logo img { height: 58px; width: auto; }
+/* Recuadro claro detras del logo, igual que en index.html.
+   Si cargas "logoClaro" en datos.js, el recuadro no se aplica. */
+img.realzar {
+  background: linear-gradient(135deg, #ffffff, #e9eef7);
+  padding: 7px 16px; border-radius: 12px;
+  box-sizing: content-box; object-fit: contain;
+  border: 1px solid rgba(0,194,255,.45);
+  box-shadow: 0 4px 18px -6px rgba(0,0,0,.55), 0 0 18px -6px rgba(0,194,255,.55);
+  transition: box-shadow .3s, transform .3s;
+}
+.nav__logo img.realzar { height: 42px; }
+.nav__logo:hover img.realzar {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px -6px rgba(0,0,0,.6), 0 0 26px -4px rgba(0,194,255,.75);
+}
+.empresa-footer img.realzar { height: 26px; padding: 5px 11px; border-radius: 9px; }
+@media (max-width: 620px) { .nav__logo img.realzar { height: 34px; padding: 6px 12px; } }
+
 .nav__links { display: flex; gap: 34px; }
 .nav__links a { font-size: 0.92rem; color: var(--texto-suave); font-weight: 500; transition: color .2s; }
 .nav__links a:hover { color: var(--texto); }

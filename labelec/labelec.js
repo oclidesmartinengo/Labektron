@@ -274,6 +274,8 @@
     const mostrarFoto = () => {
       const t = lista[actual];
       $('lb-img').src = t.fotos[foto]; $('lb-img').alt = t.titulo;
+      // fondo borroso con la misma foto (ver .lb__visor::before)
+      $('lb-img').parentElement.style.setProperty('--foto', `url('${t.fotos[foto]}')`);
       $('lb-contador').textContent = t.fotos.length > 1 ? `${foto + 1} / ${t.fotos.length}` : '';
       $('lb-prev').hidden = $('lb-next').hidden = t.fotos.length < 2;
     };

@@ -49,10 +49,10 @@ except ImportError:
 
 # ---------------------------------------------------------------
 # QUÉ SE OPTIMIZA Y DÓNDE VA
-#   (origen, destino, ancho maximo, calidad, ¿usa subcarpetas?)
+#   (origen, destino, lado mas largo en px, calidad, ¿usa subcarpetas?)
 # ---------------------------------------------------------------
 CARPETAS = [
-    ("originales/trabajos",          "images/trabajos",         2000, 88, True),
+    ("originales/trabajos",          "images/trabajos",         1800, 86, True),
     ("originales/clientes",          "images/clientes",          800, 92, False),
     ("originales/sectores",          "images/sectores",         1800, 86, False),
     ("originales/oficinas",          "images/oficinas",         2000, 88, False),
@@ -139,9 +139,15 @@ def optimizar(ruta_origen, destino_dir, ancho_max, calidad):
     ext_destino = ".png" if es_png else ".jpg"
     destino = os.path.join(destino_dir, nombre_limpio + ext_destino)
 
-    # Si ya está hecha y el original no cambió, no la volvemos a procesar
+    # Si ya está hecha, el original no cambió y respeta el tamaño máximo,
+    # no la volvemos a procesar.
     if os.path.exists(destino) and os.path.getmtime(destino) >= os.path.getmtime(ruta_origen):
-        return 0, 0, True
+        try:
+            with Image.open(destino) as hecha:
+                if max(hecha.width, hecha.height) <= ancho_max:
+                    return 0, 0, True
+        except Exception:
+            pass   # si no se puede leer, la rehacemos
 
     try:
         img = Image.open(ruta_origen)
@@ -150,9 +156,13 @@ def optimizar(ruta_origen, destino_dir, ancho_max, calidad):
         print(f"   [!] No pude abrir {nombre_archivo}: {e}")
         return 0, 0, False
 
-    if img.width > ancho_max:
-        alto = int(img.height * ancho_max / img.width)
-        img = img.resize((ancho_max, alto), Image.LANCZOS)
+    # Se limita el LADO MÁS LARGO, no solo el ancho: si no, una foto vertical
+    # de celular queda en 2000x3552 y pesa 2 MB.
+    lado_largo = max(img.width, img.height)
+    if lado_largo > ancho_max:
+        escala = ancho_max / lado_largo
+        img = img.resize((max(1, round(img.width * escala)),
+                          max(1, round(img.height * escala))), Image.LANCZOS)
 
     if es_png and img.mode in ("RGBA", "LA", "P"):
         img.save(destino, "PNG", optimize=True)
@@ -193,7 +203,7 @@ def optimizar_carpeta(origen, destino, ancho, calidad, con_subcarpetas):
     if not tareas:
         return 0, 0, 0, 0
 
-    print(f"\n[FOTOS] {origen}/   (max {ancho}px, calidad {calidad})")
+    print(f"\n[FOTOS] {origen}/   (lado mas largo {ancho}px, calidad {calidad})")
     for ruta, dest_dir in tareas:
         o, n, ya_estaba = optimizar(ruta, dest_dir, ancho, calidad)
         if ya_estaba:

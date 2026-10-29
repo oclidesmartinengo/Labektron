@@ -15,8 +15,16 @@
   const src = (id, ruta) => { const el = document.getElementById(id); if (el) el.src = ruta; };
 
   // Logos (usa el logo del grupo arriba, y el icono de la empresa en el hero)
-  src('nav-logo', EMPRESA.logo);
-  src('footer-logo', EMPRESA.logo);
+  // Logo del grupo igual que en el inicio (recuadro claro si no hay logoClaro)
+  (function () {
+    const logo = EMPRESA.logoClaro || EMPRESA.logo;
+    ['nav-logo', 'footer-logo'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.src = logo;
+      if (!EMPRESA.logoClaro) el.classList.add('realzar');
+    });
+  })();
   src('emp-logo', emp.icono);
   document.getElementById('emp-logo').alt = emp.nombre;
 

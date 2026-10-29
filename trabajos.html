@@ -171,8 +171,16 @@
   document.getElementById('pt-eyebrow').textContent = s.eyebrow;
   document.getElementById('pt-titulo').textContent = s.titulo;
   document.getElementById('pt-subtitulo').textContent = s.subtitulo;
-  document.getElementById('nav-logo').src = EMPRESA.logo;
-  document.getElementById('footer-logo').src = EMPRESA.logo;
+  // Logo igual que en el inicio: usa logoClaro si existe; si no, realza el normal
+  (function () {
+    const logo = EMPRESA.logoClaro || EMPRESA.logo;
+    ['nav-logo', 'footer-logo'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.src = logo;
+      if (!EMPRESA.logoClaro) el.classList.add('realzar');
+    });
+  })();
   document.getElementById('footer-nombre').textContent = EMPRESA.nombre;
   document.getElementById('footer-copy').textContent = EMPRESA.footerCopyright;
   document.getElementById('anio').textContent = new Date().getFullYear();

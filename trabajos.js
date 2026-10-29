@@ -167,8 +167,12 @@
     if (!pista) return;
     slideActual = (n + totalSlides) % totalSlides;
     pista.style.transform = `translateX(-${slideActual * 100}%)`;
-    galeriaCont.querySelectorAll('.galeria__punto').forEach((p, i) =>
-      p.classList.toggle('activo', i === slideActual));
+    // Miniatura activa (y la dejamos a la vista si la tira esta scrolleada)
+    galeriaCont.querySelectorAll('.galeria__mini').forEach((m, i) => {
+      const activa = i === slideActual;
+      m.classList.toggle('activo', activa);
+      if (activa) m.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
     const cont = galeriaCont.querySelector('#gal-actual');
     if (cont) cont.textContent = slideActual + 1;
   }
@@ -207,25 +211,34 @@
       document.body.style.overflow = 'hidden';
       return;
     }
-    const muchas = totalSlides > 8;
-    galeriaCont.className = 'galeria' + (muchas ? ' galeria--muchas' : '');
-    const slides = fotos.map(f => `<div class="galeria__slide">${img(f, t.titulo)}</div>`).join('');
-    const flechas = totalSlides > 1 ? `
+    galeriaCont.className = 'galeria';
+    // Cada slide lleva su propia foto como fondo borroso (--foto, ver trabajos.css)
+    const slides = fotos.map(f =>
+      `<div class="galeria__slide" style="--foto:url('${f}')">${img(f, t.titulo)}</div>`).join('');
+    const controles = totalSlides > 1 ? `
       <button class="galeria__flecha galeria__flecha--izq" aria-label="Anterior">‹</button>
       <button class="galeria__flecha galeria__flecha--der" aria-label="Siguiente">›</button>
-      <div class="galeria__contador"><span id="gal-actual">1</span> / ${totalSlides}</div>
-      <div class="galeria__puntos">
-        ${fotos.map((_, i) => `<span class="galeria__punto ${i===0?'activo':''}" data-punto="${i}"></span>`).join('')}
+      <div class="galeria__contador"><span id="gal-actual">1</span> / ${totalSlides}</div>` : '';
+    // Tira de miniaturas para saltar a cualquier foto
+    const minis = totalSlides > 1 ? `
+      <div class="galeria__minis">
+        ${fotos.map((f, i) => `
+          <button class="galeria__mini ${i === 0 ? 'activo' : ''}" data-mini="${i}" aria-label="Foto ${i + 1}">
+            <img src="${f}" alt="" loading="lazy" decoding="async">
+          </button>`).join('')}
       </div>` : '';
     galeriaCont.innerHTML = `
-      <div class="galeria__viewport"><div class="galeria__pista">${slides}</div></div>
-      ${flechas}`;
+      <div class="galeria__viewport">
+        <div class="galeria__pista">${slides}</div>
+        ${controles}
+      </div>
+      ${minis}`;
 
     if (totalSlides > 1) {
       galeriaCont.querySelector('.galeria__flecha--izq').onclick = () => irA(slideActual - 1);
       galeriaCont.querySelector('.galeria__flecha--der').onclick = () => irA(slideActual + 1);
-      galeriaCont.querySelectorAll('.galeria__punto').forEach(p =>
-        p.onclick = () => irA(parseInt(p.dataset.punto)));
+      galeriaCont.querySelectorAll('.galeria__mini').forEach(m =>
+        m.onclick = () => irA(parseInt(m.dataset.mini)));
     }
 
     modal.classList.add('abierto');

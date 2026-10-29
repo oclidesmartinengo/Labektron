@@ -41,6 +41,24 @@ header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: r
 header.scrolled { border-bottom-color: var(--borde); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 92px; }
 .nav__logo img { height: 58px; width: auto; }
+/* Recuadro claro detras del logo, igual que en index.html.
+   Si cargas "logoClaro" en datos.js, el recuadro no se aplica. */
+img.realzar {
+  background: linear-gradient(135deg, #ffffff, #e9eef7);
+  padding: 7px 16px; border-radius: 12px;
+  box-sizing: content-box; object-fit: contain;
+  border: 1px solid rgba(0,194,255,.45);
+  box-shadow: 0 4px 18px -6px rgba(0,0,0,.55), 0 0 18px -6px rgba(0,194,255,.55);
+  transition: box-shadow .3s, transform .3s;
+}
+.nav__logo img.realzar { height: 42px; }
+.nav__logo:hover img.realzar {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px -6px rgba(0,0,0,.6), 0 0 26px -4px rgba(0,194,255,.75);
+}
+.empresa-footer img.realzar { height: 26px; padding: 5px 11px; border-radius: 9px; }
+@media (max-width: 620px) { .nav__logo img.realzar { height: 34px; padding: 6px 12px; } }
+
 .nav__links { display: flex; gap: 34px; }
 .nav__links a { font-size: 0.92rem; color: var(--texto-suave); font-weight: 500; transition: color .2s; }
 .nav__links a:hover { color: var(--texto); }
@@ -164,11 +182,46 @@ header.scrolled { border-bottom-color: var(--borde); }
 
   /* Carrusel dentro del modal */
   .galeria { position: relative; background: #05070c; border-radius: 18px 18px 0 0; overflow: hidden; }
-  .galeria__viewport { aspect-ratio: 16/10; }
+  /* Alto fijo y responsivo: las fotos verticales se ven grandes sin empujar
+     el texto del modal fuera de la pantalla. */
+  .galeria__viewport { position: relative; height: clamp(280px, 56vh, 600px); }
   .galeria__pista { display: flex; height: 100%; transition: transform .4s ease; }
-  .galeria__slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-  /* "contain" muestra la foto ENTERA (no recorta). Ideal para fotos verticales. */
-  .galeria__slide img { width: 100%; height: 100%; object-fit: contain; }
+  .galeria__slide {
+    position: relative; min-width: 100%; height: 100%; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Relleno borroso con la misma foto: las verticales dejan de flotar en negro */
+  .galeria__slide::before {
+    content: ''; position: absolute; inset: -50px;
+    background-image: var(--foto); background-size: cover; background-position: center;
+    filter: blur(34px) brightness(.42) saturate(1.1);
+  }
+  /* La foto se ve SIEMPRE entera, nunca recortada */
+  .galeria__slide img {
+    position: relative; max-width: 100%; max-height: 100%;
+    width: auto; height: auto; object-fit: contain;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,.85);
+  }
+  /* Tira de miniaturas */
+  .galeria__minis {
+    display: flex; gap: 8px; overflow-x: auto; padding: 10px 14px;
+    background: #05070c; border-top: 1px solid var(--borde);
+    scrollbar-width: thin; scrollbar-color: var(--borde) transparent;
+  }
+  .galeria__minis::-webkit-scrollbar { height: 6px; }
+  .galeria__minis::-webkit-scrollbar-thumb { background: var(--borde); border-radius: 99px; }
+  .galeria__mini {
+    flex: 0 0 auto; width: 74px; height: 54px; padding: 0; background: none;
+    border: 2px solid transparent; border-radius: 8px; overflow: hidden;
+    cursor: pointer; opacity: .55; transition: opacity .2s, border-color .2s;
+  }
+  .galeria__mini img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .galeria__mini:hover { opacity: .9; }
+  .galeria__mini.activo { opacity: 1; border-color: var(--acento); }
+  @media (max-width: 620px) {
+    .galeria__viewport { height: clamp(240px, 48vh, 460px); }
+    .galeria__mini { width: 58px; height: 44px; }
+  }
   .galeria__flecha {
     position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
     width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer;
