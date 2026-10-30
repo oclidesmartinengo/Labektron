@@ -7,8 +7,17 @@
   const grid = document.getElementById('trabajos-grid');
   if (!grid) return;
 
-  // ¿Qué mostramos? "destacados" (inicio) o "todos" (página completa)
+  // ¿Qué mostramos?
+  //   data-modo="destacados" -> solo los marcados con destacado: true (inicio)
+  //   data-modo="solar"      -> solo los marcados con solar: true (energia-solar.html)
+  //   data-modo="todos"      -> todos (trabajos.html)
   const modo = grid.dataset.modo || 'todos';
+  const filtros = {
+    destacados: t => t.destacado,
+    solar:      t => t.solar,
+    todos:      () => true,
+  };
+  const pasaFiltro = filtros[modo] || filtros.todos;
 
   // Imagen con carga diferida
   const img = (src, alt) =>
@@ -36,9 +45,7 @@
     return { ...t, _i: i, galeria: fotos, imagen: t.imagen || fotos[0] || '' };
   });
 
-  const lista = TODOS
-    .filter(t => modo === 'destacados' ? t.destacado : true)
-    .sort(porFecha);
+  const lista = TODOS.filter(pasaFiltro).sort(porFecha);
 
   const tieneDetalle = t => (t.galeria && t.galeria.length) || t.descripcionLarga;
 

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energía Solar en Salta y el NOA | Grupo Labektron</title>
+<meta name="description" content="Sistemas fotovoltaicos on-grid, híbridos y off-grid en Salta, Jujuy, Tucumán, Catamarca y Santiago del Estero. Calculá la potencia, la batería y la inversión de tu sistema en 3 pasos.">
+<link rel="canonical" href="https://labektron.com/energia-solar.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Energía Solar en Salta y el NOA | Grupo Labektron">
+<meta property="og:description" content="Dimensioná tu sistema fotovoltaico y conocé la inversión aproximada en 3 pasos.">
+<meta property="og:url" content="https://labektron.com/energia-solar.html">
+<meta property="og:image" content="https://labektron.com/portada-redes.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="trabajos.css">
+<link rel="stylesheet" href="energia-solar.css">
+</head>
+<body>
+
+<header id="header">
+  <div class="contenedor nav">
+    <a href="index.html" class="nav__logo"><img id="nav-logo" src="" alt="Grupo Labektron"></a>
+    <nav class="nav__links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#empresas">Empresas</a>
+      <a href="trabajos.html">Proyectos</a>
+      <a href="energia-solar.html" class="activo">Energía Solar</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a href="#calculadora" class="btn">Calcular mi sistema</a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="sol-hero">
+  <div class="sol-hero__cielo"></div>
+  <div class="sol-hero__sol"></div>
+  <div class="sol-hero__rejilla"></div>
+  <div class="contenedor sol-hero__in">
+    <a href="index.html" class="volver">← Volver al inicio</a>
+    <span class="eyebrow">Energía fotovoltaica · NOA</span>
+    <h1 class="sol-hero__titulo">El sol que ya te llega,<br><span class="ac">convertido en energía.</span></h1>
+    <p class="sol-hero__bajada">
+      Diseñamos, vendemos e instalamos sistemas solares llave en mano para casas, comercios,
+      industria y zonas rurales. Desde el dimensionamiento hasta la puesta en marcha, con un
+      solo responsable técnico.
+    </p>
+    <div class="sol-hero__botones">
+      <a href="#calculadora" class="btn">Calcular mi sistema</a>
+      <a href="#proyectos" class="btn btn--linea">Ver proyectos reales</a>
+    </div>
+    <div class="sol-stats" id="sol-stats"></div>
+  </div>
+</section>
+
+<!-- ===================== CÓMO FUNCIONA ===================== -->
+<section class="seccion" id="como-funciona">
+  <div class="contenedor">
+    <span class="eyebrow reveal">Cómo funciona</span>
+    <h2 class="titulo-seccion reveal">Del techo al enchufe, en cuatro pasos</h2>
+    <p class="subtitulo-seccion reveal">
+      Un sistema fotovoltaico no tiene partes móviles ni mantenimiento diario. Esto es
+      todo lo que pasa mientras hay sol.
+    </p>
+    <div class="pasos">
+      <div class="paso reveal">
+        <div class="paso__num">01</div>
+        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8"/><g class="rayos"><path d="M24 4v7M24 37v7M4 24h7M37 24h7M10 10l5 5M33 33l5 5M38 10l-5 5M15 33l-5 5"/></g></svg>
+        <h3>Los paneles captan el sol</h3>
+        <p>Las celdas de silicio generan corriente continua apenas les llega luz. No necesitan calor: rinden incluso mejor con temperaturas frescas y cielo despejado.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso__num">02</div>
+        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="3"/><path d="M15 24h5l3-5 4 10 3-5h5"/></svg>
+        <h3>El inversor la convierte</h3>
+        <p>Transforma esa corriente continua en los 220 V alternos que usan tus equipos, y sincroniza con la red para que todo conviva sin saltos ni cortes.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso__num">03</div>
+        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="8" width="28" height="32" rx="4"/><path d="M19 4h10M17 20h14M17 28h14"/></svg>
+        <h3>Consumís o guardás</h3>
+        <p>La energía va primero a lo que estés usando en ese momento. Lo que sobra carga la batería, si el sistema la tiene.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso__num">04</div>
+        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v10M24 32v10M8 24h10M30 24h10"/><circle cx="24" cy="24" r="7"/><path d="M12 12l6 6M30 30l6 6"/></svg>
+        <h3>El excedente vuelve a la red</h3>
+        <p>En sistemas on-grid, lo que no consumís se inyecta y se descuenta de tu factura bajo el régimen de Generación Distribuida (Ley 27.424).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LAS 3 MODALIDADES ===================== -->
+<section class="seccion seccion--alt" id="modalidades">
+  <div class="contenedor">
+    <span class="eyebrow reveal">Tres caminos</span>
+    <h2 class="titulo-seccion reveal">¿Cuál de los tres necesitás?</h2>
+    <p class="subtitulo-seccion reveal">
+      La diferencia no es la calidad: es qué querés resolver. Esta tabla es la misma
+      conversación que tenemos en la primera visita.
+    </p>
+
+    <div class="modos">
+      <article class="modo reveal">
+        <div class="modo__cab">
+          <span class="modo__tag">Más económico</span>
+          <h3>On-grid</h3>
+          <p class="modo__sub">Conectado a la red</p>
+        </div>
+        <p class="modo__que">Trabaja en paralelo con EDESA. De día consumís lo que generás y el excedente se inyecta a la red, que te lo descuenta de la factura.</p>
+        <dl class="modo__ficha">
+          <dt>Ideal para</dt><dd>Casas y comercios con red estable que buscan bajar la factura</dd>
+          <dt>Si se corta la luz</dt><dd>El sistema se apaga por seguridad, igual que la red</dd>
+          <dt>Batería</dt><dd>No lleva</dd>
+          <dt>Inversión</dt><dd><span class="barra"><i style="width:40%"></i></span> La más baja</dd>
+        </dl>
+      </article>
+
+      <article class="modo modo--destacado reveal">
+        <div class="modo__cab">
+          <span class="modo__tag">El más elegido</span>
+          <h3>Híbrido</h3>
+          <p class="modo__sub">Paneles + batería + red</p>
+        </div>
+        <p class="modo__que">Prioriza tu propia energía y la batería, y deja la red como respaldo. Es la opción si además de ahorrar querés no quedarte sin luz.</p>
+        <dl class="modo__ficha">
+          <dt>Ideal para</dt><dd>Zonas con cortes frecuentes, o equipos que no pueden parar</dd>
+          <dt>Si se corta la luz</dt><dd>Los circuitos que elijas siguen funcionando con la batería</dd>
+          <dt>Batería</dt><dd>Sí, dimensionada según la autonomía que pidas</dd>
+          <dt>Inversión</dt><dd><span class="barra"><i style="width:75%"></i></span> Intermedia</dd>
+        </dl>
+      </article>
+
+      <article class="modo reveal">
+        <div class="modo__cab">
+          <span class="modo__tag">Sin red</span>
+          <h3>Off-grid</h3>
+          <p class="modo__sub">Aislado, 100 % autónomo</p>
+        </div>
+        <p class="modo__que">No hay conexión a la red: toda la energía sale de los paneles y se guarda en baterías para la noche y los días nublados.</p>
+        <dl class="modo__ficha">
+          <dt>Ideal para</dt><dd>Campos, fincas, puestos y obras sin acceso a la red</dd>
+          <dt>Si se corta la luz</dt><dd>No aplica: no depende de nadie</dd>
+          <dt>Batería</dt><dd>Sí, es el corazón del sistema</dd>
+          <dt>Inversión</dt><dd><span class="barra"><i style="width:100%"></i></span> La más alta</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VENTAJAS Y DESVENTAJAS ===================== -->
+<section class="seccion" id="ventajas">
+  <div class="contenedor">
+    <span class="eyebrow reveal">Sin letra chica</span>
+    <h2 class="titulo-seccion reveal">Lo bueno y lo que conviene saber</h2>
+    <p class="subtitulo-seccion reveal">
+      Preferimos que lo sepas antes y no después de firmar. Esto es lo que
+      realmente pesa a la hora de decidir.
+    </p>
+    <div class="balanza">
+      <div class="balanza__col balanza__col--pro reveal">
+        <h3><span class="balanza__ico">+</span> A favor</h3>
+        <ul>
+          <li><strong>Baja la factura desde el primer mes.</strong> Lo que generás deja de comprarse.</li>
+          <li><strong>Vida útil larga.</strong> Los paneles vienen con garantía de rendimiento a 25 años y siguen generando después.</li>
+          <li><strong>Mantenimiento mínimo.</strong> No hay partes móviles: limpieza y una revisión anual del tablero.</li>
+          <li><strong>Te blinda de los aumentos.</strong> Cada suba de tarifa mejora el retorno de lo que ya instalaste.</li>
+          <li><strong>Suma valor a la propiedad</strong> y es un argumento real frente a clientes y auditorías.</li>
+          <li><strong>Escalable.</strong> Se puede arrancar con una potencia y ampliar después, si el diseño lo previó.</li>
+        </ul>
+      </div>
+      <div class="balanza__col balanza__col--contra reveal">
+        <h3><span class="balanza__ico">−</span> A tener en cuenta</h3>
+        <ul>
+          <li><strong>La inversión es toda al principio.</strong> El ahorro llega después, repartido en años.</li>
+          <li><strong>Las baterías no duran lo mismo que los paneles.</strong> Son el componente que se reemplaza antes y el que más encarece el sistema.</li>
+          <li><strong>El techo manda.</strong> Orientación, inclinación, sombras de árboles o tanques y estado de la cubierta cambian el resultado.</li>
+          <li><strong>On-grid no es respaldo.</strong> Si se corta la luz, se apaga: para tener energía en un corte hace falta batería.</li>
+          <li><strong>En invierno se genera menos.</strong> El dimensionamiento tiene que contemplarlo, no solo el promedio anual.</li>
+          <li><strong>La conexión a red lleva trámite.</strong> Hay que gestionar el permiso de Generación Distribuida ante la distribuidora.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CALCULADORA ===================== -->
+<section class="seccion seccion--alt" id="calculadora">
+  <div class="contenedor">
+    <span class="eyebrow reveal">Dimensionador</span>
+    <h2 class="titulo-seccion reveal">Calculá tu sistema en 3 pasos</h2>
+    <p class="subtitulo-seccion reveal">
+      Respondé unas preguntas y obtené una estimación de la potencia, la batería
+      y la inversión aproximada. Sin dejar datos personales.
+    </p>
+
+    <div class="calc">
+      <div class="calc__panel">
+        <div class="progress-track" id="progressTrack"></div>
+
+        <section class="step" data-step="modo">
+          <h2>¿Qué tipo de sistema necesitás?</h2>
+          <p class="hint">Elegí la opción que mejor describe tu caso.</p>
+          <div class="choice-grid choice-grid--stack" data-group="modo">
+            <button type="button" class="choice-card" data-value="ongrid">
+              <span class="choice-title">On-grid (conectado a red)</span>
+              <span class="choice-desc">Tu instalación queda conectada a la red de EDESA. De día usás la energía que generás y ahorrás en la factura; si se corta la luz, el sistema se apaga por seguridad, igual que el resto de la red. Es la opción más económica.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="hibrido">
+              <span class="choice-title">Híbrido</span>
+              <span class="choice-desc">Combina paneles, batería y conexión a la red. Priorizás tu propia energía y la batería, y la red queda como respaldo. Si hay un corte de luz, los equipos que elijas siguen funcionando con la batería.</span>
+            </button>
+            <button type="button" class="choice-card" data-value="offgrid">
+              <span class="choice-title">Off-grid (aislado)</span>
+              <span class="choice-desc">No tiene ninguna conexión a la red eléctrica: toda la energía sale de los paneles y se guarda en baterías para usar de noche o en días nublados. Es la opción para lugares sin acceso a la red, como campos o zonas rurales.</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="step" data-step="provincia">
+          <h2>¿En qué provincia se instala?</h2>
+          <p class="hint">Usamos este dato para estimar las horas de sol disponibles en la zona.</p>
+          <div class="choice-grid choice-grid--5" data-group="provincia">
+            <button type="button" class="choice-card center" data-value="salta">Salta</button>
+            <button type="button" class="choice-card center" data-value="jujuy">Jujuy</button>
+            <button type="button" class="choice-card center" data-value="tucuman">Tucumán</button>
+            <button type="button" class="choice-card center" data-value="catamarca">Catamarca</button>
+            <button type="button" class="choice-card center" data-value="santiago">Santiago del Estero</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="consumo-ongrid">
+          <h2>Consumo mensual</h2>
+          <div class="bill-hint">
+            <div class="bill-hint-row"><span>Consumo del período</span><span>245 kWh</span></div>
+            <p>Ese es el dato que necesitás — figura en el detalle de tu factura de EDESA, generalmente cerca de "Consumo del período" o "kWh facturados" (ejemplo ilustrativo).</p>
+          </div>
+          <label for="inputConsumoMensual">Consumo facturado (kWh/mes)</label>
+          <input type="number" id="inputConsumoMensual" min="1" placeholder="Ej: 350">
+          <p class="hint" style="margin-top:10px;">Si tu consumo varía por estación, usá el promedio de los últimos 3 meses para mayor precisión.</p>
+        </section>
+
+        <section class="step" data-step="consumo-hibrido">
+          <h2>¿Qué necesitás alimentar?</h2>
+          <p class="hint">Ajustá cantidad y horas de uso diario de cada equipo. Dejá en 0 lo que no aplique.</p>
+          <table class="appliance-table">
+            <thead>
+              <tr><th>Equipo</th><th class="col-w opt">W</th><th class="col-cant">Cant.</th><th class="col-h">Hs/día</th></tr>
+            </thead>
+            <tbody id="applianceTableBody"></tbody>
+          </table>
+          <div class="daily-total">Consumo diario estimado: <strong id="dailyTotalKwh">0,00</strong> kWh/día</div>
+        </section>
+
+        <section class="step" data-step="autonomia">
+          <h2>Autonomía deseada</h2>
+          <p class="hint">¿Cuántas horas necesitás que el sistema funcione sin sol ni red?</p>
+          <label for="inputAutonomia">Horas de autonomía</label>
+          <input type="number" id="inputAutonomia" min="1" placeholder="Ej: 12">
+          <div class="preset-row" id="autonomiaPresets">
+            <button type="button" class="preset-chip" data-value="4">4 h</button>
+            <button type="button" class="preset-chip" data-value="8">8 h</button>
+            <button type="button" class="preset-chip" data-value="12">12 h</button>
+            <button type="button" class="preset-chip" data-value="24">24 h</button>
+            <button type="button" class="preset-chip" data-value="48">48 h</button>
+          </div>
+        </section>
+
+        <section class="step" data-step="resultado">
+          <h2>Estimación preliminar</h2>
+          <div class="spec-sheet" id="specSheet"></div>
+          <p class="disclaimer">
+            Estimación aproximada calculada a partir de los datos ingresados y de horas de sol promedio de la zona.
+            No reemplaza un relevamiento técnico: orientación e inclinación del techo, sombras, distancia al tablero
+            y estado de la instalación existente pueden modificar el resultado final. Precios en USD, orientativos,
+            sujetos a condiciones del sitio.
+          </p>
+          <a id="whatsappCta" class="cta-button" target="_blank" rel="noopener">Solicitar cotización formal por WhatsApp</a>
+          <button type="button" class="restart-link" id="restartLink">Empezar de nuevo</button>
+        </section>
+
+        <div class="nav-buttons">
+          <button type="button" id="btnBack" class="btn-secondary">Atrás</button>
+          <button type="button" id="btnNext" class="btn-primary" disabled>Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROYECTOS SOLARES ===================== -->
+<section class="seccion" id="proyectos">
+  <div class="contenedor">
+    <span class="eyebrow reveal">Obra ejecutada</span>
+    <h2 class="titulo-seccion reveal">Proyectos solares que ya están funcionando</h2>
+    <p class="subtitulo-seccion reveal">
+      Instalaciones nuestras en Salta y Jujuy. Hacé clic en cualquiera para ver las fotos
+      y la ficha técnica completa.
+    </p>
+    <div class="grid-trabajos" id="trabajos-grid" data-modo="solar"></div>
+    <div class="ver-todos">
+      <a href="trabajos.html" class="btn btn--linea">Ver todos los proyectos del grupo</a>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DE GALERÍA (lo usa trabajos.js) -->
+<div class="modal" id="modal-trabajo">
+  <div class="modal__caja">
+    <button class="modal__cerrar" id="modal-cerrar" aria-label="Cerrar">×</button>
+    <div class="galeria" id="modal-galeria"></div>
+    <div class="modal__cuerpo">
+      <h2 id="modal-titulo"></h2>
+      <div class="modal__detalles" id="modal-detalles"></div>
+      <p id="modal-descripcion"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PREGUNTAS FRECUENTES ===================== -->
+<section class="seccion seccion--alt" id="faq">
+  <div class="contenedor">
+    <span class="eyebrow reveal">Preguntas frecuentes</span>
+    <h2 class="titulo-seccion reveal">Lo que más nos preguntan</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>¿En cuánto tiempo recupero la inversión?</summary>
+        <p>Depende de cuánta energía consumas, de la tarifa que pagues y del tipo de sistema. Un on-grid bien dimensionado, que cubre la mayor parte del consumo diurno, suele tener el retorno más rápido porque no carga el costo de las baterías. En la cotización formal te damos el número para tu caso concreto, con tu factura en la mano — no un promedio genérico.</p>
+      </details>
+      <details>
+        <summary>¿Sirve si vivo en un departamento?</summary>
+        <p>Solo si tenés superficie de uso exclusivo con buena exposición al sol (una terraza propia, por ejemplo) y la conexión eléctrica está a tu nombre. En un edificio con techo común hace falta la aprobación del consorcio y un proyecto a nivel de todo el inmueble.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa los días nublados o en invierno?</summary>
+        <p>Se genera menos, pero se genera. En on-grid la diferencia la cubre la red sin que lo notes. En híbrido y off-grid es justamente lo que define el tamaño de la batería: por eso te preguntamos cuántas horas de autonomía necesitás, en vez de asumirlo nosotros.</p>
+      </details>
+      <details>
+        <summary>¿Necesito permiso para conectarme a la red?</summary>
+        <p>Sí. La Ley 27.424 de Generación Distribuida regula al usuario-generador, y el trámite se hace ante la distribuidora de tu provincia. Nosotros preparamos la documentación técnica y acompañamos la gestión como parte del trabajo.</p>
+      </details>
+      <details>
+        <summary>¿Puedo empezar chico y ampliar después?</summary>
+        <p>Sí, siempre que el diseño lo prevea desde el principio: el inversor, el tablero y la canalización tienen que quedar preparados para la potencia final. Avisanos en la primera charla si pensás crecer, porque cambia decisiones que después son caras de revertir.</p>
+      </details>
+      <details>
+        <summary>¿Qué mantenimiento lleva?</summary>
+        <p>Limpieza de los paneles según la zona (en lugares con mucho polvo o cercanía a caminos de tierra, más seguido) y una revisión anual del tablero, las protecciones y el ajuste de bornes. No hay partes móviles que se desgasten.</p>
+      </details>
+      <details>
+        <summary>¿Trabajan fuera de Salta?</summary>
+        <p>Sí. Tenemos obra ejecutada en Salta y Jujuy, y cotizamos en todo el NOA. Para instalaciones alejadas el presupuesto incluye viáticos, que ya quedan contemplados en la estimación del dimensionador.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="sol-cta">
+  <div class="contenedor sol-cta__in">
+    <h2>¿Querés el número exacto para tu caso?</h2>
+    <p>Mandanos tu estimación o tu factura y te armamos la cotización formal, con el detalle de equipos, los plazos y el retorno calculado sobre tu consumo real.</p>
+    <div class="sol-cta__botones">
+      <a id="cta-wa" class="btn" href="#" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+      <a href="#calculadora" class="btn btn--linea">Volver al dimensionador</a>
+    </div>
+  </div>
+</section>
+
+<footer class="empresa-footer">
+  <div class="contenedor">
+    <img id="footer-logo" src="" alt="Grupo Labektron">
+    <p>© <span id="anio"></span> <span id="footer-nombre"></span> — <span id="footer-copy"></span></p>
+    <a href="index.html">Volver al inicio</a>
+  </div>
+</footer>
+
+<a id="wa-flotante" class="wa-flotante" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+</a>
+
+<script src="datos.js"></script>
+<script src="fotos.js"></script>
+<script src="trabajos-datos.js"></script>
+<script>
+  // --- Cabecera, footer y WhatsApp (mismos datos que el resto del sitio) ---
+  (function () {
+    const logo = EMPRESA.logoClaro || EMPRESA.logo;
+    ['nav-logo', 'footer-logo'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.src = logo;
+      if (!EMPRESA.logoClaro) el.classList.add('realzar');
+    });
+    document.getElementById('footer-nombre').textContent = EMPRESA.nombre;
+    document.getElementById('footer-copy').textContent = EMPRESA.footerCopyright;
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    const texto = "Hola, quiero información sobre sistemas de energía solar.";
+    const wa = 'https://wa.me/' + EMPRESA.whatsapp + '?text=' + encodeURIComponent(texto);
+    document.getElementById('wa-flotante').href = wa;
+    document.getElementById('cta-wa').href = wa;
+
+    const header = document.getElementById('header');
+    addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 20));
+  })();
+
+  // --- Números del hero, calculados sobre los trabajos reales ---
+  (function () {
+    const solares = TRABAJOS.filter(t => t.solar);
+    const anios = new Set(solares.map(t => String(t.orden || '').slice(0, 4)).filter(Boolean));
+    const datos = [
+      { n: solares.length, txt: 'proyectos solares ejecutados' },
+      { n: anios.size,     txt: anios.size === 1 ? 'año de obra fotovoltaica' : 'años de obra fotovoltaica' },
+      { n: 5,              txt: 'provincias del NOA' },
+    ];
+    document.getElementById('sol-stats').innerHTML = datos.map(d =>
+      `<div class="sol-stat"><strong>${d.n}</strong><span>${d.txt}</span></div>`).join('');
+  })();
+</script>
+<script src="trabajos.js"></script>
+<script src="energia-solar.js"></script>
+<script>
+  // Animación de entrada
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

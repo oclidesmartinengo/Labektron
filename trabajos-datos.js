@@ -27,6 +27,7 @@
    descripcion       texto corto de la tarjeta
    destacado: true   aparece también en la página de inicio (elegí los 5 mejores)
    orden: "2024-06"  AAAA-MM, para ordenar. Los más nuevos aparecen primero
+   solar: true       además aparece en la página de Energía Solar
    detalles          cliente / ubicación / fecha / duración (borrá los que no uses)
    tecnicos          lista de datos técnicos (viñetas)
    descripcionLarga  el texto completo que se ve al abrir la galería
@@ -39,6 +40,7 @@ const TRABAJOS = [
   {
     titulo: "Sistema Solar Growatt OFF-GRID",
     carpeta: "espartina-solar",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Diseño, venta e instalación de parque de generación solar para agro.",
 
     destacado: true,          // ⭐ aparece en el inicio
@@ -127,6 +129,7 @@ const TRABAJOS = [
   {
     titulo: "Sistema Fotovoltaico Domiciliario OFF-GRID",
     carpeta: "maimara-solar",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Dimensionamiento, diseño, venta y puesta en marcha de sistema fotovoltaico para autoconsumo sin red electrica",
 
     destacado: true,          // ⭐ aparece en el inicio
@@ -169,6 +172,7 @@ const TRABAJOS = [
   {
     titulo: "Sistema de Backup de energia Monofasico",
     carpeta: "vissionary-backup",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Diseño, acondicionamiento e instalacion",
 
     destacado: false,         // no aparece en el inicio, solo en trabajos.html
@@ -190,6 +194,7 @@ const TRABAJOS = [
   {
     titulo: "Sistema Fotovoltaico Industrial ON-GRID",
     carpeta: "tambo-quijano",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Diseño, direccion de obra y puesta en marcha de sistema fotovoltaico para reducir factura de red electrica",
 
     destacado: false,          // ⭐ aparece en el inicio
@@ -232,6 +237,7 @@ const TRABAJOS = [
   {
     titulo: "Estacionamiento Fotovoltaico Comercial ON-GRID + Backup",
     carpeta: "vissionary-solar",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Idea, Diseño, Venta, Instalacion y puesta en marcha",
 
     destacado: true,         // no aparece en el inicio, solo en trabajos.html
@@ -256,6 +262,7 @@ const TRABAJOS = [
   {
     titulo: "Sistema Fotovoltaico Residencial ON-GRID",
     carpeta: "fleming-solar",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Dimensionamiento, Venta, Instalacion y puesta en marcha",
 
     destacado: false,         // no aparece en el inicio, solo en trabajos.html
@@ -337,6 +344,7 @@ const TRABAJOS = [
   {
     titulo: "Poste Solar con Camara y Starlink",
     carpeta: "geomix-monitoreo",
+    solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Solucion de monitoreo para cantera de aridos con autoconsumo solar.",
 
     destacado: true,          // ⭐ aparece en el inicio

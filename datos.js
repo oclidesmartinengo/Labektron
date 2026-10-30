@@ -101,6 +101,7 @@ const MENU = [
   { texto: "El Grupo",  ancla: "#grupo" },
   { texto: "Empresas",  ancla: "#empresas" },
   { texto: "Trabajos",  ancla: "#trabajos" },
+  { texto: "Energía Solar", ancla: "energia-solar.html" },   // página aparte (sin #)
   { texto: "Clientes",  ancla: "#clientes" },
   { texto: "Contacto",  ancla: "#contacto" },
 ];
