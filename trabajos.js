@@ -153,7 +153,36 @@
   const modal = document.getElementById('modal-trabajo');
   if (!modal) return;
   const galeriaCont = document.getElementById('modal-galeria');
+  const cajaModal = modal.querySelector('.modal__caja');
   let slideActual = 0, totalSlides = 0;
+
+  // --- El modal cambia de forma segun la foto (ver trabajos.css) -------------
+  // Vertical -> dos columnas (foto alta + ficha al lado). Horizontal -> una sola.
+  // La orientacion recien se sabe cuando la foto carga, asi que la aplicamos ahi.
+  function aplicarForma() {
+    const im = galeriaCont.querySelectorAll('.galeria__slide img')[slideActual];
+    if (!im) return;
+    const marcar = () => {
+      if (!im.naturalWidth) return;
+      cajaModal.classList.toggle('caja--vertical', im.naturalHeight > im.naturalWidth * 1.05);
+    };
+    if (im.complete && im.naturalWidth) marcar();
+    else im.addEventListener('load', () => {
+      // solo si seguimos parados en esa misma foto
+      if (galeriaCont.querySelectorAll('.galeria__slide img')[slideActual] === im) marcar();
+    }, { once: true });
+  }
+
+  // Adelanta la carga de la foto actual y sus vecinas, para que el cambio de
+  // forma no se note y el carrusel vaya fluido.
+  function precargar() {
+    const ims = galeriaCont.querySelectorAll('.galeria__slide img');
+    if (!ims.length) return;
+    [slideActual, slideActual + 1, slideActual - 1].forEach(k => {
+      const im = ims[(k + totalSlides) % totalSlides];
+      if (im) im.loading = 'eager';
+    });
+  }
 
   const etiquetas = {
     cliente: "Cliente",
@@ -180,6 +209,8 @@
       });
     }
     galeriaCont.scrollLeft = 0;   // por las dudas, la galeria nunca se corre
+    precargar();
+    aplicarForma();
     const cont = galeriaCont.querySelector('#gal-actual');
     if (cont) cont.textContent = slideActual + 1;
   }
@@ -211,6 +242,7 @@
     const fotos = (t.galeria && t.galeria.length) ? t.galeria : (t.imagen ? [t.imagen] : []);
     totalSlides = fotos.length;
     slideActual = 0;
+    cajaModal.classList.remove('caja--vertical');
     if (!totalSlides) {                       // trabajo cargado sin fotos todavía
       galeriaCont.className = 'galeria galeria--vacia';
       galeriaCont.innerHTML = '';
@@ -247,6 +279,9 @@
       galeriaCont.querySelectorAll('.galeria__mini').forEach(m =>
         m.onclick = () => irA(parseInt(m.dataset.mini)));
     }
+
+    precargar();
+    aplicarForma();
 
     modal.classList.add('abierto');
     document.body.style.overflow = 'hidden';

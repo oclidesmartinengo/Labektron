@@ -171,6 +171,27 @@ img.realzar {
     position: relative;
     animation: modalEntra .35s ease;
   }
+
+  /* ===== El modal cambia de forma segun la foto =====
+     Foto horizontal -> una columna ancha, la ficha abajo (como siempre).
+     Foto vertical   -> dos columnas: la foto a todo lo alto y la ficha al lado,
+                        asi la vertical usa el alto de la pantalla y no queda chica.
+     En celular siempre es una sola columna. */
+  @media (min-width: 900px) {
+    .modal__caja { transition: max-width .45s cubic-bezier(.4,0,.2,1); }
+    .modal__caja.caja--vertical {
+      max-width: 1240px; height: min(92vh, 900px); max-height: 92vh;
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      overflow: hidden;
+    }
+    .caja--vertical .galeria {
+      display: flex; flex-direction: column; min-height: 0;
+      border-right: 1px solid var(--borde); border-radius: 18px 0 0 18px;
+    }
+    .caja--vertical .galeria__viewport { flex: 1; min-height: 0; height: auto; }
+    .caja--vertical .modal__cuerpo { overflow-y: auto; padding: 32px 32px 36px; }
+    .caja--vertical .modal__detalles { grid-template-columns: 1fr; gap: 14px; }
+  }
   @keyframes modalEntra { from { opacity: 0; transform: translateY(20px) scale(.98); } to { opacity: 1; transform: none; } }
   .modal__cerrar {
     position: absolute; top: 16px; right: 16px; z-index: 3;

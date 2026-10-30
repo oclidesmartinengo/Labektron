@@ -25,8 +25,13 @@
   const reducirMovimiento = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Datos generales ---------- */
-  $('logo-grupo').src = LABELEC.logoGrupo;
-  $('logo-grupo-pie').src = LABELEC.logoGrupo;
+  // Logo del grupo con recuadro claro, igual que en el sitio principal
+  ['logo-grupo', 'logo-grupo-pie'].forEach(id => {
+    const el = $(id);
+    if (!el) return;
+    el.src = LABELEC.logoGrupo;
+    el.classList.add('realzar');
+  });
   $('logo-labelec').src = LABELEC.logo;
   $('lema').textContent = LABELEC.lema;
   {
