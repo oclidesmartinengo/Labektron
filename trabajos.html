@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="trabajos.css">
+<link rel="stylesheet" href="portada.css">
 <style>
   /* Ajustes propios de esta página */
   .pagina-hero { padding: 150px 0 60px; border-bottom: 1px solid var(--borde); position: relative; overflow: hidden; }
@@ -106,6 +107,7 @@
 </head>
 <body>
 
+<div class="topbar">
 <header id="header">
   <div class="contenedor nav">
     <a href="index.html" class="nav__logo"><img id="nav-logo" src="" alt="Grupo Labektron"></a>
@@ -119,14 +121,25 @@
     <a href="index.html#contacto" class="btn">Contactanos</a>
   </div>
 </header>
+</div>
 
-<section class="pagina-hero">
-  <div class="pagina-hero__glow"></div>
-  <div class="contenedor">
-    <a href="index.html" class="volver">← Volver al inicio</a>
-    <span class="eyebrow" id="pt-eyebrow"></span>
-    <h1 class="titulo-seccion" id="pt-titulo"></h1>
-    <p class="subtitulo-seccion" id="pt-subtitulo"></p>
+<section class="hx" data-portada data-filtro="heroe" data-desde="1">
+  <div class="hx__fotos" id="hx-fotos"></div>
+  <div class="hx__velo"></div>
+  <div class="hx__cont">
+    <div class="contenedor">
+      <a href="index.html" class="volver">← Volver al inicio</a>
+      <span class="eyebrow" id="pt-eyebrow"></span>
+      <h1 id="pt-titulo"></h1>
+      <p class="hx__bajada" id="pt-subtitulo"></p>
+    </div>
+  </div>
+  <div class="hx__pie">
+    <div class="contenedor">
+      <span class="hx__num" id="hx-num">01</span>
+      <span class="hx__obra" id="hx-obra"></span>
+      <span class="hx__indice" id="hx-indice"></span>
+    </div>
   </div>
 </section>
 
@@ -187,9 +200,9 @@
   document.getElementById('anio').textContent = new Date().getFullYear();
   const wa = 'https://wa.me/' + EMPRESA.whatsapp + '?text=' + encodeURIComponent(EMPRESA.whatsappTexto);
   document.getElementById('wa-flotante').href = wa;
-  const header = document.getElementById('header');
-  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 20));
+  // (la cabecera que toma fondo al bajar la maneja portada.js)
 </script>
+<script src="portada.js"></script>
 <script src="trabajos.js"></script>
 <script>
   // Animación de entrada

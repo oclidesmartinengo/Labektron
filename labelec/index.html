@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../portada.css">
 <link rel="stylesheet" href="labelec.css">
 </head>
 <body>
@@ -37,6 +38,7 @@
     </svg>
 </div>
 
+<div class="topbar">
 <header class="cab" id="cab">
   <div class="wrap cab__in">
     <a href="../index.html" class="cab__grupo" title="Volver a Grupo Labektron">
@@ -52,26 +54,47 @@
     <button class="cab__burger" id="burger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
+</div>
 
 <!-- ===================== HERO ===================== -->
-<section class="hero" id="inicio">
-  <div class="wrap vidrio">
-    <div class="hero__in">
-      <div class="hero__txt">
-        <div class="hero__marca">
-          <img class="hero__logo" id="logo-labelec" src="" alt="LABELEC">
-          <span class="hero__lema" id="lema"></span>
-        </div>
-        <h1 class="hero__titulo" id="titular"></h1>
-        <p class="hero__intro" id="intro"></p>
-        <div class="hero__acciones">
-          <a href="#diagnostico" class="btn btn--cobre">Diagnosticá tu equipo</a>
-          <a href="#rubros" class="btn btn--linea">Ver qué reparamos</a>
-        </div>
+<section class="hx" id="inicio" data-portada data-lista="TRABAJOS_LABELEC" data-filtro="heroe">
+  <div class="hx__fotos" id="hx-fotos"></div>
+  <div class="hx__velo"></div>
+  <div class="hx__cont">
+    <div class="wrap">
+      <a href="../index.html" class="volver">← Volver al grupo</a>
+      <img class="hx__logo" id="logo-labelec" src="" alt="LABELEC">
+      <span class="hx__lema" id="lema"></span>
+      <h1 id="titular"></h1>
+      <p class="hx__bajada" id="intro"></p>
+      <div class="hero__acciones">
+        <a href="#diagnostico" class="btn btn--cobre">Diagnosticá tu equipo</a>
+        <a href="#rubros" class="btn btn--linea">Ver qué reparamos</a>
       </div>
+    </div>
+  </div>
+  <div class="hx__pie">
+    <div class="wrap">
+      <span class="hx__num" id="hx-num">01</span>
+      <span class="hx__obra" id="hx-obra"></span>
+      <span class="hx__indice" id="hx-indice"></span>
+    </div>
+  </div>
+</section>
 
-      <!-- Osciloscopio: mové el mouse sobre la pantalla -->
-      <div class="osc" id="osc" aria-label="Osciloscopio interactivo">
+<div class="cifras-lb">
+  <div class="wrap"><ul id="datos"></ul></div>
+</div>
+
+<!-- Osciloscopio interactivo: mové el mouse sobre la pantalla -->
+<div class="osc-banda">
+  <div class="wrap osc-banda__in">
+    <div class="osc-banda__txt">
+      <span class="eyebrow">Laboratorio</span>
+      <h2>Medimos antes de abrir</h2>
+      <p>Cada equipo entra al banco con instrumental calibrado. Mové el mouse sobre la pantalla para jugar con la señal.</p>
+    </div>
+<div class="osc" id="osc" aria-label="Osciloscopio interactivo">
         <div class="osc__marco">
           <div class="osc__top"><span><i></i>LABELEC · DSO-01</span><span>2 CH · 100 MHz</span></div>
           <div class="osc__pantalla">
@@ -85,12 +108,8 @@
             <div class="osc__leds"><i class="on"></i><i></i><i></i></div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <ul class="hero__datos" id="datos"></ul>
   </div>
-</section>
+</div>
 
 <!-- ===================== RUBROS ===================== -->
 <section class="sec" id="rubros">
@@ -215,5 +234,6 @@
 <script src="fotos.js"></script>
 <script src="trabajos-labelec.js"></script>
 <script src="labelec.js"></script>
+<script src="../portada.js"></script>
 </body>
 </html>

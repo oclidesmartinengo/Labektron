@@ -9,10 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="empresa.css">
+<link rel="stylesheet" href="portada.css">
 </head>
 <body data-empresa="elektron">
 
 <!-- HEADER -->
+<div class="topbar">
 <header id="header">
   <div class="contenedor nav">
     <a href="index.html" class="nav__logo">
@@ -28,18 +30,29 @@
     <a href="index.html#contacto" class="btn" id="nav-boton">Contactanos</a>
   </div>
 </header>
+</div>
 
 <!-- HERO -->
-<section class="empresa-hero" id="hero">
-  <div class="empresa-hero__glow"></div>
-  <div class="contenedor empresa-hero__contenido">
-    <a href="index.html" class="volver">← Volver al grupo</a>
-    <img class="empresa-hero__logo" id="emp-logo" src="" alt="">
-    <span class="empresa-hero__lema" id="emp-lema"></span>
-    <p class="empresa-hero__intro" id="emp-intro"></p>
-    <div class="empresa-hero__acciones">
-      <a href="#servicios" class="btn" id="btn-servicios">Ver servicios</a>
-      <a href="index.html#contacto" class="btn btn--ghost">Contacto</a>
+<section class="hx" id="hero" data-portada data-filtro="heroe" data-desde="2">
+  <div class="hx__fotos" id="hx-fotos"></div>
+  <div class="hx__velo"></div>
+  <div class="hx__cont">
+    <div class="contenedor">
+      <a href="index.html" class="volver">← Volver al grupo</a>
+      <img class="hx__logo" id="emp-logo" src="" alt="">
+      <span class="hx__lema" id="emp-lema"></span>
+      <p class="hx__bajada" id="emp-intro"></p>
+      <div class="hero__acciones">
+        <a href="#servicios" class="btn" id="btn-servicios">Ver servicios</a>
+        <a href="index.html#contacto" class="btn btn--ghost">Contacto</a>
+      </div>
+    </div>
+  </div>
+  <div class="hx__pie">
+    <div class="contenedor">
+      <span class="hx__num" id="hx-num">01</span>
+      <span class="hx__obra" id="hx-obra"></span>
+      <span class="hx__indice" id="hx-indice"></span>
     </div>
   </div>
 </section>
@@ -77,6 +90,9 @@
 </a>
 
 <script src="datos.js"></script>
+<script src="fotos.js"></script>
+<script src="trabajos-datos.js"></script>
 <script src="empresa.js"></script>
+<script src="portada.js"></script>
 </body>
 </html>

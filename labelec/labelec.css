@@ -11,6 +11,9 @@
   --texto:      #f2f5fa;
   --suave:      #b4c0d6;
   --cobre:      #ff8a3d;
+  --acento:     #ff8a3d;   /* mismo cobre: lo usa portada.css, que es compartida */
+  --texto-suave: #b4c0d6;  /* alias que usa portada.css */
+  --radio:      14px;
   --cobre-2:    #ffb26b;
   --verde:      #5ce0a0;
   --rojo:       #ff5c6a;
@@ -33,13 +36,13 @@ button { font-family: inherit; color: inherit; }
 
 /* ---------- FONDO DE PLACA (vectorial, fijo, cubre la ventana) ---------- */
 .pcb-fondo { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-.pcb-fondo__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.5; }
+.pcb-fondo__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.22; }
 /* copia "encendida" de la misma placa, visible solo alrededor del mouse: las pistas se iluminan, no hay nada encima */
 .pcb-fondo__svg--lit { opacity: 1;
   -webkit-mask-image: radial-gradient(circle 380px at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%);
           mask-image: radial-gradient(circle 380px at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%); }
 .pcb-fondo__svg--lit .b { opacity: .95; } .pcb-fondo__svg--lit .g { opacity: .9; stroke: #8a9ab8; } .pcb-fondo__svg--lit .o { opacity: 1; } .pcb-fondo__svg--lit .bd { opacity: .6; }
-body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa) { position: relative; z-index: 1; }
+body > :not(.pcb-fondo):not(.cab):not(.lb):not(.wa):not(.topbar) { position: relative; z-index: 1; }
 
 /* estilos de las pistas */
 .pcb-fondo .b  { fill: none; stroke: url(#gB); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
@@ -127,7 +130,7 @@ img.realzar { background: linear-gradient(135deg, #ffffff, #f1efea); padding: 7p
 
 /* ---------- SECCIONES ---------- */
 /* Cada sección vive en un panel de vidrio oscuro: el fondo de placa se ve alrededor, nunca detrás del texto */
-.sec { padding: 40px 0; }
+.sec { padding: 92px 0; }
 .sec--alt { background: none; border: none; }
 /* Panel de vidrio: recuadro definido, sin difuminado */
 .vidrio { position: relative; background: linear-gradient(180deg, rgba(21,29,44,0.88), rgba(21,29,44,0.95)); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 56px 56px 60px; box-shadow: 0 40px 80px -50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05); }
@@ -488,4 +491,28 @@ img.realzar { background: linear-gradient(135deg, #ffffff, #f1efea); padding: 7p
   .panel, .tester__q, .tester__res { animation: none; }
   .marcas__tren { animation: none; flex-wrap: wrap; width: auto; }
   html { scroll-behavior: auto; }
+}
+
+
+/* ============================================================================
+   Banda del osciloscopio — bajó del hero a su propia franja bajo la portada
+   ============================================================================ */
+.osc-banda { position: relative; z-index: 1; background: var(--fondo-alt); border-bottom: 1px solid var(--borde); padding: 56px 0; }
+.osc-banda__in { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; }
+.osc-banda__txt .eyebrow { display: inline-block; font-family: var(--mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cobre); margin-bottom: 12px; }
+.osc-banda__txt h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 800; margin-bottom: 12px; }
+.osc-banda__txt p { color: var(--suave); font-size: .98rem; max-width: 46ch; }
+@media (max-width: 960px) { .osc-banda__in { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Banda de datos, debajo de la portada */
+.cifras-lb { position: relative; z-index: 1; background: var(--fondo); border-bottom: 1px solid var(--borde); }
+.cifras-lb ul { list-style: none; display: flex; }
+.cifras-lb li { flex: 1; padding: 30px 22px 30px 0; border-right: 1px solid var(--borde); }
+.cifras-lb li + li { padding-left: 24px; }
+.cifras-lb li:last-child { border-right: 0; }
+.cifras-lb b { display: block; font-family: var(--display); font-weight: 800; font-size: 1.9rem; line-height: 1; margin-bottom: 5px; color: var(--cobre); }
+.cifras-lb span { font-size: .7rem; letter-spacing: .09em; text-transform: uppercase; color: var(--suave); line-height: 1.35; }
+@media (max-width: 760px) {
+  .cifras-lb ul { flex-wrap: wrap; }
+  .cifras-lb li { flex: 0 0 50%; border-right: 0; padding-left: 0 !important; padding-bottom: 20px; }
 }

@@ -18,10 +18,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="trabajos.css">
+<link rel="stylesheet" href="portada.css">
 <link rel="stylesheet" href="energia-solar.css">
 </head>
 <body>
 
+<div class="topbar">
 <header id="header">
   <div class="contenedor nav">
     <a href="index.html" class="nav__logo"><img id="nav-logo" src="" alt="Grupo Labektron"></a>
@@ -35,26 +37,33 @@
     <a href="#calculadora" class="btn">Calcular mi sistema</a>
   </div>
 </header>
+</div>
 
-<!-- ===================== HERO ===================== -->
-<section class="sol-hero">
-  <div class="sol-hero__cielo"></div>
-  <div class="sol-hero__sol"></div>
-  <div class="sol-hero__rejilla"></div>
-  <div class="contenedor sol-hero__in">
-    <a href="index.html" class="volver">← Volver al inicio</a>
-    <span class="eyebrow">Energía fotovoltaica · NOA</span>
-    <h1 class="sol-hero__titulo">El sol que ya te llega,<br><span class="ac">convertido en energía.</span></h1>
-    <p class="sol-hero__bajada">
-      Diseñamos, vendemos e instalamos sistemas solares llave en mano para casas, comercios,
-      industria y zonas rurales. Desde el dimensionamiento hasta la puesta en marcha, con un
-      solo responsable técnico.
-    </p>
-    <div class="sol-hero__botones">
-      <a href="#calculadora" class="btn">Calcular mi sistema</a>
-      <a href="#proyectos" class="btn btn--linea">Ver proyectos reales</a>
+<!-- ===================== PORTADA ===================== -->
+<section class="hx" data-portada data-filtro="solar">
+  <div class="hx__fotos" id="hx-fotos"></div>
+  <div class="hx__velo"></div>
+  <div class="hx__cont">
+    <div class="contenedor">
+      <a href="index.html" class="volver">← Volver al inicio</a>
+      <span class="eyebrow">Energía fotovoltaica · NOA</span>
+      <h1>El sol que ya te llega,<br><span class="ac">convertido en energía.</span></h1>
+      <p class="hx__bajada">
+        Diseñamos, vendemos e instalamos sistemas solares llave en mano para casas,
+        comercios, industria y zonas rurales, con un solo responsable técnico.
+      </p>
+      <div class="hero__acciones">
+        <a href="#calculadora" class="btn">Calcular mi sistema</a>
+        <a href="#proyectos" class="btn btn--linea">Ver proyectos reales</a>
+      </div>
     </div>
-    <div class="sol-stats" id="sol-stats"></div>
+  </div>
+  <div class="hx__pie">
+    <div class="contenedor">
+      <span class="hx__num" id="hx-num">01</span>
+      <span class="hx__obra" id="hx-obra"></span>
+      <span class="hx__indice" id="hx-indice"></span>
+    </div>
   </div>
 </section>
 
@@ -408,23 +417,11 @@
     document.getElementById('wa-flotante').href = wa;
     document.getElementById('cta-wa').href = wa;
 
-    const header = document.getElementById('header');
-    addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 20));
+    // (la cabecera que toma fondo al bajar la maneja portada.js)
   })();
 
-  // --- Números del hero, calculados sobre los trabajos reales ---
-  (function () {
-    const solares = TRABAJOS.filter(t => t.solar);
-    const anios = new Set(solares.map(t => String(t.orden || '').slice(0, 4)).filter(Boolean));
-    const datos = [
-      { n: solares.length, txt: 'proyectos solares ejecutados' },
-      { n: anios.size,     txt: anios.size === 1 ? 'año de obra fotovoltaica' : 'años de obra fotovoltaica' },
-      { n: 5,              txt: 'provincias del NOA' },
-    ];
-    document.getElementById('sol-stats').innerHTML = datos.map(d =>
-      `<div class="sol-stat"><strong>${d.n}</strong><span>${d.txt}</span></div>`).join('');
-  })();
 </script>
+<script src="portada.js"></script>
 <script src="trabajos.js"></script>
 <script src="energia-solar.js"></script>
 <script>

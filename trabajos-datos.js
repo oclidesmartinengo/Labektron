@@ -28,6 +28,9 @@
    destacado: true   aparece también en la página de inicio (elegí los 5 mejores)
    orden: "2024-06"  AAAA-MM, para ordenar. Los más nuevos aparecen primero
    solar: true       además aparece en la página de Energía Solar
+   heroe: true       rota en la portada del inicio (elegí 3, con foto apaisada)
+   heroFoto: "x.jpg" qué foto de esa carpeta usa la portada; si no la ponés, usa la primera
+   cierre: true      su foto es el fondo del bloque de contacto del final (elegí una sola)
    detalles          cliente / ubicación / fecha / duración (borrá los que no uses)
    tecnicos          lista de datos técnicos (viñetas)
    descripcionLarga  el texto completo que se ve al abrir la galería
@@ -40,6 +43,8 @@ const TRABAJOS = [
   {
     titulo: "Sistema Solar Growatt OFF-GRID",
     carpeta: "espartina-solar",
+    heroe: true,              // rota en la portada del inicio
+    heroFoto: "portada.jpg",   // cual de sus fotos usa la portada (tiene que ser apaisada)
     solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Diseño, venta e instalación de parque de generación solar para agro.",
 
@@ -194,6 +199,10 @@ const TRABAJOS = [
   {
     titulo: "Sistema Fotovoltaico Industrial ON-GRID",
     carpeta: "tambo-quijano",
+    cierre: true,             // su foto es el fondo del cierre de la home
+    cierreFoto: "portada.jpg",
+    heroe: true,              // rota en la portada del inicio
+    heroFoto: "portada.jpg",   // cual de sus fotos usa la portada (tiene que ser apaisada)
     solar: true,              // aparece tambien en energia-solar.html
     descripcion: "Diseño, direccion de obra y puesta en marcha de sistema fotovoltaico para reducir factura de red electrica",
 
@@ -386,6 +395,8 @@ const TRABAJOS = [
   {
     titulo: "Armado de tablero Electrico",
     carpeta: "riotinto-tablero",
+    heroe: true,              // rota en la portada del inicio
+    heroFoto: "20261017-025818.jpg",   // cual de sus fotos usa la portada (tiene que ser apaisada)
     descripcion: "Venta y Armado de tablero electrico principal y seccional para control de luces de campo.",
 
     destacado: false,          // ⭐ aparece en el inicio

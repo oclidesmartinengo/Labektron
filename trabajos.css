@@ -25,14 +25,14 @@ h1, h2, h3 { font-family: var(--display); line-height: 1.15; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .contenedor { width: 92%; max-width: var(--ancho); margin: 0 auto; }
-.seccion { padding: 96px 0; }
+.seccion { padding: 120px 0; }
 
 .eyebrow { display: inline-block; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--acento); font-weight: 600; margin-bottom: 16px; }
-.titulo-seccion { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
-.subtitulo-seccion { color: var(--texto-suave); max-width: 620px; margin-bottom: 56px; font-size: 1.05rem; }
+.titulo-seccion { font-size: clamp(1.9rem, 4.2vw, 2.9rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.025em; }
+.subtitulo-seccion { color: var(--texto-suave); max-width: 640px; margin-bottom: 60px; font-size: 1.05rem; }
 
-.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--acento); color: #041016; font-weight: 600; font-family: var(--display); padding: 12px 22px; border-radius: 999px; font-size: 0.92rem; transition: transform .2s, box-shadow .2s; box-shadow: 0 6px 24px -8px var(--acento); }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px var(--acento); }
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--acento); color: #041016; font-weight: 600; font-family: var(--display); padding: 12px 22px; border-radius: 999px; font-size: 0.92rem; transition: transform .2s, box-shadow .2s; box-shadow: 0 6px 20px -12px var(--acento); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -12px var(--acento); }
 .btn--ghost { background: transparent; color: var(--texto); border: 1px solid var(--borde); box-shadow: none; }
 .btn--ghost:hover { border-color: var(--acento); color: var(--acento); }
 
@@ -88,7 +88,7 @@ img.realzar {
 .servicio p { color: var(--texto-suave); font-size: 0.96rem; }
 
 /* CTA */
-.cta { text-align: center; background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--acento) 16%, transparent), transparent 60%), var(--fondo-alt); border-top: 1px solid var(--borde); padding: 100px 0; }
+.cta { text-align: center; background: var(--fondo-alt); border-top: 1px solid var(--borde); padding: 120px 0; }
 .cta h2 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 18px; }
 .cta p { color: var(--texto-suave); max-width: 520px; margin: 0 auto 36px; font-size: 1.08rem; }
 

@@ -25,6 +25,8 @@
    falla     qué tenía
    solucion  qué se hizo
    carpeta   nombre de la carpeta con las fotos
+   heroe     sale en la portada (elegí fotos apaisadas y con el título ya corregido)
+   heroFoto  cuál de sus fotos usa la portada
 
    ⚠️  Editá SOLO lo que está entre comillas.
    ============================================================================ */
@@ -38,6 +40,8 @@ const TRABAJOS_LABELEC = [
     falla: "Sulfato en placa",
     solucion: "Se realizo limpieza integral en batea de ultrasonido y se desoldaron componentes, limpiaron y resoldaron nuevamente, incluyendo el micro.",
     carpeta: "acelerador-electronico",
+    heroe: true,              // sale en la portada de Labelec
+    heroFoto: "IMG_20200314_135537.jpg",
   },
   {
     titulo: "Arranque suave Siemens 90HP",
