@@ -272,3 +272,149 @@
 @media (prefers-reduced-motion: reduce) {
   .paso:hover .paso__icono .rayos { animation: none; }
 }
+
+/* ============================================================================
+   ESQUEMA INTERACTIVO
+   ============================================================================ */
+.modo-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 26px; }
+.modo-tab {
+  text-align: left; background: var(--tarjeta); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 16px 18px; color: var(--texto);
+  cursor: pointer; font-family: inherit; transition: border-color .2s, background .2s, transform .2s;
+}
+.modo-tab:hover { border-color: var(--texto-suave); transform: translateY(-2px); }
+.modo-tab.activo { border-color: var(--sol); background: rgba(255,181,71,.1); }
+.modo-tab b { display: block; font-family: var(--display); font-size: 1.05rem; margin-bottom: 2px; }
+.modo-tab small { color: var(--texto-suave); font-size: .82rem; }
+.modo-tab.activo b { color: var(--sol); }
+@media (max-width: 680px) { .modo-tabs { grid-template-columns: 1fr; } }
+
+.esquema { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; }
+/* En pantallas chicas el esquema se desplaza en horizontal: achicarlo
+   lo volvería ilegible. */
+.esquema__lienzo { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.esq { display: block; width: 100%; height: auto; background: linear-gradient(170deg, #16243c, #101a2c); }
+@media (max-width: 760px) {
+  .esq { min-width: 720px; }
+  .esquema__lienzo { position: relative; }
+  .esquema__lienzo::after {
+    content: 'desplazá para ver todo →'; position: absolute; right: 12px; bottom: 10px;
+    font-size: .7rem; letter-spacing: .06em; color: var(--texto-suave);
+    background: rgba(10,16,28,.8); padding: 4px 10px; border-radius: 999px; pointer-events: none;
+  }
+}
+.esq-txt { fill: var(--texto); font-family: var(--display); font-size: 17px; font-weight: 600; text-anchor: middle; }
+.esq-txt--chico { fill: var(--texto-suave); font-family: var(--body); font-size: 13px; font-weight: 400; }
+.esq-etq { fill: var(--texto-suave); font-family: var(--body); font-size: 12.5px; letter-spacing: .08em; text-anchor: middle; text-transform: uppercase; }
+
+/* Los nodos opcionales (batería y red) aparecen según el modo */
+.esq-opt, .esq-opt-txt, .esq-flujo { transition: opacity .45s ease; }
+.esq-opt, .esq-opt-txt { opacity: 0; }
+.esq.m-ongrid  #n-red, .esq.m-hibrido #n-red, .esq.m-ongrid #e-red, .esq.m-hibrido #e-red { opacity: 1; }
+.esq.m-hibrido #n-bateria, .esq.m-offgrid #n-bateria { opacity: 1; }
+
+/* Flujos: la línea punteada que “corre” marca hacia dónde va la energía */
+.esq-flujo {
+  fill: none; stroke: var(--acento); stroke-width: 4; stroke-linecap: round;
+  stroke-dasharray: 14 16; opacity: 0;
+  animation: correr 1.1s linear infinite;
+}
+.esq-flujo--vuelve { animation-direction: reverse; stroke: var(--sol); }
+@keyframes correr { to { stroke-dashoffset: -30; } }
+
+/* Qué flujos se ven en cada modo */
+.esq.m-ongrid  #f-pan-inv, .esq.m-ongrid  #f-inv-casa, .esq.m-ongrid  #f-inv-red,
+.esq.m-hibrido #f-pan-inv, .esq.m-hibrido #f-inv-casa, .esq.m-hibrido #f-inv-red, .esq.m-hibrido #f-inv-bat,
+.esq.m-offgrid #f-pan-inv, .esq.m-offgrid #f-inv-casa, .esq.m-offgrid #f-inv-bat { opacity: .95; }
+
+/* Corte de luz */
+.esq-corte-marca { opacity: 0; transition: opacity .3s; }
+.esq.cortado .esq-corte-marca { opacity: 1; }
+.esq.cortado #f-inv-red, .esq.cortado #f-red-inv, .esq.cortado #e-red { opacity: 0 !important; }
+/* On-grid cortado: se apaga todo */
+.esq.apagado .esq-flujo { opacity: 0 !important; }
+.esq.apagado .esq-onda { stroke: #6a7c99; }
+.esq.apagado .esq-led { fill: #ff5c6a; }
+.esq.apagado .esq-ventana { fill: #2a3752; }
+.esq.apagado #n-casa, .esq.apagado #n-inversor { opacity: .55; }
+/* Híbrido cortado: la batería alimenta la casa */
+.esq.cortado.m-hibrido #f-bat-inv { opacity: .95 !important; }
+
+.esquema__pie {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  padding: 22px 26px; border-top: 1px solid var(--borde); background: var(--fondo);
+}
+.esquema__pie p { flex: 1 1 420px; color: var(--texto-suave); font-size: .96rem; margin: 0; }
+.esquema__pie p.bien { color: #9fe9c6; }
+.esquema__pie p.alerta { color: #ffb0b8; }
+
+.interruptor { display: inline-flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+.interruptor input { position: absolute; opacity: 0; width: 0; height: 0; }
+.interruptor__pista {
+  width: 50px; height: 28px; border-radius: 999px; background: var(--fondo-alt);
+  border: 1px solid var(--borde); position: relative; transition: background .25s, border-color .25s;
+}
+.interruptor__pista i {
+  position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--texto-suave); transition: transform .25s, background .25s;
+}
+.interruptor input:checked + .interruptor__pista { background: rgba(255,92,106,.2); border-color: #ff5c6a; }
+.interruptor input:checked + .interruptor__pista i { transform: translateX(22px); background: #ff5c6a; }
+.interruptor input:focus-visible + .interruptor__pista { outline: 2px solid var(--acento); outline-offset: 3px; }
+.interruptor__txt { font-family: var(--display); font-weight: 600; font-size: .9rem; }
+.interruptor.inactivo { opacity: .5; }
+
+.modo-ficha { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px 26px; margin-top: 30px; }
+.modo-dato .etq { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sol); font-weight: 600; margin-bottom: 5px; }
+.modo-dato .val { font-size: .95rem; color: var(--texto-suave); }
+
+/* ============================================================================
+   UN DÍA DE SOL
+   ============================================================================ */
+.dia { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 26px; }
+.dia__graf { display: block; width: 100%; height: auto; }
+.dia-grid { stroke: var(--borde); stroke-width: 1; opacity: .55; }
+.dia-ejetxt { fill: var(--texto-suave); font-family: var(--body); font-size: 12px; }
+.dia-ejetxt--u { fill: var(--sol); font-size: 11px; letter-spacing: .08em; }
+.dia-area { stroke: none; }
+.dia-area--gen { fill: rgba(255,181,71,.14); }
+.dia-area--con { fill: rgba(0,194,255,.16); }
+.dia-linea { fill: none; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.dia-linea--gen { stroke: var(--sol); }
+.dia-linea--con { stroke: var(--acento); }
+.dia-linea--bat { stroke: #3ddc97; stroke-width: 2; stroke-dasharray: 6 7; opacity: 0; }
+.dia.con-bateria .dia-linea--bat { opacity: .9; }
+.dia-cursor { stroke: var(--texto); stroke-width: 1.5; opacity: .5; stroke-dasharray: 4 5; }
+.dia-pt { stroke: var(--tarjeta); stroke-width: 3; }
+.dia-pt--gen { fill: var(--sol); }
+.dia-pt--con { fill: var(--acento); }
+
+.dia__rango { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; margin: 14px 0 18px;
+  border-radius: 999px; background: linear-gradient(90deg, #16243c, var(--sol) 55%, #16243c); cursor: pointer; }
+.dia__rango::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--sol); border: 3px solid var(--tarjeta); box-shadow: 0 2px 10px rgba(0,0,0,.6); cursor: grab; }
+.dia__rango::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--sol);
+  border: 3px solid var(--tarjeta); box-shadow: 0 2px 10px rgba(0,0,0,.6); cursor: grab; }
+
+.dia__leyenda { display: flex; flex-wrap: wrap; gap: 20px; font-size: .84rem; color: var(--texto-suave); margin-bottom: 18px; }
+.dia__leyenda i { display: inline-block; width: 16px; height: 3px; border-radius: 2px; margin-right: 7px; vertical-align: middle; }
+.dia__leyenda .p-gen { background: var(--sol); }
+.dia__leyenda .p-con { background: var(--acento); }
+.dia__leyenda .p-bat { background: #3ddc97; }
+.dia__leyenda .solo-bat { display: none; }
+.dia.con-bateria .dia__leyenda .solo-bat { display: inline; }
+
+.dia__lectura { border-top: 1px solid var(--borde); padding-top: 20px; }
+.dia-hora { font-family: var(--display); font-weight: 800; font-size: 1.7rem; line-height: 1; margin-bottom: 12px; }
+.dia-cifras { display: flex; flex-wrap: wrap; gap: 26px; margin-bottom: 14px; font-size: .92rem; color: var(--texto-suave); }
+.dia-cifras b { font-family: var(--display); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.dia-cifras .c-gen b { color: var(--sol); }
+.dia-cifras .c-con b { color: var(--acento); }
+.dia-dice { font-size: .98rem; color: var(--texto-suave); max-width: 72ch; }
+.dia-dice b { color: var(--texto); font-weight: 600; }
+.dia-dice.bien { color: #9fe9c6; }
+.dia-dice.alerta { color: #ffb0b8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .esq-flujo { animation: none; stroke-dasharray: none; opacity: .5; }
+}

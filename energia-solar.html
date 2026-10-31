@@ -67,99 +67,173 @@
   </div>
 </section>
 
-<!-- ===================== CÓMO FUNCIONA ===================== -->
+<!-- ===================== CÓMO FUNCIONA (esquema interactivo) ===================== -->
 <section class="seccion" id="como-funciona">
   <div class="contenedor">
     <span class="eyebrow reveal">Cómo funciona</span>
-    <h2 class="titulo-seccion reveal">Del techo al enchufe, en cuatro pasos</h2>
+    <h2 class="titulo-seccion reveal">Mirá por dónde va tu energía</h2>
     <p class="subtitulo-seccion reveal">
-      Un sistema fotovoltaico no tiene partes móviles ni mantenimiento diario. Esto es
-      todo lo que pasa mientras hay sol.
+      Elegí el tipo de sistema y seguí el recorrido. Después apagá la red y fijate
+      qué pasa en cada caso: ahí está la diferencia real entre los tres.
     </p>
-    <div class="pasos">
-      <div class="paso reveal">
-        <div class="paso__num">01</div>
-        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8"/><g class="rayos"><path d="M24 4v7M24 37v7M4 24h7M37 24h7M10 10l5 5M33 33l5 5M38 10l-5 5M15 33l-5 5"/></g></svg>
-        <h3>Los paneles captan el sol</h3>
-        <p>Las celdas de silicio generan corriente continua apenas les llega luz. No necesitan calor: rinden incluso mejor con temperaturas frescas y cielo despejado.</p>
+
+    <div class="modo-tabs reveal" id="modo-tabs" role="tablist">
+      <button type="button" class="modo-tab activo" data-modo="ongrid" role="tab">
+        <b>On-grid</b><small>Conectado a la red</small>
+      </button>
+      <button type="button" class="modo-tab" data-modo="hibrido" role="tab">
+        <b>Híbrido</b><small>Paneles + batería + red</small>
+      </button>
+      <button type="button" class="modo-tab" data-modo="offgrid" role="tab">
+        <b>Off-grid</b><small>Aislado, sin red</small>
+      </button>
+    </div>
+
+    <div class="esquema reveal">
+      <div class="esquema__lienzo">
+      <svg id="esq" class="esq m-ongrid" viewBox="0 0 1040 420" role="img"
+           aria-label="Esquema del sistema fotovoltaico">
+        <defs>
+          <linearGradient id="gPanel" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2b4a7a"/><stop offset="100%" stop-color="#16243c"/>
+          </linearGradient>
+          <radialGradient id="gSol">
+            <stop offset="0%" stop-color="#ffd27a"/><stop offset="70%" stop-color="#ffb547"/>
+            <stop offset="100%" stop-color="#ff8a3d"/>
+          </radialGradient>
+        </defs>
+
+        <!-- ---------- SOL ---------- -->
+        <g class="esq-sol">
+          <circle cx="112" cy="74" r="30" fill="url(#gSol)"/>
+          <g class="esq-rayos" stroke="#ffb547" stroke-width="3" stroke-linecap="round">
+            <path d="M112 26v-14M112 136v14M64 74H50M174 74h14M78 40l-10-10M146 108l10 10M146 40l10-10M78 108l-10 10"/>
+          </g>
+          <path class="esq-luz" d="M140 100 L205 165" stroke="#ffb547" stroke-width="2.5"
+                stroke-linecap="round" stroke-dasharray="7 9"/>
+          <path class="esq-luz" d="M118 112 L168 186" stroke="#ffb547" stroke-width="2.5"
+                stroke-linecap="round" stroke-dasharray="7 9"/>
+        </g>
+
+        <!-- ---------- PANELES ---------- -->
+        <g class="esq-nodo" id="n-paneles">
+          <path d="M70 300 L150 180 L300 180 L220 300 Z" fill="url(#gPanel)" stroke="#5e7fb5" stroke-width="2"/>
+          <path d="M110 300 L190 180 M150 300 L230 180 M190 300 L270 180
+                   M100 265 L250 265 M124 230 L274 230" stroke="#5e7fb5" stroke-width="1.5" opacity=".75"/>
+          <path d="M145 300 v26 M145 326 h40" stroke="#8aa2c8" stroke-width="3" fill="none"/>
+          <text x="185" y="356" class="esq-txt">Paneles</text>
+          <text x="185" y="374" class="esq-txt esq-txt--chico">generan en continua</text>
+        </g>
+
+        <!-- ---------- INVERSOR ---------- -->
+        <g class="esq-nodo" id="n-inversor">
+          <rect x="432" y="158" width="128" height="116" rx="12" fill="#22304a" stroke="#5e7fb5" stroke-width="2"/>
+          <path class="esq-onda" d="M452 216 q12-24 24 0 t24 0 t24 0" fill="none" stroke="#00c2ff" stroke-width="3" stroke-linecap="round"/>
+          <circle class="esq-led" cx="542" cy="172" r="5" fill="#3ddc97"/>
+          <text x="496" y="300" class="esq-txt">Inversor</text>
+          <text x="496" y="318" class="esq-txt esq-txt--chico">la pasa a 220 V</text>
+        </g>
+
+        <!-- ---------- BATERÍA ---------- -->
+        <g class="esq-nodo esq-opt" id="n-bateria">
+          <rect x="604" y="300" width="112" height="72" rx="10" fill="#22304a" stroke="#5e7fb5" stroke-width="2"/>
+          <rect x="640" y="292" width="40" height="10" rx="3" fill="#5e7fb5"/>
+          <rect x="616" y="314" width="88" height="44" rx="5" fill="#16243c"/>
+          <rect class="esq-carga" x="620" y="318" width="60" height="36" rx="3" fill="#3ddc97" opacity=".8"/>
+          <text x="660" y="392" class="esq-txt">Batería</text>
+        </g>
+
+        <!-- ---------- RED ---------- -->
+        <g class="esq-nodo esq-opt" id="n-red">
+          <path d="M880 120 L902 40 L924 120 M888 92 h28 M884 108 h36 M895 68 h14"
+                fill="none" stroke="#8aa2c8" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M870 120 h64" stroke="#8aa2c8" stroke-width="4" stroke-linecap="round"/>
+          <text x="902" y="146" class="esq-txt">Red</text>
+          <g class="esq-corte-marca">
+            <circle cx="902" cy="80" r="42" fill="none" stroke="#ff5c6a" stroke-width="5"/>
+            <path d="M872 50 L932 110" stroke="#ff5c6a" stroke-width="5" stroke-linecap="round"/>
+          </g>
+        </g>
+
+        <!-- ---------- CASA ---------- -->
+        <g class="esq-nodo" id="n-casa">
+          <path d="M770 250 L838 196 L906 250 V330 H770 Z" fill="#22304a" stroke="#5e7fb5" stroke-width="2"/>
+          <rect class="esq-ventana" x="796" y="266" width="30" height="28" rx="3" fill="#ffd27a"/>
+          <rect class="esq-ventana" x="850" y="266" width="30" height="28" rx="3" fill="#ffd27a"/>
+          <rect x="818" y="306" width="24" height="24" fill="#16243c"/>
+          <text x="838" y="356" class="esq-txt">Tu consumo</text>
+        </g>
+
+        <!-- ---------- FLUJOS ---------- -->
+        <!-- paneles -> inversor -->
+        <path class="esq-flujo" id="f-pan-inv" d="M190 326 H360 Q380 326 380 306 V216 H432"/>
+        <!-- inversor -> casa -->
+        <path class="esq-flujo" id="f-inv-casa" d="M560 216 H770"/>
+        <!-- inversor -> batería -->
+        <path class="esq-flujo" id="f-inv-bat" d="M560 240 H596 Q616 240 616 260 V300"/>
+        <!-- batería -> inversor (descarga) -->
+        <path class="esq-flujo esq-flujo--vuelve" id="f-bat-inv" d="M560 240 H596 Q616 240 616 260 V300"/>
+        <!-- inversor -> red (excedente) -->
+        <path class="esq-flujo" id="f-inv-red" d="M496 158 V120 Q496 100 516 100 H860 Q880 100 880 120"/>
+        <!-- red -> casa (lo que falta) -->
+        <path class="esq-flujo esq-flujo--vuelve" id="f-red-inv" d="M496 158 V120 Q496 100 516 100 H860 Q880 100 880 120"/>
+
+        <!-- etiquetas de los flujos -->
+        <text x="300" y="312" class="esq-etq" id="e-dc">continua</text>
+        <text x="665" y="206" class="esq-etq" id="e-ac">220 V</text>
+        <text x="700" y="84" class="esq-etq esq-opt-txt" id="e-red">excedente →</text>
+      </svg>
       </div>
-      <div class="paso reveal">
-        <div class="paso__num">02</div>
-        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="3"/><path d="M15 24h5l3-5 4 10 3-5h5"/></svg>
-        <h3>El inversor la convierte</h3>
-        <p>Transforma esa corriente continua en los 220 V alternos que usan tus equipos, y sincroniza con la red para que todo conviva sin saltos ni cortes.</p>
-      </div>
-      <div class="paso reveal">
-        <div class="paso__num">03</div>
-        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="8" width="28" height="32" rx="4"/><path d="M19 4h10M17 20h14M17 28h14"/></svg>
-        <h3>Consumís o guardás</h3>
-        <p>La energía va primero a lo que estés usando en ese momento. Lo que sobra carga la batería, si el sistema la tiene.</p>
-      </div>
-      <div class="paso reveal">
-        <div class="paso__num">04</div>
-        <svg class="paso__icono" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v10M24 32v10M8 24h10M30 24h10"/><circle cx="24" cy="24" r="7"/><path d="M12 12l6 6M30 30l6 6"/></svg>
-        <h3>El excedente vuelve a la red</h3>
-        <p>En sistemas on-grid, lo que no consumís se inyecta y se descuenta de tu factura bajo el régimen de Generación Distribuida (Ley 27.424).</p>
+
+      <div class="esquema__pie">
+        <p id="esq-texto"></p>
+        <label class="interruptor" id="interruptor">
+          <input type="checkbox" id="corte">
+          <span class="interruptor__pista"><i></i></span>
+          <span class="interruptor__txt">Simular un corte de luz</span>
+        </label>
       </div>
     </div>
+
+    <div class="modo-ficha reveal" id="modo-ficha"></div>
   </div>
 </section>
 
-<!-- ===================== LAS 3 MODALIDADES ===================== -->
-<section class="seccion seccion--alt" id="modalidades">
+<!-- ===================== UN DÍA DE SOL ===================== -->
+<section class="seccion seccion--alt" id="un-dia">
   <div class="contenedor">
-    <span class="eyebrow reveal">Tres caminos</span>
-    <h2 class="titulo-seccion reveal">¿Cuál de los tres necesitás?</h2>
+    <span class="eyebrow reveal">Un día completo</span>
+    <h2 class="titulo-seccion reveal">¿Y de noche qué pasa?</h2>
     <p class="subtitulo-seccion reveal">
-      La diferencia no es la calidad: es qué querés resolver. Esta tabla es la misma
-      conversación que tenemos en la primera visita.
+      Esta es la pregunta que más nos hacen. Movés la hora y ves de dónde sale
+      cada vatio que consumís, según el sistema que elegiste arriba.
     </p>
 
-    <div class="modos">
-      <article class="modo reveal">
-        <div class="modo__cab">
-          <span class="modo__tag">Más económico</span>
-          <h3>On-grid</h3>
-          <p class="modo__sub">Conectado a la red</p>
-        </div>
-        <p class="modo__que">Trabaja en paralelo con EDESA. De día consumís lo que generás y el excedente se inyecta a la red, que te lo descuenta de la factura.</p>
-        <dl class="modo__ficha">
-          <dt>Ideal para</dt><dd>Casas y comercios con red estable que buscan bajar la factura</dd>
-          <dt>Si se corta la luz</dt><dd>El sistema se apaga por seguridad, igual que la red</dd>
-          <dt>Batería</dt><dd>No lleva</dd>
-          <dt>Inversión</dt><dd><span class="barra"><i style="width:40%"></i></span> La más baja</dd>
-        </dl>
-      </article>
+    <div class="dia reveal">
+      <svg id="dia-svg" class="dia__graf" viewBox="0 0 1000 310" role="img"
+           aria-label="Generación y consumo a lo largo del día">
+        <g id="dia-rejilla"></g>
+        <path id="dia-area-gen" class="dia-area dia-area--gen"></path>
+        <path id="dia-area-con" class="dia-area dia-area--con"></path>
+        <path id="dia-linea-gen" class="dia-linea dia-linea--gen"></path>
+        <path id="dia-linea-con" class="dia-linea dia-linea--con"></path>
+        <path id="dia-linea-bat" class="dia-linea dia-linea--bat"></path>
+        <line id="dia-cursor" class="dia-cursor" y1="22" y2="262"></line>
+        <circle id="dia-pt-gen" class="dia-pt dia-pt--gen" r="6"></circle>
+        <circle id="dia-pt-con" class="dia-pt dia-pt--con" r="6"></circle>
+        <g id="dia-horas"></g>
+      </svg>
 
-      <article class="modo modo--destacado reveal">
-        <div class="modo__cab">
-          <span class="modo__tag">El más elegido</span>
-          <h3>Híbrido</h3>
-          <p class="modo__sub">Paneles + batería + red</p>
-        </div>
-        <p class="modo__que">Prioriza tu propia energía y la batería, y deja la red como respaldo. Es la opción si además de ahorrar querés no quedarte sin luz.</p>
-        <dl class="modo__ficha">
-          <dt>Ideal para</dt><dd>Zonas con cortes frecuentes, o equipos que no pueden parar</dd>
-          <dt>Si se corta la luz</dt><dd>Los circuitos que elijas siguen funcionando con la batería</dd>
-          <dt>Batería</dt><dd>Sí, dimensionada según la autonomía que pidas</dd>
-          <dt>Inversión</dt><dd><span class="barra"><i style="width:75%"></i></span> Intermedia</dd>
-        </dl>
-      </article>
+      <input type="range" id="dia-hora" class="dia__rango" min="0" max="23" value="13"
+             aria-label="Hora del día">
 
-      <article class="modo reveal">
-        <div class="modo__cab">
-          <span class="modo__tag">Sin red</span>
-          <h3>Off-grid</h3>
-          <p class="modo__sub">Aislado, 100 % autónomo</p>
-        </div>
-        <p class="modo__que">No hay conexión a la red: toda la energía sale de los paneles y se guarda en baterías para la noche y los días nublados.</p>
-        <dl class="modo__ficha">
-          <dt>Ideal para</dt><dd>Campos, fincas, puestos y obras sin acceso a la red</dd>
-          <dt>Si se corta la luz</dt><dd>No aplica: no depende de nadie</dd>
-          <dt>Batería</dt><dd>Sí, es el corazón del sistema</dd>
-          <dt>Inversión</dt><dd><span class="barra"><i style="width:100%"></i></span> La más alta</dd>
-        </dl>
-      </article>
+      <div class="dia__leyenda">
+        <span><i class="p-gen"></i> Generás</span>
+        <span><i class="p-con"></i> Consumís</span>
+        <span class="solo-bat"><i class="p-bat"></i> Carga de la batería</span>
+      </div>
+
+      <div class="dia__lectura" id="dia-lectura"></div>
     </div>
   </div>
 </section>
@@ -340,6 +414,14 @@
     <h2 class="titulo-seccion reveal">Lo que más nos preguntan</h2>
     <div class="faq reveal">
       <details>
+        <summary>kW, kWh, kWp: ¿cuál es cuál?</summary>
+        <p><b>kW</b> es potencia: qué tan fuerte tira algo en este instante. Una pava eléctrica son 2 kW mientras está encendida.
+        <b>kWh</b> es energía: potencia por tiempo, y es lo que te factura EDESA. Esa pava de 2 kW prendida media hora consume 1 kWh.
+        <b>kWp</b> es la potencia de los paneles medida en condiciones de laboratorio — "p" de pico. Un sistema de 5 kWp no genera
+        5 kW todo el día: genera eso en el mejor momento del mediodía, y bastante menos a la mañana y a la tarde. Por eso el
+        dimensionador trabaja con kWh por día y no con la potencia sola.</p>
+      </details>
+      <details>
         <summary>¿En cuánto tiempo recupero la inversión?</summary>
         <p>Depende de cuánta energía consumas, de la tarifa que pagues y del tipo de sistema. Un on-grid bien dimensionado, que cubre la mayor parte del consumo diurno, suele tener el retorno más rápido porque no carga el costo de las baterías. En la cotización formal te damos el número para tu caso concreto, con tu factura en la mano — no un promedio genérico.</p>
       </details>
@@ -424,6 +506,7 @@
 <script src="portada.js"></script>
 <script src="trabajos.js"></script>
 <script src="energia-solar.js"></script>
+<script src="solar-dinamica.js"></script>
 <script>
   // Animación de entrada
   const obs = new IntersectionObserver(es => {
